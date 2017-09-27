@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		span {
+			cursor: pointer;
+		}
+		#box {
+			width: 210px;
+			height: 25px;
+			line-height:25px;
+			text-align: center;
+			font-size: 12px;
+			border: 1px solid red;
+			color: red;
+			background-color: #fff;
+			position: relative;
+			left: 100px;
+			display: none;
+		}
+	</style>
+
+</head>
+<body>
+	用户名：<input type="text" /><br /><br />
+	密&nbsp;&nbsp;码：<input type="text"><br /><br />
+	<input type="checkbox" /><span id="text">十天之内免登录</span><br />
+	<div id = "box">禁止在公共场或者网吧打勾</div>
+	
+</body>
+<script>
+		// 思路
+		// 1.素或观察页面，看效果，总结出来具体的功能是什么
+		// 鼠标经过时，鼠标离开时
+		// 2，布局HTML+CSS 
+		// // 3.写js(你看到的效果，总结分下出来一个边长思路，运用js实现功能)
+
+		// 第一步 先获取元素
+		// 文本span
+		var oSpan = document.getElementById('text');
+		    // 获取提示框
+		var oBox = document.getElementById('box');
+
+		console.dir(oSpan);//打印的比较详细
+
+		// 第二步  实现功能
+		// 两个事件   mouseover  鼠标移上去
+		// 		   mouseout   鼠标移出去
+		// on 表示的是当
+		// 当鼠标移动上去的时候
+		oSpan.onmouseover = function() {
+			oBox.style.display = 'block';
+		}
+		// 当鼠标离开的时候
+		oSpan.onmouseout = function() {
+			oBox.style.display = 'none';
+		} 
+
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+		}
+		img {
+			position: absolute;
+			top: 100px;
+		}
+		#right {
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/1.gif" id="left" />
+	<img src="img/2.gif" id="right" />
+</body>
+	<script>
+		
+		// 获取事件相关元素
+		var aImg = document.getElementsByTagName('img');
+		var timer = null;
+		// 设置延迟定时器
+		timer = setTimeout(function() {
+			aImg[0].style.display = 'none';
+			aImg[1].style.display = 'none';
+		},2000)
+		
+	</script>
+</html>

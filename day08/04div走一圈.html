@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="单击走一圈" id="btn1"/>
+	<!-- <input type="button" value="单击往回走" id="btn2"/>
+	<input type="button" value="单击往上走" id="btn3"/>
+	<input type="button" value="单击往下走" id="btn4"/> -->
+	<div id="box"></div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var oBtn1 = document.getElementById('btn1');
+		// var oBtn2 = document.getElementById('btn2');
+		// var oBtn3 = document.getElementById('btn3');
+		// var oBtn4 = document.getElementById('btn4');
+		var oBox = document.getElementById('box');
+
+		var timer = null;
+
+		oBtn1.onclick = function() {
+			move(oBox,"left",10,800,function() {
+				move(oBox,"top",10,500,function() {
+					move(oBox,"left",-10,100,function() {
+						move(oBox,"top",-10,100);
+					})
+				})
+			})
+		}
+		function move(obj,attr,speed,target,fn) {
+			// 清除其他的定时器
+				clearInterval(timer);
+				// 获取到元素的任意值并存起来
+				var dis = parseFloat(getStyle(obj,attr));
+				// 判断起始点是否大于目标点，来决定速度是正好还是负
+				// speed = dis > target ? -speed : speed;
+			// 设置定时器
+			timer = setInterval(function() {
+				dis += speed;
+				// 进行判断控制运动范围
+				if(dis >= target && speed > 0 || dis <= target && speed < 0) {
+					dis = target;
+				}
+				obj.style[attr] = dis + 'px';
+				if(dis == target) {
+					clearInterval(timer);
+					timer = null;
+
+					// 传去函数
+					fn&&fn();//这样如果不传入是假的也不会报错
+				}
+
+			},30)
+		}
+
+		// 获取元素任意样式的函数
+		function getStyle(obj,attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}else {
+				return getComputedStyle(obj)[attr];
+			}
+		}
+	</script>
+</html>

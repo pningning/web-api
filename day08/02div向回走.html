@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="单击往前走" id="btn1"/>
+	<input type="button" value="单击往回走" id="btn2"/>
+
+	<div id="box"></div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var oBox = document.getElementById('box');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+
+		
+		var timer = null;
+
+		// 给往前走按钮添加单击事件
+		
+		oBtn1.onclick = function() {
+			clearInterval(timer);
+			timer = setInterval(function() {
+				var speed = oBox.offsetLeft + 10;
+				// 设置目标点
+				if(speed>=800) {
+					speed = 800;
+				}
+				oBox.style.left = speed + "px";
+				if(speed == 800){
+					clearInterval(timer);
+					timer = null;
+				}
+			},30)
+		}
+
+		// 给往后走按钮添加单击事件
+		oBtn2.onclick = function() {
+			clearInterval(timer);
+			timer = setInterval(function() {
+				var speed = oBox.offsetLeft - 10;
+				// 设置目标点
+				if(speed <= 100) {
+					speed = 100;
+				}
+				oBox.style.left = speed + "px";
+				if(speed == 100) {
+					clearInterval(timer);
+					timer = null;
+				}
+			},30)
+		}
+	</script>
+</html>

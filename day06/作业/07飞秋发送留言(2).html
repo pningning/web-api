@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 516px;
+			height: 498px;
+			background: url(bj.jpg) no-repeat;
+			margin: 20px auto 0;
+			position: relative;
+
+		}
+		#oul {
+			width: 290px;
+			height: 286px;
+			list-style: none;
+			border: 0;
+			/*background-color: red;*/
+			margin: 0;
+			position: absolute;
+			top: 80px;
+			padding: 10px;
+			
+		}
+		#text {
+			width: 320px;
+			height: 70px;
+			resize: none;
+			position: absolute;
+			left: 0;
+			bottom: 24px;
+			border: 0;
+			outline: none;
+			font-size: 20px;
+
+		}
+		#gb {
+			position: absolute;
+			bottom: 5px;
+			right: 256px;
+			height: 20px;
+		}
+		#btn {
+			position: absolute;
+			right: 200px;
+			bottom: 5px;
+			height: 20px;
+			
+		}
+		#oSel {
+			height: 20px;
+			width: 20px;
+			position: absolute;
+			right:180px;
+			bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="oul">
+			<!-- <li>要添加的内容</li> -->
+		</ul>
+		<textarea id="text"></textarea>
+		<input type="button" value="关闭" id="gb">
+		<input type="button" value="发送" id="btn"/>
+		<select id="oSel">
+			<option value="e">按下enter键发送</option>
+			<option value="c">按下ctrl+enter发送</option>
+		</select>
+	</div>
+</body>
+	<script>
+		function $(id) {
+			return document.getElementById(id);
+		} 
+		var oUl = $('oul');
+		var oText = $('text');
+		var oBtn = $('btn');
+		var oSel = $("oSel");
+		oText.focus();
+		// console.log(oUl,oText,oBtn,oSel);
+
+		// 设置添加内容小函数
+		function core() {
+			if(oText.value === ""){
+				alert('请输入内容');
+			} //判断内容是否为空
+			oUl.innerHTML += "<li>我: "+oText.value+"</li>";
+			oText.value = '';
+			oText.focus();
+		}
+			// 给发送按钮添加单击事件
+			oBtn.onclick = function() {
+				core();
+			}
+
+			// 给文档添加键盘按下事件
+			document.onkeydown = function(e) {
+				e = e || event;
+				if(e.keyCode == 13 && !e.ctrlKey) {
+					if(oSel.value == "e") {
+						core();
+					}
+				}
+				if(e.keyCode ==13 && e.ctrlKey) {
+					if(oSel.value=="c") {
+						core();
+					}
+				}
+
+			}
+	</script>
+</html>

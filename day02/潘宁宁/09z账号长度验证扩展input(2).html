@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+			input {
+				border: 0;
+				border: 1px solid #ccc;
+				width: 300px;
+				height: 30px;
+				margin: 10px;
+				/*获取插入条之后的蓝色外边框去除*/
+				outline-style: none;
+				padding-left: 10px;
+				font-size: 18px;
+			}
+			
+			.wrong {
+				border: 1px solid red;
+			}
+			
+			.wrong-span {
+				color: red;
+				height: 30px;
+				line-height: 30px;
+			}
+			.right {
+				color: green;
+			}
+		</style>
+</head>
+<body>
+	账号:<input type="text" ><span></span><br> 
+		密码:<input type="text"><span></span>
+</body>
+	<script>
+		
+		// 获取事件的相关 元素
+		var aInt = document.getElementsByTagName('input');
+		var aSpan = document.getElementsByTagName('span');
+
+		// 添加焦点事件
+
+		// 当文本失去焦点的时候
+		aInt[0].onblur = function() {
+			// 设置变量存储当前文本的内容
+			var  str = this.value;
+			if(str==='') {
+				aSpan[0].innHTML= '请输入内容';
+			}
+		}
+		// 添加input事件。当文本的内容发生变话的时候触发事件
+
+		aInt[0].oninput = function() {
+			// 设置变量存储当前文本的内容
+			var str= this.value;
+			// 判断当前输入的内容是否符合规则
+			if(str.length<6 || str.length>20) {
+				aSpan[0].innerHTML
+			}
+		}
+
+	</script>
+</html>

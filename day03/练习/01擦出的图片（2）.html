@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 52px;
+				height: 60px;
+				background: url(pic.jpg) no-repeat;
+				position:absolute;
+				opacity:0;/*透明*/
+				transition:0.5s;/*动画*/	
+							
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script>
+//		首先需要天津100个div
+		var str = "";
+		for(var i = 0; i <100; i++) {
+//			找到div定位left规律
+			var l = i%10*53;
+//			top规律
+			var t = parseInt(i/10)*61; //
+//			把所有的div加起来
+		str+='<div class="box" style="left:'+l+'px;top:'+t+'px;background-position:'+-l+'px '+-t+'px"></div>';
+			//str+='<div class="box" style="left:'+l +'px;top:'+t+'px;background-position:'+-l+'px'+-t+'px"></div>';
+			//str +='<div class="box" style="left:'+l+'px;top:'+t+'px;background-position:'+-l+'px '+-t+'px;"></div>';
+		}
+		
+		document.body.innerHTML = str;
+		
+//		获取事件相关元素
+		var oBox = document.getElementsByTagName("div");
+		
+//		添加鼠标移上事件
+		for(var i = 0; i < 100; i++) {
+			oBox[i].onmouseover = function() {
+			this.style.opacity = '1';
+		}
+		}
+		
+	</script>
+</html>

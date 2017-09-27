@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style: none;
+			margin: 0 auto;
+			padding: 10px;
+			border: 0;
+			width: 250px;
+			height: 300px;
+			background-color: pink;
+			border-radius: 10px;
+		}
+		div {
+			width: 250px;
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+<body>
+	<ul id="oul">
+		<!-- <li>要添加的内容<a href="javascript">删除</a></li> -->
+	</ul>
+	<div>
+		<input type="text" id="text1" />
+		<input type="button" id="text2" value="单击添加" />
+	</div>
+</body>
+	<script>
+		// 获取事件相关元素
+		// 设置获取元素的函数
+		function $(id) {
+			return document.getElementById(id);
+		}
+		var oUl = $('oul');//获取ul
+		var oText1 = $('text1');//获取文本框
+		var oText2 = $('text2');//获取按钮
+		oText1.focus();//文本框自动获焦
+		// 添加单击事件
+		oText2.onclick = function() {
+			var str = oText1.value;//设置变量存储文本框内容
+			oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>';//把内容添加到ul里面
+			oText1.value = '';
+			oText1.focus();
+
+			// 点击删除按钮的时候
+			// 获取事件相关元素
+			var aA = document.getElementsByTagName('a');
+			// 给所有的a添加单击事件
+			for(var i = 0; i < aA.length; i++) {
+				aA[i].onclick = function() {
+					//oUl.removeChild(this.parentNode);这种形式也可以
+					this.parentNode.parentNode.removeChild(this.parentNode);
+				}
+			}
+		}
+	</script>
+</html>

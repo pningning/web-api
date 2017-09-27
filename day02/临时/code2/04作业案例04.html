@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="单击修改每一个图片的title" />
+		<img src="image/1-small.jpg" alt="" title="美女1" />
+		<img src="image/2-small.jpg" alt="" title="美女2"/>
+		<img src="image/3-small.jpg" alt="" title="美女3"/>
+		<img src="image/4-small.jpg" alt="" title="美女4"/>
+	</body>
+	<script type="text/javascript">
+//		案例:点击按钮修改每个图片的title属性值
+		
+		var  aInp = document.getElementsByTagName("input")[0];
+		var aImg = document.getElementsByTagName("img");
+		// 在js中 函数是一等公民
+		// 给按钮注册添加单击事件
+		var arr = ["美女","野兽","小孩","老人"]
+		aInp.onclick = function() {
+			
+			for(var i = 0; i < aImg.length; i++) {
+				
+				aImg[i].title = arr[i];
+				
+			}
+			
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,64 @@
+      <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>男生爱好</button>
+		<button>女生爱好</button>
+		<input type="radio" name="sex"  />男
+		<input type="radio" name="sex" />女
+		<input type="checkbox" />抽烟
+		<input type="checkbox" />喝酒
+		<input type="checkbox" />吃饭
+		<input type="checkbox" />睡觉
+		<input type="checkbox" />烫头
+		<input type="checkbox" />大保健
+		<input type="checkbox" />写bug
+		<input type="checkbox" />生活不至于眼前的苟且，还有html，css和js
+		
+	</body>
+	<script type="text/javascript">
+		var aBtn = document.getElementsByTagName("button");
+		var aInp = document.getElementsByTagName("input");
+		// 单击男生爱好 选一批兴趣
+		aBtn[0].onclick = function() {
+			//  暴力清除一下 将所有的input 清空一下被选状态
+			for(var i = 0; i < aInp.length; i++) {
+				aInp[i].checked = false;
+			}
+			
+			for(var i = 0; i < aInp.length; i++) {
+				
+				// 除了那些input之外 其余都被选中
+				if(i!=1&&i!=4&&i!=5) {
+					aInp[i].checked = true;
+				}
+			}
+			
+			
+		}
+		
+		
+		// 单击女生按钮  选一批兴趣
+		aBtn[1].onclick = function() {
+			
+			//  暴力清除一下 将所有的input 清空一下被选状态
+			for(var i = 0; i < aInp.length; i++) {
+				aInp[i].checked = false;
+			}
+			
+			
+			for(var i = 0; i < aInp.length; i++) {
+				
+				// 除了那些input之外 其余都被选中
+				if(i!=0&&i!=2&&i!=3&&i!=7) {
+					aInp[i].checked = true;
+				}
+			}
+			
+			
+		}
+	</script>
+</html>

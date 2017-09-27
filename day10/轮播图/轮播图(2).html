@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 4000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+
+    </style>
+    <script src="myTools.js"></script>
+
+    <script>
+    	window.onload = function() {
+    		// 获取事件相关元素
+    	var oScreen = $('#screen');
+    	var oArr = $('#arr');
+    	var oRight = $('#right');
+    	var oLeft = $('#left');
+    	var oUl = $('#ul');
+    	var aLi = $('li',oUl);
+    	var imgW = aLi[0].children[0].offsetWidth;
+    	var oNav = $('ol',oScreen)[0];
+    	var navLi = $('li',oNav);
+
+    	// 设置小方块的第一个的颜色为黄色
+    	navLi[0].className = 'current';
+
+    		// 设置一个变量存储移动的步伐
+    		var k = 1;
+
+    		//图片的初始位置
+    		oUl.style.left = -imgW*k + 'px';
+    		// 给所有的li添加单击事件
+    		for(var i = 0; i < navLi.length; i++) {
+    			navLi[i].index = i;
+    			
+    			navLi[i].onmouseover = function() {
+    				k = this.index;
+    				move(oUl,"left",30,-imgW*k);
+    				for(var i = 0; i < navLi.length; i++) {
+    					navLi[i].className = '';
+    				}
+    				this.className = 'current';
+    			}
+
+    		}
+
+    			//======================
+    			// 给Screen盒子添加鼠标移上事件
+    			oScreen.onmouseover = function() {
+    				// 小三角显示
+    				oArr.style.display = 'block';
+
+    				// 鼠标移上的时候，清除自动运动的定时器清除
+    				clearInterval(timer);
+    				timer = null;
+    			}
+
+    			oScreen.onmouseout = function() {
+    				oArr.style.display = "none";
+
+    				// 鼠标移开的时候，自动运动的定时器开启
+    				timer = setInterval(autoPlay,1000);
+    			}
+
+
+
+    			//================
+    			// 在最后面添加一张跟第一张一样的图片，实现无缝
+    			var newLi = aLi[0].cloneNode(true);//完全克隆内容
+    			oUl.appendChild(newLi);
+    			// 给右边的三角添加单击事件
+    			oRight.onclick = function() {
+    				    k++;
+    				    if(k>=aLi.length) {
+    				    	k= 1;
+    				    	oUl.style.left = -imgW*k +"px";
+    				    }
+    				    move(oUl,"left",30,-imgW*k,function() {
+    				    	if(k>=aLi.length-1) {
+    				    		k = 1;
+    				    		oUl.style.left = -imgW*k +"px";
+    				    	}
+
+    				    	// 清除所有小方块的浮动
+    				    	for(var i = 0; i < navLi.length; i++) {
+    				    		navLi[i].className = '';
+    				    	}
+    				    	navLi[k-1].className = 'current';
+    				    }) 
+    			}
+
+
+    			//============
+
+    				// 克隆倒数第二张图片放到最前面
+    				var newLi2 = aLi[aLi.length-2].cloneNode(true);
+    				oUl.insertBefore(newLi2,first(oUl));
+    			// 给左侧小三角添加单击事件
+    			oLeft.onclick = function() {
+    				k--;
+    				if(k<0) {
+    					k=aLi.lenght-2;
+    					oUl.style.left = -imgW*k + 'px';
+    				}
+    				move(oUl,"left",30,-imgW*k,function() {
+    					if(k<=0) {
+    						k = aLi.length - 2;
+    						oUl.style.left = -imgW*k + "px";
+    					}
+    					// 暴力清除所有导航小方块
+    					for(var i = 0; i < navLi.length; i++) {
+    						navLi[i].className = '';
+    					}
+    					navLi[k-1].className = "current";
+    				})
+    			}
+    			//===========================================================
+    			// 设置定时器，打开页面的时候就开始自动运动
+    			var timer = null;
+    			timer = setInterval(autoPlay,1000);
+
+    			// 定时器函数
+    			function autoPlay() {
+    				k++;
+    				if(k > aLi.length) {
+    					k =1;//定位到倒数第二张写着五的位置
+    					oUl.style.left = -imgW*k + 'px';
+    				}
+    				// 开始运动
+    				move(oUl,"left",30,-imgW*k,function() {
+    					if(k >= aLi.length-1) {
+    						k = 1;
+    						oUl.style.left = -imgW*k + 'px';
+    					}
+
+    					// 暴力清除所有导航小方块
+    					for(var i = 0; i < navLi.length; i++) {
+    						navLi[i].className = "";
+    					}
+    					navLi[k-1].className = 'current';
+    				})
+    			} 
+
+
+    	}
+    	
+    	
+
+    </script>
+</head>
+<body>
+	<!--外盒子-->
+    <div class="all" id='all'>
+        <!--内盒子-->
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images/1.jpg" width="500" height="200"/></li>
+                <li><img src="images/2.jpg" width="500" height="200"/></li>
+                <li><img src="images/3.jpg" width="500" height="200"/></li>
+                <li><img src="images/4.jpg" width="500" height="200"/></li>
+                <li><img src="images/5.jpg" width="500" height="200"/></li>
+            </ul>
+            <!--小方块-->
+            <ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>	
+            </ol>
+            <!--左右小三角-->
+            <div id="arr">
+                <span id="left"><</span>
+                <span id="right">></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

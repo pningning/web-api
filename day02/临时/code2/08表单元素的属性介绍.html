@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="尼古拉斯赵四" />
+		<textarea name="" rows="" cols="">哈哈哈</textarea>
+		<select id="sel">
+			<option value="apple">苹果</option>
+			<option value="banana">香蕉</option>
+			<option value="orange">橙子</option>
+			<option value="peach">桃子</option>
+		</select>
+		<input type="checkbox" />玩游戏
+		<input type="checkbox"  />学习
+		<input type="checkbox" />写bug
+		<input type="checkbox" />约会
+		
+	</body>
+	<script type="text/javascript">
+		
+		var aInp = document.getElementsByTagName("input");
+		console.log(aInp[0].value);
+		console.log(aInp[0].type);
+		
+		aInp[0].disabled = true; // 禁用
+		//aInp.disabled = false; // 解禁
+		
+		
+		aInp[2].checked = false;
+		aInp[4].checked = true;
+		
+		var opt = document.getElementsByTagName("option");
+		
+		opt[2].selected = true;
+		var oSel = document.getElementById("sel");
+		console.log(oSel.value);// 它的value一定是被选中的option的value值
+	</script>
+</html>

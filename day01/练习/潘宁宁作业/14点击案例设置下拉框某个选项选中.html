@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="请选择区" />
+	<select>
+		<option>朝阳</option>
+		<option selected="false">河北</option>
+		<option>昌平</option>
+	</select>
+</body>
+	<script>
+		var oInt = document.getElementsByTagName('input');
+		// var oSelect =document.getElementsByTagName('select');
+		var aOption = document.getElementsByTagName('option');
+		
+
+		oInt[0].onclick = function() {
+			aOption[1].selected = 'selected';
+		}
+	</script>
+</html>

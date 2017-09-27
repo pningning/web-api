@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+	<script>
+
+	// 函数作为参数的第一种形式
+	// function dome(fn) {
+	// 	return fn;
+	// }
+
+	// var sum = dome(function dome2() {
+	// 	var a = 2;
+	// 	var b = 2;
+	//	return a+b;
+	// })
+
+	// console.log(sum);//如果直接传入的是函数，传入的函数在里面不调用的话打印的是传入的函数的代码
+
+
+	// 第二种形式
+	// function dome(fn) {
+	// 	return fn();
+	// }
+
+	// var sum = dome(function dome2() {
+	// 	var a = 2;
+	// 	var b = 2;
+	// 	return a+b;
+	// })
+
+	// console.log(sum);//4  如果调用了，就会出现值
+
+
+	// 第三种形式
+
+	// function dome(fn) {
+	// 	return fn;
+	// }
+
+	// var sum = dome(dome2);//这种形式返回的是函数代码
+	// console.log(sum);
+	// function dome2() {
+	// 	var a = 2;
+	// 	var b = 2;
+	// 	return a+b;
+	// }
+
+
+	// // 第四种形式
+
+	// function dome(fn) {
+	// 	return fn();
+	// }
+
+	// var sum = dome(dome2);//返回的是4
+	// console.log(sum);
+	// function dome2() {
+	// 	var a = 2;
+	// 	var b = 2;
+	// 	return a+b;
+	// }
+
+
+	// 第五种形式
+
+	function dome(fn) {
+		return fn();
+	}
+
+	var sum = dome(dome2());//返回的是错误  这种形式不对
+	console.log(sum);
+	function dome2() {
+		var a = 2;
+		var b = 2;
+		return a+b;
+	}
+
+
+
+	</script>
+</html>

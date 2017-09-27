@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin:5px 0;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="button" value="显示" />
+	<input type="button" value="隐藏" />
+	<div id="box"></div>
+</body>
+
+	<script>
+	// 第一：获取参与单机事件的元素
+	  // 通过标签名的方式获取input
+	  var aInp = document.getElementsByTagName('input');
+	  // 通过ID方法获取div
+	  var oBox = document.getElementById('box');
+	  // 第二，这是一个单击事件  
+	  // 当鼠标点击显示的时候显示案例的时候显示div
+	  // 通过标签名获取的是一堆元素，是一个集合，是一个伪数组，有数组的长度，可以遍历数组，可以通过下标获取第几个元素
+	  aInp[0].onclick = function() {
+	  	// div盒子显示
+	  	oBox.style.display = 'block';
+	  }
+	  // 当鼠标点击隐藏按钮时div盒子隐藏
+	  aInp[1].onclick = function() {
+	  	oBox.style.display = 'none';
+	  }
+
+
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	img {
+		width: 200px;
+		height: 150px;
+	}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg" alt="">
+	<img src="images/2.jpg" alt="">
+	<img src="images/3.jpg" alt="">
+	<img src="images/4.jpg" alt="">
+</body>
+	<script>
+		// 获取事件的相关元素
+		var oImg = document.getElementsByTagName('img');
+		// 给img 添加单击事件
+		// 利用循环
+		for(var i = 0; i < oImg.length; i++) {
+			oImg[i].onclick = function() {
+				confirm('你喜欢我吗');
+			}
+		}
+	</script>
+</html>

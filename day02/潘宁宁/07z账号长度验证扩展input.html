@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+			input {
+				border: 0;
+				border: 1px solid #ccc;
+				width: 300px;
+				height: 30px;
+				margin: 10px;
+				/*获取插入条之后的蓝色外边框去除*/
+				outline-style: none;
+				padding-left: 10px;
+				font-size: 18px;
+			}
+			
+			.wrong {
+				border: 1px solid red;
+			}
+			
+			.wrong-span {
+				color: red;
+				height: 30px;
+				line-height: 30px;
+			}
+			.right {
+				color: green;
+			}
+		</style>
+</head>
+<body>
+	账号:<input type="text" ><span></span><br> 
+		密码:<input type="text"><span></span>
+</body>
+	<script>
+		// 获取事件相关元素
+		var aInt = document.getElementsByTagName('input');
+		var aSpan = document.getElementsByTagName('span');
+
+
+		// 添加单焦点事件
+
+		// 当文本失去焦点的收拾
+
+		aInt[0].onblur = function(){
+			// 设置一个变量存储当前文本内的文字
+			var str = this.value;
+
+			// 判断当前的文本内的内容是否为空
+			if(str === '') {
+				aSpan[0].innerHTML = '请输入内容';
+			}
+		}
+		// 如果不为空，当文本框中的内容发生改变的时候就会触发input事件
+		aInt[0].oninput = function() {
+			// 设置变量存储当前的 
+			var str = this.value;
+			// 判断当前的内容是否符合6-20de 规则
+			if(str.length<6 || str.length>20) {
+				aSpan[0].innerHTML = '请输入6-20位字符';
+				this.className = 'wrong';
+				aSpan[0].className = 'wrong-span';
+			} else {
+				// 如果符合要求
+				aSpan[0].innerHTML = '恭喜输入正确';
+				aSpan[0].className = 'right';
+				this.className = '';
+			}
+		}
+	</script>
+</html>

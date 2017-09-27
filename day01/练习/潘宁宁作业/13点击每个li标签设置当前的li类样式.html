@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+li {
+	background-color: #fff;
+
+	}
+	.hao {
+		background-color: red;
+	}
+	</style>
+
+</head>
+<body>
+	<ul id="oUl">
+		<li>p</li>
+		<li>pp</li>
+		<li>ppp</li>
+		<li>pppp</li>
+	</ul>
+</body>
+	<script>
+	// 获取事件相关的元素
+	var oUl = document.getElementById ('oUl');
+	var aLi = oUl.getElementsByTagName('li');
+		// 给每个li添加单击事件
+		for(var i = 0; i < aLi.length; i++) {
+			aLi[i].onclick = function() {
+				this.className = 'hao';
+			}//因为class为保留字不能直接使用，所有用className代替class
+		}
+		// // 获取事件的相关元素
+		// var oUl = document.getElementById('oUl');
+		// var aLi =oUl.getElementsByTagName('li');
+		// //给每个li添加单击事件
+		// // aLi[0].onclick.backgroundcolor ="red";
+		// // // = function() {
+
+		// // // }
+		//  aLi[0].onclick = function() {
+		//  	aLi[0].style.color = 'red';
+		//  }
+		//  // // }
+		//  aLi[1].onclick = function() {
+		//  	aLi[1].style.color = 'green';
+		//  }
+		//   aLi[2].onclick = function() {
+		//  	aLi[2].style.color = 'pink';
+		//  }
+		//   aLi[3].onclick = function() {
+		//  	aLi[3].style.color = 'blue';
+		//  }
+	</script>
+</html>

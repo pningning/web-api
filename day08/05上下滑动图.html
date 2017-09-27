@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #box{
+            width: 166px;
+            height: 450px;
+            margin: 0 auto;
+        }
+        #title{
+            width: 166px;
+            height: 24px;
+            background: #294A73;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            line-height: 24px;
+            color: #fff;
+            margin: 0;
+            border: 1px #294A73 solid;
+        }
+        #top,#btm{
+            height: 23px;
+            width: 166px;
+            border: 1px gray solid;
+            cursor: pointer;
+        }
+        #top{
+             background: url( images/top.png);
+            border-bottom: 0;
+        }
+        #btm{
+            background:url(images/btm.png);
+            border-top: 0;
+            
+        }
+        #con{
+            width: 166px;
+            height: 380px;
+            background: #ccc;
+            overflow: hidden;
+            border: 1px gray solid;
+        }
+        #title{
+            font-size: 14px;
+            text-indent: 10px;
+        }
+        #title a{
+            text-decoration: none;
+            font-size: 10px;
+            color: #fff;
+            display: inline-block;
+            margin-left:50px;
+        }
+        #conImg{
+            position: relative;
+            top:0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+	<div id="box">
+        <p id="title">传智播客</p>
+        <div id="top"></div>
+        <div id="con"><img src="images/content.jpg" id="conImg"></div>
+        <div id="btm"></div>
+    </div>
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		// 获取事件相关元素
+		var oTop = document.getElementById('top');
+		var oConImg = document.getElementById('conImg');
+		var oBtm = document.getElementById('btm');
+		var oCon = document.getElementById('con');
+
+		// 给顶部按钮添加鼠标按下事件
+		oTop.onmousedown = function() {
+			var abc = oCon.offsetHeight - oConImg.offsetHeight;
+			move(oConImg,"top",7,abc);
+		}
+		oTop.onmouseup = function() {
+			clearInterval(oConImg.timer);
+		}
+		// 给底部添加鼠标按下事件
+		oBtm.onmousedown = function() {
+
+			move(oConImg,"top",7,0)
+		}
+		oBtm.onmouseup = function() {
+			clearInterval(oConImg.timer);
+		}
+	</script>
+</html>

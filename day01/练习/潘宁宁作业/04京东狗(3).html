@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="image/jd1.png" alt="">
+</body>
+	<script>
+		// 获取参与事件的元素
+		var oImg = document.getElementsByTagName('img');
+		// 当鼠标经过img 的时候显示图片2
+		oImg[0].onmouseover = function() {
+			oImg[0].src = 'image/jd2.png';
+		}
+		// 当鼠标移出的时候显示的是图片1
+		oImg[0].onmouseout = function() {
+			oImg[0].src = 'image/jd1.png';
+		}
+
+	</script>
+</html>

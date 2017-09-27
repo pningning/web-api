@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var oBox = document.getElementById('box');
+		console.log(oBox);
+		// 给div添加鼠标按下事件
+		oBox.onmousedown = function(e) {
+			e = e || event;
+			// 获取鼠标当前在div上的x y的固定坐标
+			var disX = e.clientX - oBox.offsetLeft;
+			var disY = e.clientY - oBox.offsetTop;
+			// 给文档添加鼠标移动事件
+			document.onmousemove = function(e) {
+				e = e || event;
+				// 让div盒子移动，获取并设置div盒子的左和上的偏移
+				// 需要计算垂直方向滚动条滚动的距离
+				var scrollT = document.documentElement.scrollTop || document.body.scrollTop;//存在兼容性问题，兼容处理
+				var x = e.clientX - disX;
+				var y = e.clientY + scrollT -disY;
+				// 在赋值移动之前，先现在可移动的范围  也就是当前的可视区域
+				// 进行判断当前的位置
+				// if(x<0) {
+				// 	x = 0;
+				// }
+				// if(x > pos().l - oBox.offsetWidth) {
+				// 	x = pos().l - oBox.offsetWidth
+				// }
+				// if(y<0) {
+				// 	y = 0;
+				// }
+				// if(y> pos().t - oBox.offsetHeight) {
+				// 	y = pos().t - oBox.offsetHeight;
+				// }
+
+
+				// 三元运算方法
+				x  = x < 0 ? 0 : x;
+				x  = x > pos().l - oBox.offsetWidth ? pos().l - oBox.offsetWidth : x;
+				y = y < 0 ? 0 : y;
+				y = y > pos().t - oBox.offsetHeight ? pos().t - oBox.offsetHeight : y;
+				// 给div设置 左偏移和上偏移
+				oBox.style.left = x+'px';
+				oBox.style.top = y + 'px';
+
+			}
+			// 添加鼠标弹开事件
+			document.onmouseup = function() {
+				document.onmousemove = null;
+			}
+		}
+
+		// 可视区域函数封装
+		function pos() {
+			return {
+				l:document.documentElement.clientWidth,
+				t:document.documentElement.clientHeight
+			}
+		}
+	</script>
+</html>

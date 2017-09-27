@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box1 {
+			width: 480px;
+			height: 288px;
+			background: url(img/small.png) 0 0 no-repeat;
+			margin: 100px 0 0 100px;
+			position: relative;
+		}
+		#box2 {
+			width: 100px;
+			height: 72px;
+			background: url(img/bj.png) 0 0 repeat;
+			position: absolute;
+			display: none;
+		}
+		#box3 {
+			width: 400px;
+			height: 288px;
+			position: absolute;
+			/*background-color: red;*/
+			right: -450px;
+			top: 0px;
+			background: url(img/big.jpg) 0 0 no-repeat;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2"></div>
+		<div id="box3"></div>
+	</div>
+	
+</body>
+	<script>
+		// 获取事件相关元素
+		var oBox1 = document.getElementById('box1');
+		var oBox2 = document.getElementById('box2');
+		var oBox3 = document.getElementById('box3');
+
+			// 给box1添加鼠标移上事件
+			oBox1.onmouseover = function(e) {
+				e = e || event;
+				oBox2.style.display = "block";
+				oBox3.style.display = "block";
+				// 给文档添加鼠标移动事件
+				document.onmousemove = function(e) {
+					e = e || event;
+					// var x = e.clientX-36-oBox1.offsetLeft;
+					// var y = e.clientY-50-oBox1.offsetTop;
+					
+					var x = e.clientX-oBox2.offsetWidth/2-oBox1.offsetLeft;
+					var y = e.clientY-oBox2.offsetHeight/2-oBox1.offsetTop;
+					// 设置鼠标移动范围
+					x = x < 0 ? 0 : x;
+					x = x > oBox1.offsetWidth - oBox2.offsetWidth ? oBox1.offsetWidth - oBox2.offsetWidth : x;
+					y = y < 0 ? 0 : y;
+					y = y > oBox1.offsetHeight - oBox2.offsetHeight ? oBox1.offsetHeight - oBox2.offsetHeight : y;
+					oBox2.style.left = x + 'px';
+					oBox2.style.top = y + 'px';
+					
+					oBox3.style.backgroundPosition = -4*x + 'px '+-4*y + 'px';
+					
+				}
+			}
+
+
+			// 添加鼠标移开事件
+			oBox1.onmouseout = function() {
+				oBox2.style.display = "none";
+				oBox3.style.display = "none";
+			}
+	</script>
+</html>

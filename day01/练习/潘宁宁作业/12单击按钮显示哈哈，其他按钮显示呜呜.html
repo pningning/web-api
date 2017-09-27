@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="呜呜"/>
+	<input type="button" value="呜呜"/>
+	<input type="button" value="呜呜"/>
+	<input type="button" value="呜呜"/>
+</body>
+	<script>
+		// 获取事件的相关元素
+		var aInt = document.getElementsByTagName('input');
+		// 添加事件
+		// 当鼠标点击单击的时候
+		// 给每个input添加单击事件
+		// 方法一
+
+	// for(var i = 0; i < aInt.length; i++) {
+	// 	aInt[i].onclick = function () {
+	// 		for(var j= 0; j < aInt.length; j++) {
+	// 			aInt[j].value = '呜呜';//当鼠标点难得时候所有的元素都显示‘呜呜
+	// 		}
+	// 		this.value = '哈哈';//只有点击的当前按钮显示哈哈，把前面的覆盖
+	// 	}
+	// }
+		// 方法二
+		var obj = null;//设置一个变量记录点过的按钮
+		// 给所有的按钮添加单击事件
+		for(var i = 0; i < aInt.length; i++) {
+			aInt[i].onclick = function () {
+				// 点击的时候先让那个改成哈哈的按钮改成呜呜
+				if(obj) {
+				obj.value = '呜呜';
+			}
+			this.value = '哈哈';
+			// 把this赋值给obj。进行记录
+			obj = this;
+			}
+		}
+		
+	</script>
+</html>

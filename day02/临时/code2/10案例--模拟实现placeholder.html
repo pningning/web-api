@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<input type="text" placeholder="请您输入内容" />-->
+		<input type="text"  value="请您输入内容"/>
+	</body>
+	<script type="text/javascript">
+		
+		// 焦点事件
+		// 焦点的两个方法
+		/*a.focus(); // 让a获取焦点
+		a.blur();// 让a 失去焦点*/
+		
+		// 焦点还有两个事件
+		// 获取焦点的事件
+		// b.onfocus = function(){}   当b获取焦点的时候 做什么事情
+		// 失去焦点的事件
+		//	b.onblur = function(){} 当b失去焦点的时候 做什么事情
+		
+		
+		var aInp = document.getElementsByTagName("input");
+		// 给 aInp 让它获取焦点
+		//aInp[0].focus();
+		
+		// 当文本框 获取了鼠标焦点 立马让value值清空
+		aInp[0].onfocus = function() {
+			// 如果你之前输入的内容是你自己的 那么不清空
+			// 如果你的内容为 请您输入内容 则清空
+			if(this.value === "请您输入内容") {
+				// 把它的value清空
+				this.value = "";
+			}
+			
+		}
+		// 当文本框失去焦点的时候 让它的value值还原
+		aInp[0].onblur = function() {
+			// 如果没有输入任何内容 则还原
+			if(this.value ==="") {
+				//让它的value等于请您输入内容
+				this.value = "请您输入内容";
+			}
+			
+		}
+	</script>
+</html>

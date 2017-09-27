@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style: none;
+			padding: 5px;
+			width: 240px;
+			height: 300px;
+			background-color: pink;
+			margin: 0 auto;
+			border-radius: 5px;
+		}
+		div {
+			width: 250px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<ul id="oul">
+		<!-- <li>要添加的内容<a href="javascript:;"></a></li> -->
+	</ul>
+	<div>
+		<input type="text" id="text1" />
+		<input type="button" id="text2" value="单击发送" />
+	</div>
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		var oUl = $('#oul');
+		var oText1 = $('#text1');
+		var oText2 = $('#text2');
+		oText1.focus();
+		
+		// // 给按钮添加单击事件
+		// oText2.onclick = function() {
+		// 	var str = oText1.value;//设置变量存储文本内容
+		// 	oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>';
+		// 	oText1.value = '';
+		// 	oText1.focus();
+
+		// 	// 获取a
+		// 	var aA = $('a');
+		// 	// 给所有的a添加单击事件
+		// 	for(var i = 0; i < aA.length; i++) {
+		// 		aA[i].onclick = function() {
+		// 			oUl.removeChild(this.parentNode);
+		// 		}
+		// 	}
+		// }
+
+		function fn() {
+			var str = oText1.value;//设置变量存储文本内容
+			oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>';
+			oText1.value = '';
+			oText1.focus();
+			var aA = $('a');
+			for(var i = 0; i < aA.length; i++) {
+				aA[i].onclick = function() {
+					oUl.removeChild(this.parentNode);
+				}
+			}
+		}
+
+		bind(oText2,'click',fn);
+	</script>
+</html>

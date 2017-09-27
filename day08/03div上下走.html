@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="单击往前走" id="btn1"/>
+	<input type="button" value="单击往回走" id="btn2"/>
+	<input type="button" value="单击往上走" id="btn3"/>
+	<input type="button" value="单击往下走" id="btn4"/>
+
+	<div id="box"></div>
+</body>
+	<script>
+			// 获取事件相关元素
+		var oBox = document.getElementById('box');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oBtn3 = document.getElementById('btn3');
+		var oBtn4 = document.getElementById('btn4');
+
+		var timer = null;
+		// 单击往前走
+		oBtn1.onclick  = function() {
+			move(oBox,"left",10,800);
+		}
+		// 单击往后走
+		oBtn2.onclick  = function() {
+			move(oBox,"left",-10,100);
+		}
+		// 单击往上走
+		oBtn3.onclick = function() {
+			move(oBox,"top",-10,100);
+		}
+		oBtn4.onclick = function() {
+			move(oBox,"top",10,500);
+		}
+		function move(obj,attr,speed,target) {
+			clearInterval(timer);
+			// 设置一个变量存储box的任意样式
+			var dis = parseFloat(getStyle(obj,attr));//获取到对象的任意样式
+			timer = setInterval(function() {
+				// speed移动的速度
+				dis += speed;
+				
+				// 设置目标点
+				if(dis>=target&&speed>0) {
+					dis = target;
+				}
+				if(dis<=target&&speed<0) {
+					dis = target;
+				}
+				obj.style[attr] = dis + "px";
+				  if(dis == traget){
+					clearInterval(timer);
+					timer = null;
+				}
+			},30)
+		}
+
+		// 获取元素的属性函数
+		function getStyle(obj,attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}else {
+				return getComputedStyle(obj)[attr];
+			}
+			
+		}
+	</script>
+</html>

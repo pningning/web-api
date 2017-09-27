@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input {
+				border: 0;
+				border: 1px solid #ccc;
+				width: 300px;
+				height: 30px;
+				margin: 10px;
+				/*获取插入条之后的蓝色外边框去除*/
+				outline-style: none;
+				padding-left: 10px;
+				font-size: 18px;
+			}
+			
+			.wrong {
+				border: 1px solid red;
+			}
+			
+			.wrong-span {
+				color: red;
+				height: 30px;
+				line-height: 30px;
+			}
+			.right {
+				color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		账号:<input type="text" ><span></span><br> 
+		密码:<input type="text"><span></span>
+
+	</body>
+	<script type="text/javascript">
+		// 功能:  1 当文本框失去焦点时候  判断内容是否为空 如果为空 则弹出一个对话框 提示请您输入内容
+		//      2 当文本框失去焦点时候  判断输入的内容是否符合规则 6--20字符       input随着你输入内容 发生改变 就会触发
+		
+		// 1 获取事件相关元素
+		var aInp = document.getElementsByTagName("input");
+		var aSpan = document.getElementsByTagName("span");
+		
+		// 2 给文本框添加失去焦点事件
+		aInp[0].onblur = function() {
+			// 将当前文本框中的值进行存储
+			var str = this.value;
+			
+			// 判断内容是否为空
+			if(str === "") {
+				aSpan[0].innerHTML = "请您输入内容";
+				
+				//this.focus();
+			} else {
+				// 进来else 说明有内容
+				// 进一步 判断是否 符合规则 6--20字符  
+				// 文本框的内容是字符串  文本都是字符串类型   "123"
+				if(str.length<6 || str.length>20) {
+					// 让文本框旁边的span 里面放置一些内容 错误提示	
+					aSpan[0].innerHTML = "错了,您输入的内容不符合规则 应该在6-20个字符之间";
+					// 让当前文本框 加上一个错误的类  让它有一个红色的边框
+					this.className = "wrong";
+					//让span加上一个错误的类
+					aSpan[0].className = 'wrong-span';
+				}else {
+					// 这里是符合规则的
+					this.className = "";
+					aSpan[0].className = 'right';
+					aSpan[0].innerHTML = "恭喜,您输入的内容正确";
+				}
+				
+			}
+			
+		}
+	</script>
+</html>

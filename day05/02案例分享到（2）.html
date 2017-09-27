@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+			#box {
+				width: 150px;
+				height: 300px;
+				background-color: red;
+				position: fixed;
+				left: -150px;
+				top: 200px;
+			}
+			#box2 {
+				width: 30px;
+				height: 60px;
+				text-align: center;
+				line-height: 20px;
+				background-color: pink;
+				position: absolute;
+				right: -30px;
+				top: 120px;
+				color: white;
+				cursor: pointer;
+			}
+		</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box2">分享到</div>
+	</div>
+</body>
+	<script>
+		// 获取元素相关事件
+		var oBox = document.getElementById('box');
+		// 添加鼠标移上事件
+		oBox.onmouseover = function() {
+			this.style.left = 0;
+		}
+		// 鼠标移走的时候
+		oBox.onmouseout = function() {
+			this.style.left = "-150px";
+		}
+	</script>
+</html>

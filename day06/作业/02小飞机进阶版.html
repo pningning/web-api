@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+			#fly {
+				width: 85px;
+				height: 81px;
+				background:url(fly.gif);
+				position: absolute;
+				left: 100px;    
+				top: 100px;
+			}
+		</style>
+</head>
+<body>
+	<body>
+		<div id="fly"></div>
+	</body>
+</body>
+	<script>
+	// 获取事件相关元素
+		var oFly = document.getElementById('fly');
+		// 首先给键盘设置开关
+		var onOff = {
+			left : false,
+			up: false,
+			right : false,
+			down : false
+		}
+		// 设置定时器
+		var speed = 20;
+		setInterval(function(){
+			if(onOff.left) {
+				oFly.style.left = oFly.offsetLeft - speed +'px';
+				oFly.style.transform = "rotate(270deg)";
+			}
+			if(onOff.right) {
+				oFly.style.left = oFly.offsetLeft + speed + "px";
+				oFly.style.transform = "rotate(90deg)";
+			}
+			if(onOff.up) {
+				oFly.style.top = oFly.offsetTop - speed + 'px';
+				oFly.style.transform = "rotate(0deg)";
+			}
+			if(onOff.down) {
+				oFly.style.top = oFly.offsetTop + speed + 'px';
+				oFly.style.transform = "rotate(180deg)";
+			}
+
+			// 判断补充一下方向，可以斜着走
+			if(onOff.left&&onOff.up) {
+				oFly.style.transform = "rotate(-45deg)";
+			}else if(onOff.left&&onOff.down) {
+				oFly.style.transform = "rotate(225deg)";
+			}else if(onOff.right&&onOff.up) {
+				oFly.style.transform = 'rotate(45deg)';
+			}else if(onOff.right&&onOff.down) {
+				oFly.style.transform = 'rotate(135deg)';
+			}
+			limit();//限制飞机飞行范围的函数
+		},30)
+
+		// 添加鼠标按下事件
+		document.onkeydown = function(e) {
+			e = e || event;
+			if(e.keyCode == 37) {
+				onOff.left = true;
+			}else if(e.keyCode == 39) {
+				onOff.right = true;
+			}
+			 if(e.keyCode == 38) {
+				onOff.up = true;
+			}else if(e.keyCode == 40) {
+				onOff.down = true;
+			}
+
+		}
+
+			// 添加弹起键盘事件
+		document.onkeyup = function(e) {
+			e = e || event;
+			switch(e.keyCode) {
+				case 37:
+				onOff.left = false;
+				break;
+				case 39:
+				onOff.right = false;
+				break;
+				case 38:
+				onOff.up = false;
+				break;
+				case 40:
+				onOff.down = false;
+				break;  
+			}
+		}
+		// 限制飞机飞行范围的函数
+			function limit() {
+				if(oFly.offsetLeft <= 0) {
+					oFly.style.left = 0;
+				}
+				if(oFly.offsetLeft >= pos().l - oFly.offsetWidth) {
+					oFly.style.left = pos().l - oFly.offsetWidth + 'px';
+				}
+				if(oFly.offsetTop <= 0) {
+					oFly.style.top = 0;
+				}
+				if(oFly.offsetTop > pos().t - oFly.offsetHeight){
+					oFly.style.top = pos().t - oFly.offsetHeight +'px';
+				}
+			}
+		// 封装一个获取可视区的宽高
+		function pos() {
+			return {
+				l:document.documentElement.clientWidth,
+				t:document.documentElement.clientHeight
+			};
+		}
+
+	</script>
+</html>

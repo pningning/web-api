@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box {
+		/*width: 100px;
+		height: 100px;
+		background-color: red;*/
+		color:red;
+	}
+	#abc {
+		width: 100px;
+		height: 100px;
+		background-color: green;
+	}
+	</style>
+</head>
+	
+<body>
+	<div id="abc"></div>
+</body>
+	<script>
+		// document.innerHTML = '<div class="box"></div>';
+		var oBox = document.getElementById('abc');
+		// var aAbc = document.getELementsByTagName('div');
+		
+		oBox.onclick = function(){
+			oBox.innerHTML += '<p class="box">你好</p>';
+			var aP = document.getElementsByTagName('p');
+               console.log(aP);//可以               
+			
+		}
+		// console.log(aP);//不可以
+		
+	</script>
+</html>

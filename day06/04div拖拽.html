@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+	<script>
+		var oBox = document.getElementById('box');
+
+		// 鼠标按下div的时候
+		oBox.onmousedown = function(e) {
+			// 获取到box的点击的时候鼠标在div的具体位置
+			e = e || event;
+			var disX = e.clientX - oBox.offsetLeft;//鼠标的x坐标-div的左偏移就是鼠标距离div盒子左边框的距离，当时的固定位置
+			var disY = e.clientY - oBox.offsetTop;//鼠标的y坐标-div的上偏移就是鼠标距离div盒子上边框的距离，当时的固定位置
+
+			// 给document 添加鼠标移动事件
+			document.onmousemove = function(e) {
+				e = e || event;
+				// 算出div定位的左偏，和上偏移，通过鼠标的想x y坐标-鼠标在div上的固定位置就是div定位的偏移
+				oBox.style.left = e.clientX - disX +'px';
+				oBox.style.top =  e.clientY - disY + "px";
+			}
+			// 添加一个鼠标弹起事件
+			document.onmouseup = function() {
+				document.onmousemove = null;//取消鼠标移动拖拽
+			}
+		}
+	</script>
+</html>

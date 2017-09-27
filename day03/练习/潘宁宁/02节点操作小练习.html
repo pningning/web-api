@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="oul">
+			<li>1111</li>
+			<li>2222</li>
+			<li>333</li>
+			<li>444</li>
+			<li>5555</li>
+			<li>666</li>
+			<li>777</li>
+			<li>8888</li>
+		</ul>
+	</body>
+	
+	<!--分析当鼠标经过这个li 的时候下面的li变颜色，那么要获取li,还要找到这个li 后面的li如果下面没有li那自身的颜色要发生变化-->
+		<script src="myTools.js"></script>
+	<script>
+//		获取事件的相关元素
+		var oUl = document.getElementById('oul');
+		var childs = oUl.children;
+//		添加鼠标经过事件
+//		当鼠标经过所有孩子的时候
+		for(var i = 0; i < childs.length; i++) {
+			childs[i].onmouseover = function() {
+//				首先暴力清除
+			for(var i= 0; i < childs.length; i++) {
+				childs[i].style.backgroundColor ='';
+			}
+//			判断是否有下一个兄弟元素
+			if(next(this)) {
+				next(this).style.backgroundColor = "green";
+			}else{
+				this.style.backgroundColor = 'pink';
+			}
+			}
+		}
+		
+	</script>
+</html>

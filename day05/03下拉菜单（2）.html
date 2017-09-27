@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			margin: 10px auto 0;
+			border: 1px solid black;
+		}
+		ul,h3 {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			cursor: pointer;
+		}
+		ul li {
+			list-style: none;
+			height: 30px;
+			font: 20px/30px "微软雅黑";
+			background-color: green;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h3>标题</h3>
+		<ul>
+			<li>新闻</li>
+			<li>娱乐</li>
+			<li>体育</li>
+			<li>头条</li>
+		</ul>
+	</div>
+</body>
+	
+	<script src="myTools.js"></script>
+	<script>
+		// 获取事件相关元素
+		var aH3 = $('h3')[0];
+
+		// 给标题添加单击按钮
+		var onOff = true;//设置开关，假设展开的是为真
+		aH3.onclick = function(e) {
+			// 取消冒泡
+			e = e || event;
+			e.cancelBubble = true;
+			if(onOff) {//如果展开着
+				next(this).style.display = 'none';
+			} else {
+				next(this).style.display = 'block';
+			}
+			onOff = !onOff;//取反
+		}
+		// 点击空白文本的时候
+		document.onclick = function() {
+			next(aH3).style.display = 'none';
+			onOff = false;
+		}
+	</script>
+</html>

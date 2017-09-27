@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 150px;
+			height: 300px;
+			background-color: red;
+			position: fixed;/*固定定位*/
+			left: -150px;
+			top: 200px;
+		}
+		 #sider {
+			width: 30px;
+			height: 60px;
+			text-align: center;
+			line-height: 20px;
+			background-color: black;
+			position: absolute;
+			right: -30px;
+			top: 120px;
+			color: white;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="sider">分享到</div>
+	</div>
+</body>
+	<script>
+		
+		// 分析让鼠标移动到#sider身上的时候box出来利用冒泡原理  当移动到sider的时候，这个事件往上冒泡
+		var oBox = document.getElementById('box');
+		// 鼠标移上的时候
+		oBox.onmouseover = function() {
+			this.style.left = 0;
+		}
+		// 鼠标移走的时候
+		oBox.onmouseout = function() {
+			this.style.left = "-150px";
+		}
+	</script>
+</html>

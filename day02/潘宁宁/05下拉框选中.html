@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="单击选中深圳" />
+	<select id="sel">
+		<option value="bj">北京</option>
+		<option value="sh">上海</option>
+		<option value="gz">广州</option>
+		<option value="sz">深圳</option>
+		<option value="hz">杭州</option>
+	</select>
+</body>
+	<script>
+		// 获取事件的相关元素
+		var oInt = document.getElementsByTagName('input')[0];
+		var oSel = document.getElementById('sel');
+		var aOption = oSel.getElementsByTagName('option');
+		// 添加点击事件
+		oInt.onclick = function() {
+			// aOption[3].selected = true;
+			// 因为通过value值也可以获得里面的内容
+			document.getElementById('sel').value = 'sz';
+		}
+	</script>
+</html>

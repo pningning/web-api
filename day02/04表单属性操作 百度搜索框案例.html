@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	img {
+		display: block;
+		margin: 100px auto;
+	}
+	div {
+		width: 554px;
+		margin: 0 auto;
+	}
+	#text {
+		width: 450px;
+		height: 30px;
+		float: left;
+		outline: none;
+		border: 1px solid #3385ff;
+	}
+	#btn {
+		width: 100px;
+		height: 36px;
+		border: 0;
+		float: left;
+		background-color: #3385ff;
+		color: #fff;
+	}
+
+	</style>
+</head>
+<body>
+	<img src="bd.bmp" alt="" />	
+	<div>
+		<input type="text" id="text" />
+		<input type="button" value="百度一下" id="btn"/>
+	</div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var oText = document.getElementById('text');
+		// 打开页面的时候text就获得焦点
+		oText.focus();
+		// 添加焦点事件
+		// 当文本获得焦点以后，让文本边框变成蓝色
+		oText.onfocus = function() {
+			this.style.border = "1px solid #3385ff";
+		}
+		// 当失去焦点的时候
+		oText.onblur = function(){
+			this.style.border = "1px solid #ccc";
+		}
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="单击选中深圳" />
+		<select id="sel">
+			<option value="">北京</option>
+			<option value="">上海</option>
+			<option value="">广州</option>
+			<option value="">深圳</option>
+			<option value="">杭州</option>
+		</select>
+	</body>
+	<script type="text/javascript">
+		// 1 获取相关元素
+		var aInp = document.getElementsByTagName("input")[0];
+		var opts = document.getElementById("sel").getElementsByTagName("option");
+		
+		// 2 事件类型 click
+		aInp.onclick = function() { //3 绑定函数
+			
+			opts[3].selected = true;
+			
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+			#box {
+				width: 250px;
+				height: 400px;
+				background-color: pink;
+				margin: 40px;
+			}
+			#box #photo {
+				width: 60px;
+				height: 60px;
+				background-color: deeppink;
+				float: right;
+				margin: 20px 10px 0 0;
+			}
+			#msg {
+				width: 150px;
+				height: 250px;
+				background-color: blue;
+				position: absolute;
+				left: 310px;
+				top: 40px;
+				display:none;
+
+			}
+		</style>
+</head>
+<body>
+	<div id="box">
+			<div id="photo">头像</div>
+		</div>
+		<div id="msg">个人信息</div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var oPhoto = document.getElementById('photo');
+		var oMsg = document.getElementById('msg');
+		var timer = null;
+		// 给头像添加鼠标移上事件
+		oPhoto.onmouseover = function() {
+			oMsg.style.display = "block";
+		}
+		// 头像添加鼠标移出事件
+		oPhoto.onmouseout = function() {
+			// 设置延迟定时器
+			timer = setTimeout(function(){
+				oMsg.style.display = 'none';
+			},100)
+		}
+
+		// 给个人信息添加鼠标移上事件
+		oMsg.onmouseover = function() {
+			clearTimeout(timer);
+		}
+		// 给个人信息添加鼠标移下事件
+		oMsg.onmouseout = function() {
+			oMsg.style.display = "none";
+		}
+	</script>
+</html>

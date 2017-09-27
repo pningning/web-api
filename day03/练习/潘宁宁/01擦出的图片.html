@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width:52px;
+				height: 60px;
+				background:url(pic.jpg) no-repeat;
+				position: absolute;
+				opacity: 0;
+				transition: 0.5s;
+				}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script>
+	//分析:首先在页面上生成100个div,通过定位的方式放置在页面上每个小的div全部隐藏,用鼠标移上去控制,div的显示
+//	生成100个div,利用 插入div的方式
+	var str = '';
+	for(var i = 0; i < 100; i++) {
+		var l = i%10*53;//每个div盒子向横向移动的宽度
+		var t = parseInt(i/10)*61;////每个div盒子纵向移动的高度
+		
+		str +='<div class="box" style="left:'+l +'px;top:'+t+'px;background-position:'+-l+'px '+-t+'px"></div>';
+	}
+	document.body.innerHTML = str;
+	
+//	获取页面中生成的元素
+    var aDiv = document.getElementsByTagName('div');
+    
+//  给所有的div添加鼠标移上事件
+	for(var i = 0; i < aDiv.length; i++) {
+		aDiv[i].onmouseover = function() {
+			this.style.opacity = '1';
+		}
+	}  
+	</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	input {
+		width: 80px;
+		height: 30px;
+		font: 15px/30px "微软雅黑";
+		border: none;
+		outline: none;
+		cursor: pointer;
+		background-color: paleturquoise;
+		
+	}
+	div {
+		width: 350px;
+		height: 200px;
+		text-align: center;
+		line-height: 200px;
+		font-size: 50px;
+		display: none;
+		background-color: orange;
+	}
+	.active {
+		background-color: pink;
+	}
+	</style>
+</head>
+<body>
+	<input type="button"value="袜子" class="active" />
+	<input type="button"value="牛仔裤" />
+	<input type="button"value="连衣裙" />
+	<input type="button"value="鞋" />
+	<div style="display: block;" />白色长袜子</div>
+	<div>Lee牛仔裤</div>
+	<div>时尚连衣裙</div>
+	<div>女士高跟鞋</div>
+</body>
+	<script>
+		// 当鼠标经过按钮的时候，对应的div盒子显示，同时自身颜色改变
+		// 获取事件相关元素
+
+		var aInt = document.getElementsByTagName('input');
+		var aDiv = document.getElementsByTagName('div');
+
+		// 给所有的input添加单击事件
+
+		for(var i = 0; i < aInt.length; i++) {
+			// 添加自定义属性的方式解决将每一个按钮的索引存起来，存在它自身的一个自定义属性
+			aInt[i].index = i;
+			aInt[i].onmouseover =function () {
+				//先暴力清除 请所有按钮都去掉类。所有div全部隐藏
+				for(var j = 0; j < aInt.length; j++){
+					aInt[j].className = '';
+					aDiv[j].style.display = 'none';
+				}
+				this.className = 'active';
+				aDiv[this.index].style.display = 'block';
+			}
+		}
+
+		// 方法调用函数的时候不能加（）否则会立即执行 
+	</script>
+</html>

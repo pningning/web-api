@@ -1,0 +1,298 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 4000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+
+    </style>
+	<!--引入外部工具文件-->
+	<script src="myTools.js"></script>
+    <script>
+    // 当整个浏览器程序全部加载完毕（html css以及外部引入的资源图片全部加载）之后触发该事件
+       window.onload = function() {
+       	/*
+       	 *  分析思路：
+       	 * 		1  当鼠标移到screen这个大的div上面 让arr显示出来   当鼠标移开screen大的div 让arr隐藏
+       	 * 	　　  2 想要实现无缝轮播  就要考虑原理：
+       	 * 			我需要两侧都实现无缝轮播 
+       	 * 			需要在第一个li前面加一个和最后的li一样的li （目标为了实现往左侧滑动  1==》5） （稍后）
+       	 * 			在最后一个li的后面 加一个和第一个li一样的li （目标为了实现往右侧侧滑动5==》1）
+       	 * 		3 鼠标移到导航小方块上面  让对应的小方块加上类  让ul滑动对应的图片位置  
+       	 *      4 自动走起来 需要开一个定时器
+       	 * */
+       	
+       		// 第一件事
+       		   //1 获取事件相关元素
+       			// 获取screen  获取arr
+       			var oScreen = $("#screen");
+       			var oArr = $("#arr");
+       			// 2 事件类型   鼠标移上   鼠标移开  给screenDiv加事件
+       			oScreen.onmouseover = function() { //３　绑定事件驱动程序　　事件处理函数
+       				oArr.style.display = "block";
+       				// 当鼠标移到整个screen上面 清除定时器
+       				clearInterval(timer);
+       				timer = null;
+       			}
+       			oScreen.onmouseout = function() {
+       				oArr.style.display = "none";
+       				//鼠标移开以后　再走起来
+       				timer = setInterval(autoPlay,1000);
+       			}
+       		//第二件事 
+       		 // 无缝
+       		 	var timer = null;
+       		 	// 设定一个全局变量 用来作为ul 移动的计数器 这个变量 很关键  作为整体的移动的步伐的把控
+       		 	var k = 1;
+       		 	
+       		 	// 先实现单击右侧小三角 来实现向左侧滑动
+       		 	// 1 获取事件相关元素
+       		 	var oRight = $("#right");
+       		 	var oUl = $("#ul");
+       		 	
+       		 	var oLeft = $("#left");
+       		 	
+       		 	// 获取一下ul里面的所有的li
+       		 	var aLi = $("li",oUl);
+       		 	// 用js来获取一个图片的宽
+       		 	
+       		 	var imgW = aLi[0].children[0].offsetWidth;
+       		 	
+       		 	// 复制一份和第一个li一模一样的li 然后放到最后一个li的后面
+       		 	   var newLi = aLi[0].cloneNode(true);
+       		 	   oUl.appendChild(newLi);
+       		 	
+       		 	// 复制一份和最后的一个li一模一样的li 放在第一个li的前面
+       		 		var newLi2 = aLi[aLi.length-2].cloneNode(true);
+       		 		//console.log(aLi[aLi.length-2]);
+       		 		oUl.insertBefore(newLi2,first(oUl));
+       		 	
+       		 	//  打开页面的时候 初始化 让第一个导航小方块 有黄颜色
+       		 	var oNav = $("ol",oScreen)[0];
+       		 	// 获取导航小方块
+       		 	var navLi = $("li",oNav);
+       		 	navLi[0].className = "current";
+       		 	
+       		 	// 初始化的时候 应该让ul定位在 负一个图片的宽的位置 显示的应该是第一张图
+       		 	oUl.style.left = -imgW*k + "px";
+       		 	//console.log(imgW);
+       		 	// 2 事件类型  单击事件 给右侧小三角添加单击事件
+
+       		 	oRight.onclick = function() {
+       		 		// 一单击 让全局变量k加一下
+       		 		k++;
+       		 		if(k>=aLi.length) {
+       		 			k = 1;
+       		 			oUl.style.left = -imgW*k + "px";
+       		 		}
+       		 		//单击一下  要往左侧移动一个图片的宽
+       		 		move(oUl,"left",30,-imgW*k,function(){
+       		 			
+       		 			//每一次运动完毕之后　要进行判断　　如果k变化到某一个数值了 则让oUl迅速归位
+       		 			if(k >= aLi.length-1) {
+       		 				k = 1;// 让变量k 等于0   
+       		 				oUl.style.left = -imgW*k + "px"; // 0px
+       		 			}
+       		 			// 暴力清除 将所有的导航小方块全部去掉黄色类
+       		 			for(var i = 0; i < navLi.length; i++) {
+       		 				navLi[i].className = "";
+       		 			}
+       		 			//当前的运动过来了 让当前的那个对应的导航小方块 加上黄色类
+       		 			navLi[k-1].className = "current";
+       		 		});
+       		 		
+       		 	}
+       		 	//========================================================
+       		 	//单击左侧按钮 实现滑动
+   		 		oLeft.onclick = function() {
+       		 		// 一单击 让全局变量k减一下
+       		 		k--;
+       		 		if(k<0) {
+       		 			k = aLi.length-2;
+       		 			oUl.style.left = -imgW * k + "px";
+       		 		}
+       		 		//单击一下  要往左侧移动一个图片的宽
+       		 		move(oUl,"left",30,-imgW*k,function(){
+       		 			
+       		 			//每一次运动完毕之后　要进行判断　　如果k变化到某一个数值了 则让oUl迅速归位
+       		 			if(k <= 0) {
+       		 				k = aLi.length-2;// 让变量k 等于0   
+       		 				oUl.style.left = -imgW*k + "px"; // 0px
+       		 			}
+       		 			// 暴力清除 将所有的导航小方块全部去掉黄色类
+       		 			for(var i = 0; i < navLi.length; i++) {
+       		 				navLi[i].className = "";
+       		 			}
+       		 			//当前的运动过来了 让当前的那个对应的导航小方块 加上黄色类
+       		 			navLi[k-1].className = "current";
+       		 		});
+       		 		
+       		 	}
+   		 		//=================================================
+   		 		//第三事
+   		 		//循环所有的导航小方块　给他们添加鼠标移上事件　
+   		 		for(var i = 0; i < navLi.length; i++) {
+   		 			//建立索引
+   		 			navLi[i].index = i;
+   		 			navLi[i].onmouseover = function() {
+   		 				console.log(this.index);
+   		 				k = this.index + 1;
+   		 				move(oUl,"left",30,-imgW*k);
+   		 				// 暴力清除 将所有的导航小方块全部去掉黄色类
+       		 			for(var i = 0; i < navLi.length; i++) {
+       		 				navLi[i].className = "";
+       		 			}
+       		 			//当前的运动过来了 让当前的那个对应的导航小方块 加上黄色类
+       		 			navLi[k-1].className = "current";
+   		 			}
+   		 		}
+   		 		//===========================================
+   		 		//第四件事
+   		 		// 开一个定时器 走起来
+   		 		timer = setInterval(autoPlay,1000);
+   		 		function　autoPlay() {
+   		 			
+   		 			// 一单击 让全局变量k加一下
+       		 		k++;
+       		 		if(k>=aLi.length) {
+       		 			k = 1;
+       		 			oUl.style.left = -imgW*k + "px";
+       		 		}
+       		 		//单击一下  要往左侧移动一个图片的宽
+       		 		move(oUl,"left",30,-imgW*k,function(){
+       		 			
+       		 			//每一次运动完毕之后　要进行判断　　如果k变化到某一个数值了 则让oUl迅速归位
+       		 			if(k >= aLi.length-1) {
+       		 				k = 1;// 让变量k 等于0   
+       		 				oUl.style.left = -imgW*k + "px"; // 0px
+       		 			}
+       		 			// 暴力清除 将所有的导航小方块全部去掉黄色类
+       		 			for(var i = 0; i < navLi.length; i++) {
+       		 				navLi[i].className = "";
+       		 			}
+       		 			//当前的运动过来了 让当前的那个对应的导航小方块 加上黄色类
+       		 			navLi[k-1].className = "current";
+       		 		});
+   		 			
+   		 		}
+       }
+    </script>
+</head>
+
+<body>
+
+    <!--外盒子-->
+    <div class="all" id='all'>
+        <!--内盒子-->
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images/1.jpg" width="500" height="200"/></li>
+                <li><img src="images/2.jpg" width="500" height="200"/></li>
+                <li><img src="images/3.jpg" width="500" height="200"/></li>
+                <li><img src="images/4.jpg" width="500" height="200"/></li>
+                <li><img src="images/5.jpg" width="500" height="200"/></li>
+            </ul>
+            <!--小方块-->
+            <ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>	
+            </ol>
+            <!--左右小三角-->
+            <div id="arr">
+                <span id="left"><</span>
+                <span id="right">></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

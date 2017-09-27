@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="呜呜" />
+		<input type="button" value="呜呜" />
+		<input type="button" value="呜呜" />
+		<input type="button" value="呜呜" />
+	</body>
+	<script type="text/javascript">
+//		案例:点击按钮显示哈哈,其他按钮显示呜呜
+		var aInp = document.getElementsByTagName("input");
+		
+		
+		// 建立一个变量 用来存储曾经单击过的那个按钮
+		var obj = null;
+		
+		// 给所有的按钮都注册添加单击事件
+		/*for(var i = 0; i < aInp.length; i++) {
+			
+			aInp[i].onclick = function() {
+				// 一单击 先让之间的那个曾经单击过的按钮改成呜呜
+				if(obj) {
+					obj.value = "呜呜";
+				}
+				
+				
+				this.value = "哈哈";
+				// 赶紧的将当前的这个元素this 赋给obj
+				obj = this;
+			}
+			
+		}*/
+		// 解决方法 1  我单击这次的按钮 将这次的按钮改成哈哈  我让之间单击过的那个按钮改成呜呜
+		// 解决方法2 暴力清除
+		for(var i = 0; i < aInp.length; i++) {
+			
+			aInp[i].onclick = function() {
+				// 当前按钮 一单击 不管三七二十一  将所有的人全部变成呜呜
+				// 暴力清除法
+				for(var j = 0; j < aInp.length; j++) {
+					aInp[j].value = "呜呜";
+				}
+				
+				// 让我当前变成哈哈
+				this.value = "哈哈";
+			}
+			
+		}
+	</script>
+
+</html>

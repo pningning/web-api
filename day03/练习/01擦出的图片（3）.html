@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 52px;
+				height: 60px;
+				position: absolute;
+				background: url(pic.jpg) no-repeat;
+				opacity: 0;/*透明*/
+				transition:0.5s;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+//		在页面上加入100个div
+
+		var str = '';
+		for(var i = 0; i < 100; i++) {
+//			定位找到规律
+			var l = i%10*53;
+			var t = parseInt(i/10)*61;
+			str += '<div class="box" style="left:'+l+'px;top:'+t+'px;background-position:'+-l+'px '+-t+'px;"></div>';
+		}
+		document.body.innerHTML = str;
+//		添加单击事件
+		var oDiv = document.getElementsByTagName('div');
+		for(var i = 0; i < 100; i++) {
+			oDiv[i].onmouseover = function() {
+				this.style.opacity = '1';
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box {
+		width: 100px;
+		height: 100px;
+		margin: 5px 0;
+		background-color: red;
+	}
+
+	</style>
+</head>
+<body>
+	<input type="button" value="显示" />
+	<input type="button" value="隐藏" />
+	<div id="box"></div>
+</body>
+	<script>
+		// 第一、获取参与这个事件的元素
+		// 使用获取标签名的方法获取input标签
+		var aInt = document.getElementsByTagName('input');
+		// 使用ID的方法获取div元素
+		var oBox = document.getElementById('box');
+		// 第二；单击事件 
+		// 当鼠标单击显示按钮的时候div盒子显示
+		aInt[0].onclick = function() {
+			oBox.style.display = 'block';
+		}
+		// 当鼠标点击隐藏的时候div盒子隐藏
+
+		aInt[1].onclick = function(){
+			oBox.style.display = 'none';
+		}
+	</script>
+</html>

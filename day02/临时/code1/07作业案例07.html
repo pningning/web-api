@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#login {
+				width: 200px;
+				height: 150px;
+				border: 1px solid black;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -100px;
+				margin-top: -75px;
+				background-color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="登录切换" id="btn" />
+		<div id="login"></div>
+	</body>
+	<script type="text/javascript">
+		
+		//案例:点击按钮显示和隐藏层
+		// 1 获取元素
+		var oBtn = document.getElementById("btn");
+		var oLogin = document.getElementById("login");
+		// 2 事件类型
+		// 需要给按钮添加单击事件 一单击按钮 让登录框出来
+		
+		// 设置一个变量 设为true
+		var onOff = true;
+		
+		oBtn.onclick = function() {  // 3 绑定事件处理函数
+			if(onOff) {
+				oLogin.style.display = "block";
+			}else {
+				oLogin.style.display = "none";
+			}
+			// 每次单击 都需要将开关取反一下
+			onOff = !onOff
+		}
+		
+	</script>
+</html>

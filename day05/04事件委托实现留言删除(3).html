@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#oul {
+			width: 240px;
+			height: 300px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<ul id="oul">
+		<!-- <li>要删除的对象<a href="javascript:;">删除</a></li> -->
+	</ul>
+	<input type="text" id="text1" />
+	<input type="button" id="text2" value="单击发送" />
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		var oUl = $('#oul');
+		var oText = $('#text1');
+		var oBtn = $('#text2');
+		oText.focus();
+
+		// 添加单击事件
+		oBtn.onclick = function() {
+			var str = oText.value;
+			oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>';
+			oText.value = '';
+			oText.focus();
+
+			// 通过事件冒泡把单击删除冒泡到ul上面
+			oUl.onclick = function(e) {
+				e = e ||event;//事件对象兼容
+				var abc = e.target || e.srcElement;//获取事件源兼容
+				if(abc.nodeName == 'A') {
+					this.removeChild(abc.parentNode);
+				}
+			}
+		}
+	</script>
+</html>

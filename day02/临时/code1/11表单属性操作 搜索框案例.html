@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#img{
+				display: block;
+				margin: 100px auto 0;
+			}
+			#box {
+				margin: 0 auto;
+				width: 650px;
+			}
+			#text {
+				width: 540px;
+				height: 36px;
+				float: left;
+				outline: none;
+				border: 1px solid #3385ff;
+				text-indent: 10px;
+				font-size: 20px;
+			}
+			#btn {
+				width: 100px;
+				color: white;
+				float: left;
+				background-color: #3385ff;
+				border:none;
+				height: 42px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="bd.bmp" alt="" id="img" />
+		<div id="box">
+			<input type="text" id="text" />
+			<input type="button" value="百度一下" id="btn" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		// 获取文本框 让它自动聚焦
+		var oText = document.getElementById("text");
+		
+		// 让文本框聚焦焦点
+		oText.focus();
+		
+		// 当文本框获取焦点以后 让文本框的边框变为蓝色
+		oText.onfocus = function() {
+			
+			this.style.border = "1px solid #3385ff";
+			
+		}
+		// 当文本框失去焦点以后 让文本框的边框变为灰色
+		oText.onblur = function() {
+			this.style.border = "1px solid #ccc";
+		}
+		
+		
+	</script>
+</html>
+

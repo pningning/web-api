@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>男生爱好</button>
+		<button>女生爱好</button>
+		<input type="radio" name="sex"  />男
+		<input type="radio" name="sex" />女
+		<input type="checkbox" />抽烟
+		<input type="checkbox" />喝酒
+		<input type="checkbox" />吃饭
+		<input type="checkbox" />睡觉
+		<input type="checkbox" />烫头
+		<input type="checkbox" />大保健
+		<input type="checkbox" />写bug
+		<input type="checkbox" />生活不至于眼前的苟且，还有html，css和js
+</body>
+	<script>
+		// 获取事件的相关元素吗 
+		  var aButton = document.getElementsByTagName('button');
+		  var aInt = document.getElementsByTagName("input");
+		  // 添加单击事件
+		  // 点击男生爱好的时候
+		  aButton[0].onclick = function() {
+		  	// 首先暴力清除input在点击的时候所有的input都没被选中
+		  	for(var i = 0; i < aInt.length; i++) {
+		  		aInt[i].checked = false;
+		  	}
+		  	// 当点下的时候选中以下选框
+		  	// 判断
+		  	for(var i = 0; i < aInt.length; i++) {
+		  		if(i!= 1 && i!=4 && i!=5 ){
+		  		aInt[i].checked = true;//排除不被选中的元素
+		  		}
+		  	}
+		  }
+
+		  // 点击女生爱好的时候
+		  aButton[1].onclick = function() {
+		  	// 暴力清除，清除被选中的checked都为false
+		  	for(var i = 0; i < aInt.length; i++) {
+		  		aInt[i].checked = false;
+		  	}
+
+		  	// 循环所有元素进行判断
+		  	for(var  i = 0; i < aInt.length; i++) {
+		  		// 进行判断
+		  		if(i != 0 && i!= 2 && i !=3 && i!= 6 && i !=7) {
+		  			aInt[i].checked = true;
+		  		}
+		  	}
+
+		  }
+
+	</script>
+</html>

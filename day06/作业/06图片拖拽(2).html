@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img {
+			width: 100px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<img src="xn.png" alt="" />
+</body>
+	<script>
+		// 获取事件相关元素
+		var aImg = document.getElementsByTagName('img');
+		 // 给图片添加鼠标按下事件
+
+		 aImg[0].onmousedown = function(e) {
+		 	e = e || event;	
+		 	// 标准浏览器下阻止默认行为
+		 	if(e.preventDefault) {
+		 		e.preventDefault();
+		 	}
+		 	// ie取消图片默认行为
+		 	e.returnValue && (e.returnValue = false);
+		 	// 给图片设置全部捕获
+		 	aImg[0].setCapture && aImg[0].setCapture();
+
+		 	// 获取当时鼠标在图片上的固定位置
+		 	var disX = e.clientX - this.offsetLeft;
+		 	var disY = e.clientY - this.offsetTop;
+		 	// 给文档添加鼠标移动事件
+		 	document.onmousemove = function(e) {
+		 		e = e || event;
+		 		// 获取到页面滚动条滚动的距离
+		 		var scrollT = document.documentElement.scrollTop || document.body.scrollTop;//兼容处理
+		 		var x = e.clientX - disX;
+		 		var y = e.clientY + scrollT - disY;
+
+		 		x = x < 0 ? 0 : x;
+		 		x = x > pos().l - aImg[0].offsetWidth ? pos().l - aImg[0].offsetWidth : x;
+		 		y = y < 0 ? 0 : y;
+		 		y = y > pos().t - aImg[0].offsetHeight ? pos().t - aImg[0].offsetHeight : y;
+		 		// 设置图片移动的范围
+		 		// 图片移动其实就是固定定位的移动
+		 		aImg[0].style.left = x + 'px';
+		 		aImg[0].style.top = y + 'px';
+
+		 	}
+		 	// 添加鼠标弹起按钮
+		 	document.onmouseup = function() {
+		 		document.onmousemove = null;
+		 		// 取消图片的全部捕获
+		 		aImg[0].releaseCapture && aImg[0].releaseCapture();
+		 	}
+		 }
+
+		 // 封装获取可视范围的函数
+		 function pos() {
+		 	return {
+		 		l:document.documentElement.clientWidth,
+		 		t:document.documentElement.clientHeight
+		 	}
+		 }
+	</script>
+</html>

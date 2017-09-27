@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+	<script>
+		var urlStr = "http:// www.baidu.com:80/login/login.php?username=zhangsan&age=26&password=1234";
+
+		// 创建一个函数
+		function qurey(str) {
+			// 创建一个空对象
+			var obj = {};
+			// 获取到？的索引
+			var idx = str.indexOf('?');
+			// 获取到？后面的字符串
+			var data = str.substring(idx+1);
+			// 把获取到的字符串以&分割，并返回数组
+			var arrData = data.split('&');
+
+			// 循环遍历数组
+			for(var i =0; i < arrData.length; i++){
+				// 把数组的元素以=分割，并返回新的数组
+				var smallArr = arrData[i].split('=');
+				// 让返回数组的第一个元素作为空对象的键，第二个元素作为空对象额值
+				obj[smallArr[0]] = smallArr[1];
+			}
+			return obj;
+		}
+		console.log(qurey(urlStr));
+	</script>
+</html>

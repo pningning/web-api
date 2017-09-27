@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.lei {
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>这是第1个li</li>
+			<li>这是第2个li</li>
+			<li>这是第3个li</li>
+			<li>这是第4个li</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+//		点击每个li标签设置当前的li类样式
+		var aLi = document.getElementsByTagName("li");
+		// 给每一个li都添加单击事件
+		for(var i = 0; i < aLi.length; i++) {
+			
+			aLi[i].onclick = function() {
+				// 用className 来代替class操作
+				// 给当前的li 添加lei样式
+				this.className = "lei";
+			}
+			
+		}
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id = "oUl">
+		<li>第1个li的内容</li>
+		<li>第2个li的内容</li>
+		<li>第3个li的内容</li>
+		<li>第4个li的内容</li>
+		<li>第5个li的内容</li>
+		<li>第6个li的内容</li>
+		<li>第7个li的内容</li>
+		<li>第8个li的内容</li>
+	</ul>
+</body>
+	<script>
+		// 实现所有的li 隔行变色
+		// 第一步 先获取所有的li
+
+		var oUl = document.getElementById('oUl');
+		var aLi = oUl.getElementsByTagName('li');
+		console.log(aLi);
+
+		// 第二步： 实现隔行变色集合 用for 循环
+		for(var i = 0; i < aLi.length; i++) {
+			if(i%2 ==0) {
+				aLi[i].style.backgroundColor = "red";
+			} else {
+				aLi[i].style.backgroundColor = 'green';
+			}
+		}
+
+
+
+	</script>
+</html>

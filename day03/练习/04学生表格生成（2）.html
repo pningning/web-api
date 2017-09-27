@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			姓名：<input id="nameText" type="text"><br> 
+			年龄：<input id="ageText" type="text">
+			<input type="button" value="添加学生">
+			<input type="button" value="删除一行">
+		</div>
+		<table id="stuInfo" width="200" border="1">
+			<tbody>
+				<tr >
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+				<tr >
+					<td>江泽民</td>
+					<td>50</td>
+				</tr>
+				<tr >
+					<td>芙蓉</td>
+					<td>30</td>
+				</tr>
+				<tr >
+					<td>凤姐</td>
+					<td>28</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+	<script src="myTools.js"></script>
+	<script>
+//		第一个,让表格实现隔行变色
+//		获取事件相关元素
+		var oStuInfo = document.getElementById('stuInfo');
+		var tBody = oStuInfo.children[0];
+		var aTr = tBody.children;
+//		封装函数
+
+			function setColor() {
+				for(var i = 0; i < aTr.length; i++){
+					if(i%2 == 0) {//判断是第几行
+						aTr[i].style.backgroundColor = 'red';
+					}else {
+						aTr[i].style.backgroundColor = 'green';
+					}
+				}
+			}
+			setColor();//调用函数隔行变色
+			
+//			给添加学生按钮添加单击事件
+//		获取事件相关元素   添加学生按钮     学生姓名，年龄
+			var nameText = document.getElementById('nameText');//获取输入姓名的元素
+			var ageText = document.getElementById('ageText');//获取输入年龄的元素
+			var addBtn = document.getElementsByTagName('input')[2];//获取添加学生的按钮
+//			给添加学生按钮添加单击事件			console.log(nameText,ageText);
+			addBtn.onclick = function() {//绑定事件函数
+//				当点击按钮的时候把,输入的名字跟年龄传入到地下的表格中
+//				首先获取姓名和年龄
+			var stuName = nameText.value;//获取到姓名
+			var stuAge = ageText.value;//获取到年龄
+//			创建两个td把获取到的内容添加到td里面
+			var nameTd = document.createElement('td');
+			nameTd.innerHTML = stuName;
+			var ageTd = document.createElement('td');
+			ageTd.innerHTML = stuAge;
+//			创建一个tr把两个td放到里面
+			var oTr = document.createElement('tr');
+			oTr.appendChild(nameTd);//把姓名td放到tr的最后面
+			oTr.appendChild(ageTd);//把年龄td放到tr的最后面
+			tBody.appendChild(oTr);//把 oTr方放到表格的最后面
+			setColor();//调用隔行变色					
+			}
+			
+			//	 添加删除事件
+			//	获取事件的相关元素
+			var removeBtn = $('input')[3];
+//			当点击删除按钮的时候
+			removeBtn.onclick = function () {//绑定事件函数
+//				判断这个孩子是不是 tBody的最后一个孩子
+				if(first(tBody) != last(tBody)) {
+//					如果不是最后一个孩子就删除
+					tBody.removeChild(last(tBody));
+				}
+				
+			}
+	
+	</script>
+</html>

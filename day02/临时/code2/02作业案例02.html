@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<input type="button" value="单击修改链接地址和链接的文字" />
+		<a href="http://www.baidu.com" target="_blank">打开百度</a>
+	</body>
+	<script type="text/javascript">
+		//案例:点击按钮修改超链接的地址及热点文字
+		// 1 获取相关元素
+		var aBtn = document.getElementsByTagName("input");
+		var aA = document.getElementsByTagName("a");
+		
+		// 2 给按钮注册添加单击事件
+		              // 3 绑定事件处理函数
+		aBtn[0].onclick = function() {
+			
+			// 做事情
+			// 让链接地址改变
+			aA[0].href = "http://www.163.com";
+			// 修改链接文字
+			aA[0].innerHTML = "打开网易";
+		}
+		
+	</script>
+</html>

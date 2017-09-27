@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.wrap {
+				width: 300px;
+				margin: 100px auto 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+				border: 1px solid #c0c0c0;
+				width: 300px;
+			}
+			
+			th,
+			td {
+				border: 1px solid #d0d0d0;
+				color: #404060;
+				padding: 10px;
+			}
+			
+			th {
+				background-color: #09c;
+				font: bold 16px "微软雅黑";
+				color: #fff;
+			}
+			
+			td {
+				font: 14px "微软雅黑";
+			}
+			
+			tbody tr {
+				background-color: #f0f0f0;
+			}
+			
+			tbody tr:hover {
+				cursor: pointer;
+				background-color: #fafafa;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>
+							<input type="checkbox" id="theadInp">
+						</th>
+						<th>菜名</th>
+						<th>饭店</th>
+					</tr>
+				</thead>
+
+				<tbody id="tbody">
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>红烧肉</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>西红柿鸡蛋</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>红烧狮子头</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>日式肥牛</td>
+						<td>田老师</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</body>
+	<script>
+		// 获取事件的相关 元素
+			// 获取头部的input
+			var oTheadint = document.getElementById('theadInp');
+			// 获取下面的input
+			var oBody = document.getElementById('tbody');
+			var aInt = oBody.getElementsByTagName('input');
+			// 第二步  添加单击事件
+			// 给头部的input添加单击事件
+			// 当鼠标点击头部input 的时候地下的按钮全选或者全部不选
+			oTheadint.onclick = function(){
+				for(var i = 0; i < aInt.length; i++) {
+					aInt[i].checked = this.checked;
+				}
+			}
+
+			// 给下面所有的input添加到单击事件 
+			for(var i = 0; i < aInt.length; i++) {
+				// 当鼠标点击的时候
+				aInt[i].onclick = function() {
+					// 假设input都被选中了，设置一个变量为真
+					var onOff = true;
+				for(var i = 0; i < aInt.length; i++) {
+					if(aInt[i].checked == false) {
+						onOff = false;
+						}
+					}		
+					oTheadint.checked = onOff;
+				}
+			}
+	</script>
+</html>

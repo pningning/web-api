@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="image/jd1.png" alt="">
+</body>
+  <script>
+  	// 第一步获取参与事件元素
+  	var aImg = document.getElementsByTagName('img');
+  	// 第二。判断出是鼠标移动事件
+  	// 当鼠标经过img的时候，显示的是图片2
+  	aImg[0].onmouseover = function(){
+  		aImg[0].src = 'image/jd2.png'
+  	}
+  	// 当鼠表移开的时候显示的是图片1
+  	aImg[0].onmouseout = function() {
+  		aImg[0].src = 'image/jd1.png';
+  	}
+  </script>
+</html>

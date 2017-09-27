@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		span {
+			cursor: pointer;
+		}
+		#box {
+			width: 210px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			font-size: 12px;
+			background-color: #fff;
+			color: red;
+			border: 1px solid red;
+			position: relative;
+			left: 100px;
+			display: none;
+
+		}
+
+	</style>
+</head>
+<body>
+	用户名：<input type="text"><br />
+	密&nbsp;&nbsp;码:<input type="password" /><br />
+	<input type="checkbox" /><span id="text">十天之内免登录</span>
+	<div id="box">禁止在公共场合或网吧打勾</div>
+</body>
+	<script>
+		
+	// 第一：获取参与事件的元素
+	// 通过获取ID名获取元素的span div
+	   var oSpan = document.getElementById('text');
+	   var oBox = document.getElementById('box');
+	   // 第二：这是一个鼠标移动事件
+
+	   // 当鼠标移动到span的时候div盒子显示
+
+	   oSpan.onmouseover = function() {
+	   	// div盒子显示
+	   	oBox.style.display = "block";
+	   }
+
+	   // 当鼠标离开span的时候div盒子隐藏
+
+	   oSpan.onmouseout = function() {
+	   	oBox.style.display = 'none';
+	   }
+
+	</script>
+</html>

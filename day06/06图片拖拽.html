@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img {
+			width: 100px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<img src="xn.png" alt="" />
+</body>
+	<script>
+		// 获取事件相关元素
+		var aImg = document.getElementsByTagName('img');
+
+		// 给img添加鼠标按下事件
+		aImg[0].onmousedown = function(e) {
+			e = e || event;
+			// 标准浏览器下阻止默认行为
+			if(e.preventDefault) {
+				e.preventDefault();//如果认识就执行，不认识不执行，不报错
+			}
+			e.returnValue && (e.returnValue = false);//ie取消默认行为
+			aImg[0].setCapture && aImg[0].setCapture();//给图片设置全部捕获，将鼠标焦点放置在图片上面，从而达到取消图片默认行为
+
+			// 获取鼠标在div上面的固定位置
+			var disX = e.clientX - this.offsetLeft;
+			var disY = e.clientY - this.offsetTop;
+			// 给文档添加鼠标移动事件
+			document.onmousemove = function(e) {
+				e = e || event;
+				// 获取滚动条滚动的距离
+				var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+				var x = e.clientX - disX;
+				var y = e.clientY + scrollT - disY;
+
+				// 进行判断盒子在当前页面可视区的位子
+				x = x < 0 ? 0 : x;
+				x = x > pos().l - aImg[0].offsetWidth ? pos().l - aImg[0].offsetWidth : x;
+				y = y < 0 ? 0 : y;
+				y  = y > pos().t - aImg[0].offsetHeight ? pos().t - aImg[0].offsetHeight : y;
+				aImg[0].style.left = x + 'px';
+				aImg[0].style.top = y + 'px';
+				// 给img盒子添加left top 
+				// aImg[0].style.left = e.clientX - disX + "px";
+				// aImg[0].style.top = e.clientY - disY + "px";
+			}
+			
+			// 给文档添加鼠标弹开事件
+			document.onmouseup = function() {
+				document.onmousemove = null;
+				aImg[0].releaseCapture && aImg[0].releaseCapture();//让图片释放
+			}
+		}
+		
+		function pos() {
+			return {
+				l:document.documentElement.clientWidth,
+				t:document.documentElement.clientHeight
+			}
+		}
+	</script>
+</html>

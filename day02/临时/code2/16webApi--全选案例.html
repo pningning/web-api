@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.wrap {
+				width: 300px;
+				margin: 100px auto 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+				border: 1px solid #c0c0c0;
+				width: 300px;
+			}
+			
+			th,
+			td {
+				border: 1px solid #d0d0d0;
+				color: #404060;
+				padding: 10px;
+			}
+			
+			th {
+				background-color: #09c;
+				font: bold 16px "微软雅黑";
+				color: #fff;
+			}
+			
+			td {
+				font: 14px "微软雅黑";
+			}
+			
+			tbody tr {
+				background-color: #f0f0f0;
+			}
+			
+			tbody tr:hover {
+				cursor: pointer;
+				background-color: #fafafa;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>
+							<input type="checkbox" id="theadInp">
+						</th>
+						<th>菜名</th>
+						<th>饭店</th>
+					</tr>
+				</thead>
+
+				<tbody id="tbody">
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>红烧肉</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>西红柿鸡蛋</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>红烧狮子头</td>
+						<td>田老师</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>日式肥牛</td>
+						<td>田老师</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//页面有几个功能？
+		// 四个功能： 全选有两个   下面有四个input 总共有两个
+		
+		
+		// 全选按钮 被选上以后下面的所有按钮都应该被选上
+		// 全选按钮  没有被选上以后下面的所有按钮都应该取消选中
+		
+		// 合并成一个功能
+		
+		
+		// 1 获取相关元素
+		// 获取全选复选框
+		var oTheadInp = document.getElementById("theadInp");
+		// 下面的所有的复选框们
+		var oTbody = document.getElementById("tbody");
+		var aInp = oTbody.getElementsByTagName("input");
+		
+		// 2 事件类型 单击  
+		
+		//给全选框添加单击事件
+		oTheadInp.onclick = function() {
+			
+			// 单击以后判断一下全选是否被选中
+			/*if(this.checked === true){
+				//让所有的下面的复选框们 都被选中
+				for(var i = 0; i < aInp.length; i++) {
+					
+					aInp[i].checked = true;
+				}
+			} else {
+				// 说明这一次单击之后  取消被选中
+				//让所有的下面的复选框们 都不被选中
+				for(var i = 0; i < aInp.length; i++) {
+					
+					aInp[i].checked = false;
+				}
+			}*/
+			
+			//让所有的下面的复选框们 都被选中
+			for(var i = 0; i < aInp.length; i++) {
+				
+				aInp[i].checked = this.checked;
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		// 下面四个都选上  然后全选自动选中
+		// 下面四个只要有一个没被选中 则全选不被选中
+		// 合并成一个功能
+		// 给所有的下面的input 都添加单价事件
+		for(var i = 0; i < aInp.length; i++) {
+			
+			aInp[i].onclick = function() {
+				
+				// 设置一个变量 假设为真 假设下面的所有input都打勾了
+				var onOff = true;
+				
+				
+				// 一单击 就立马 循环所有的input 
+				for(var i = 0; i < aInp.length; i++) {
+					// 判断哪一个input没有被打勾 没有被选中
+					if(aInp[i].checked==false) {
+						//只要有一个没打勾 开关立马改成假的
+						onOff = false;
+					}
+					
+				}
+				
+				// if(onOff ===true) {
+				// 	oTheadInp.checked = true;
+				// }else {
+				// 	oTheadInp.checked = false;
+				// }
+				oTheadInp.checked = onOff;
+			}
+			
+		}
+		
+		
+		
+	</script>
+</html>

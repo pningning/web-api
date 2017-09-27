@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="切换"/><br />
+	<img src="image/a.jpg" alt="">
+</body>
+	<script>
+		// 第一获取参与事件的元素
+		var aInt = document.getElementsByTagName('input');
+		var aImg = document.getElementsByTagName('img');  //通过标签名的方法获取
+		// 第二步，判断事件，同时实现事件
+		// 因为只有一个按钮通过判断的方式来判断切图片
+		  // 假设开关是真
+		  var onOff = true;
+		  // 当鼠标点击切换按钮的时候
+		  aInt[0].onclick = function() {
+		  	// 进行判断
+		  if(onOff) {
+		  	// 如果开关为真显示a图片
+		  	aImg[0].src = 'image/b.jpg';
+		  } else {
+		  	// 如果为假显示的是b图片、改变图片的路径
+		  	aImg[0].src = 'image/a.jpg';
+		   }
+		   onOff = !onOff;
+		  }
+		  
+	</script>
+</html>

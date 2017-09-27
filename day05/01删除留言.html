@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			width: 250px;
+			height: 300px;
+			border: 1px solid red;
+			list-style: none;
+			padding:0;
+
+		}
+	</style>
+</head>
+<body>
+	<ul id="oUl">
+		<!-- <li>你要添加的内容<a href="javasctipt:;">删除</a></li> -->
+	</ul>
+	<input type="text" id="text1" />
+	<input type="button" id="text2" value="单击发送" />
+</body>
+	<script>
+		// 点击单击发送要把文本框中的内容添加到ul里面，当出现删除的是，点击删除按钮，把这个内容删除
+		// 获取事件相关元素
+		function $(id) {
+			return document.getElementById(id);
+		}
+
+		var oUl = $('oUl');
+		var oText1 = $('text1');
+		var oText2 = $('text2');
+		oText1.focus();
+		// 给按钮添加单击事件
+		oText2.onclick = function() {
+			// 设置变量存储文本的内容
+			var str = oText1.value;
+			oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>';
+			oText1.value = '';//清空文本内容
+			oText1.focus();//自动获取焦点
+
+			// 单击删除，删除内容
+			// 获取事件相关元素
+			var aA = document.getElementsByTagName('a');//获取a
+
+			// 给所有的a添加单击事件
+			for(var i = 0; i < aA.length; i++) {
+				aA[i].onclick = function() {
+					// this.parentNode.parentNode.removeChild(this.parentNode);
+					oUl.removeChild(this.parentNode);
+
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="禁用" />
+		<input type="text" value="这是文本框的内容" />
+	</body>
+	<script type="text/javascript">
+//		点击按钮禁用文本框
+//		// 1 获取页面上相关元素
+		var aInp = document.getElementsByTagName("input");
+		
+		// 2 给按钮 添加单击事件
+		aInp[0].onclick = function() {
+			// 拿value值 作为切换判断的条件
+			if(this.value =="禁用"){
+				// 禁用文本框
+				aInp[1].disabled = true;
+				this.value = "解禁";
+			} else {
+				aInp[1].disabled = false;
+				this.value = "禁用";
+			}
+			
+		}
+		// 
+	</script>
+</html>

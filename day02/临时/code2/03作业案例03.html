@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="image/1-small.jpg" alt="" />
+		<img src="image/2-small.jpg" alt="" />
+		<img src="image/3-small.jpg" alt="" />
+		<img src="image/4-small.jpg" alt="" />
+	</body>
+	<script type="text/javascript">
+		
+		// 案例:点击每个图片弹出一个对话框
+		// 1 获取相关元素
+		var aImg = document.getElementsByTagName("img");
+		
+		// 2 事件类型
+		//给所有的图片　都注册单击事件　　所以循环添加
+		for(var i = 0; i < aImg.length; i++) {
+			aImg[i].onclick = function() {
+				alert("hi");
+			}
+		}
+		
+		// 单击 第一个图片  让这个图片宽高变成50
+		aImg[0].onclick = function() {
+			
+			this.style.width = "100px";
+			
+		}
+	</script>
+</html>

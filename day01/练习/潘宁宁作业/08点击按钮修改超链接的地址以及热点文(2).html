@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="切换网站" />
+	<a href="http://www.baidu.com">百度</a>
+</body>
+	<script>
+		// 获取事件的相关元素
+		var oInt = document.getElementsByTagName('input');
+		var aA = document.getElementsByTagName('a');
+		// 给input添加单击事件
+		// 假设开关为真
+		var onOff = true;
+		// 当鼠标点击按钮时
+		oInt[0].onclick = function() {
+			// 如果为真
+			if(onOff) {
+				
+				aA[0].href = 'http://www.jd.com';
+				aA[0].innerText = '京东';
+			} else {
+				// 如果为假
+				aA[0].href = 'http://www.baidu.com';
+				aA[0].innerText = '百度';
+			}
+			onOff = !onOff;
+		}
+	</script>
+</html>

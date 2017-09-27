@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="images/1.jpg" alt="" width="200" height="150" />
+</body>
+	<script>
+		// 获取事件的相关元素
+		var oImg = document.getElementsByTagName('img');
+		// 给img添加单击事件
+		oImg[0].onclick = function() {
+			oImg[0].width = '400';
+			oImg[0].height = '300';
+		}
+	</script>
+</html>

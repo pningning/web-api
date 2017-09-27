@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="禁用" />
+	<input type="text" value="这是一个文本框的内容" />
+</body>
+	<script>
+		// 获取事件相关元素
+		var aInt = document.getElementsByTagName('input');
+		// 添加单击事件
+		// 当鼠标点击按钮的时候文本框被禁用，同时自身value改变
+		aInt[0].onclick = function() {
+			// 先判断value值是什么设置开关
+			if(this.value == '禁用') {
+				aInt[0].value = '解禁';
+				aInt[1].disabled = true;//文本框被禁用
+			} else {
+				aInt[0].value = '禁用';
+				aInt[1].disabled = false;
+			}
+		}
+	</script>
+</html>

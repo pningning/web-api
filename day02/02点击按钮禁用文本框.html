@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="禁用" />
+	<input type="text" value="这是文本框的内容" />
+</body>
+	<script>
+		// 获取事件相关元素
+		var aInt = document.getElementsByTagName('input');
+		// 添加单击事件
+		aInt[0].onclick = function() {
+			if(this.value == '禁用') {
+				this.value = '解禁';
+			    aInt[1].disabled = true;
+			    
+			} else {
+				this.value = '禁用';
+			    aInt[1].disabled = false;
+			}
+			
+		}
+	</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				border:1px solid red;
+				width: 200px;
+				height:400px;
+				border-radius:20px;
+				background-color: pink;
+				margin:0 auto;
+			}
+			div {
+				width: 260px;
+				margin:0 auto;
+			}
+	</style>
+	</head>
+	<body>
+	<ul id="oUl"></ul>
+		<div>
+			<span id="person">小明:</span><input type="text" id="text1" />
+			<input type="button" value="发送" id="btn" />
+		</div>
+	</body>
+	<script src="myTools.js"></script>
+	<script>
+//		获取事件相关元素   
+		var oUl = $('#oUl');
+		var oPerson = $('#person');
+		var oText1 = $('#text1');
+		var oBtn = $('#btn');
+		oText1.focus();
+//		给发送按钮添加单击事件
+
+		oBtn.onclick = function(){
+//			先获取文本输入的内容
+			var str = oText1.value;
+//			在ul里面添加一个li
+			oUl.innerHTML = "<li><strong style='color:red;'>"+oPerson.innerHTML+"</strong>"+str+"</li>"+oUl.innerHTML;
+//			发送之后文本内容为空
+			oText1.value = '';
+//			自动获取焦点
+			oText1.focus();
+		}
+		
+//		切换人物
+		oPerson.onclick = function(){
+//			点击按钮的时候切换人物
+//			判断当前的人物
+			if(oPerson.innerHTML == '小明:') {
+				oPerson.innerHTML = '小花:';
+			} else {
+				oPerson.innerHTML = '小明:';
+			}
+		}
+	</script>
+</html>

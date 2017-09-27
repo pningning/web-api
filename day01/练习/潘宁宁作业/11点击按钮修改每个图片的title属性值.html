@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	img {
+		width: 200px;
+		height: 150px;
+	}
+
+	</style>
+</head>
+<body>
+	 <input id = "one"type="button" value="点我" /><br />
+	<img src="images/1.jpg" title="看我" />
+	<img src="images/2.jpg" title="看我" />
+	<img src="images/3.jpg" title="看我" />
+	<img src="images/4.jpg" title="看我" />
+</body>
+	<script>
+		// 获取事件的相关元素
+		var oInt = document.getElementById('one');
+		var aImg = document.getElementsByTagName('img');
+		// 添加单击事件
+		// 当鼠标点击按钮时 title改变
+		oInt.onclick = function() {
+			for(var i = 0; i < aImg.length; i++) {
+				aImg[i].title = "看什么看";
+			}
+		}
+
+			
+		// 	for(var i = 0; i < aImg.length; i++) {
+		// 		oInt.onclick = function() {
+		// 		aImg[i].onmuseover = function() {
+		// 			aImg[i].title = "看什么看";
+		// 		}			
+		// 	}
+		// }
+		// // 不对
+		// }
+	</script>
+
+</html>
