@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="请您输入内容" />
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		// 当文本框 得到焦点的时候    判断 如果里面的文字  是"请您输入内容"  则清空
+		
+		$("input").focus(function(){
+			if($(this).val()=="请您输入内容") {
+				$(this).val("");
+			}
+			
+		})
+		
+		// 当文本框 失去焦点时候   判断  如果里面没有输入任何内容  则还原回 "请您输入内容"	
+		$("input").blur(function(){
+			if($(this).val()=="") {
+				$(this).val("请您输入内容");
+			}
+			
+		})
+		
+		
+		
+		
+		// 简化后的一种写法  了解一下
+		/*$("input").on({
+			focus: function(){
+			($(this).val()=="请您输入内容")&&$(this).val("");
+			},
+			blur:function(){
+			($(this).val()=="")&&$(this).val("请您输入内容");	
+			}
+		});*/
+	</script>
+</html>

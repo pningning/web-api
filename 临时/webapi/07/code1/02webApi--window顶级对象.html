@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		window 顶级对象  对象遍历 for In 语句
+			var k = 0;
+			for(var attr in window) {
+				
+				try{
+					console.log(window[attr]);
+				}catch(e) {
+					
+				}
+				
+			}
+			
+			
+		//window.alert(123);// 弹出框  全局window下面的方法 可以省略window
+		//alert("hello");
+		
+		// 输入框  返回值  确定 你输入的内容   取消  null
+		/*var aa = window.prompt("请输入您的年龄");
+		console.log(aa);*/
+		
+		/*var bb = confirm("你成年了吗");// 确认框 返回值  确定  返回true  否 返回false
+		console.log(bb);*/
+		
+		/*alert("欢迎使用问卷调查");
+		var age = prompt("请您输入您的年龄");
+		if(age>=18) {
+			var bool = confirm("你结婚了吗");
+			if(bool) {
+				var bool2 = confirm("您有孩子吗");
+				if(bool2) {
+					alert("请让您的孩子来学js吧");
+				}else {
+					alert("请让您的对象来学习js吧")
+				}
+			}else {
+				alert("抓紧时间学习js吧，走上人生巅峰，迎娶白富美");
+			}
+		}else {
+			
+			alert("赶紧趁年轻，学习js吧");
+			
+		}*/
+		
+	</script>
+</html>

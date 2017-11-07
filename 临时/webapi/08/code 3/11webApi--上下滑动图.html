@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        #box{
+            width: 166px;
+            height: 450px;
+            margin: 0 auto;
+        }
+        #title{
+            width: 166px;
+            height: 24px;
+            background: #294A73;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            line-height: 24px;
+            color: #fff;
+            margin: 0;
+            border: 1px #294A73 solid;
+        }
+        #top,#btm{
+            height: 23px;
+            width: 166px;
+            border: 1px gray solid;
+            cursor: pointer;
+        }
+        #top{
+             background: url( images/top.png);
+            border-bottom: 0;
+        }
+        #btm{
+            background:url(images/btm.png);
+            border-top: 0;
+            
+        }
+        #con{
+            width: 166px;
+            height: 380px;
+            background: #ccc;
+            overflow: hidden;
+            border: 1px gray solid;
+        }
+        #title{
+            font-size: 14px;
+            text-indent: 10px;
+        }
+        #title a{
+            text-decoration: none;
+            font-size: 10px;
+            color: #fff;
+            display: inline-block;
+            margin-left:50px;
+        }
+        #conImg{
+            position: relative;
+            top:0;
+            left: 0;
+        }
+    </style>
+	</head>
+	<body>
+		<div id="box">
+        <p id="title">传智播客</p>
+        <div id="top"></div>
+        <div id="con"><img src="images/content.jpg" id="conImg"></div>
+        <div id="btm"></div>
+    </div>
+	</body>
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		
+		//  分析  按下上面的top 让里面的图片向上运动  弹起鼠标 让里面的图片停止向上
+		
+		// 1 获取相关元素
+		var oTop = $("#top"),oBtm = $("#btm"),oConImg = $("#conImg"),oCon=$("#con");
+		// 2 事件类型  按下鼠标  弹起鼠标
+		oTop.onmousedown = function() {
+			var abc = oCon.offsetHeight-oConImg.offsetHeight;
+			 move(oConImg,"top",7,abc);
+		}
+		oTop.onmouseup = function() {
+			
+			 //move(oConImg,"top",10,oCon-oConImg);
+			 clearInterval(oConImg.timer);
+		}
+		oBtm.onmousedown = function() {
+			
+			 move(oConImg,"top",7,0);
+		}
+		oBtm.onmouseup = function() {
+			
+			 //move(oConImg,"top",10,oCon-oConImg);
+			 clearInterval(oConImg.timer);
+		}
+		
+		
+		
+		
+		//  分析  按下下面的btm  让里面的图片 向下运动  弹起鼠标 让里面的图片停止向下
+		
+	</script>
+</html>

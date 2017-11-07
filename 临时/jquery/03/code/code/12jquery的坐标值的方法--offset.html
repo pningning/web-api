@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 400px;
+				height: 400px;
+				background: red;
+				overflow: hidden;
+				/*margin: 50px;*/
+				margin: 50px;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				
+			}
+			/*#box2 {
+				width: 100px;
+				height: 100px;
+				background: purple;
+				margin: 50px;
+				
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box2"></div>
+		</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		/*offset()   返回一个json对象  里面有left值 和top值 
+			设置或者获取元素相对于文档document的位置。*/
+			
+//			var result= $("#box").offset();
+			/*var result= $("#box2").offset();
+			console.log(result);*/
+			
+			/*$("#box").offset({
+				left:300,  //left:250 + margin:50 = 300
+				top:400   // 50+ box转换成相对定位  给它加上top 350
+			})*/
+			console.log($("#box").offset());
+			
+		/*	总结: 
+			 A.offset()  可以读取 的时候 参考的永远是 document文档 页面
+			 读取的时候 它会返回一个json对象  这里面会存上它的left值(实际偏移量)和top值  (实际偏移量)
+			 如果有定位  则 获取定位的left 加上margin
+			 如果没有定位 则  将它转换成相对定位  让后获取相对于文档的实际偏移
+			 
+			 设置 的时候  
+			 它会按照你写的设置的值进行设置 但是如果由margin  它会减去margin  实际得到一个值 这个值作为他实际left和top
+			 
+			 * 
+			 * */
+			 $("#box").offset({
+				left:450,  // 50 + 100  150  300 + 100 left:400
+				top:350   // 50 + 100        200+100 top:300
+			})
+	</script>
+</html>

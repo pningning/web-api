@@ -1,0 +1,23 @@
+input {
+	width: 80px;
+	height: 30px;
+	font:16px/30px "微软雅黑";
+	text-align: center;
+	background-color: orange;
+	border:none;
+	outline: none;
+	cursor: pointer;
+	margin-right: 10px;
+}
+div div {
+	width: 380px;
+	height: 250px;
+	background-color: pink;
+	border: 1px solid black;
+	display: none;
+	text-align: center;
+	font:50px/250px "微软雅黑"; 
+}
+input.active {
+	background-color: red;
+}

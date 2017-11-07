@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#oUl {
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="oUl">
+			<li>这是第1个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第2个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第3个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第4个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第5个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第6个li添加的留言<a href="javascript:;">删除</a></li>
+		</ul>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*jquery中的事件机制
+		1  简单的事件绑定机制*/
+		
+		//2 bind绑定方式  
+		
+		// 3 delegate事件绑定  它支持动态绑定事件  实现事件委托
+		
+		
+		/*原生js的写法*/
+		
+		/*var oUl = document.getElementById("oUl");
+		
+		oUl.onclick = function(e) {
+			e = e || event;
+			// 通过事件对象下面 去找 事件源 需要处理一下事件源的兼容性
+			var target = e.srcElement || e.target ;
+			// 通过找事件源的节点名称  如果是A  说明你单击了ul里面的a标签元素
+			if(target.nodeName == "A") {
+				// 让ul 去移除里面的 当前你单击的那个a 的父级li
+				this.removeChild(target.parentNode);
+			}
+		}
+		*/
+		
+		// 写法  jq对象.delegate(被委托的元素,事件类型,事件处理函数)
+		
+		$("#oUl").delegate("a","click",function(e){
+			//e jq中的e事件对象已经兼容好了 你直接使用
+			console.log( e.target );// jq中的事件源 也不用做兼容
+			//通过事件源　找到它的父级li  让li执行remove()
+			$(e.target).parent().remove();
+		})
+		// 有一个更加灵活 强大的事件绑定  on
+	
+	</script>
+</html>

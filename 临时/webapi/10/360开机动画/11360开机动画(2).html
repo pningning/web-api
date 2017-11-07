@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+	<div class="box" id="box">
+			<span id="closeButton"></span>
+			<div class="hd" id="headPart">
+				<img src="images/t.jpg" alt="">
+			</div>
+			<div class="bd" id="bottomPart">
+				<img src="images/b.jpg" alt="">
+			</div>
+		</div>
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		// 获取事件相关元素
+		var oBox = $('#box');
+		var oSpan = $('#closeButton');
+		var oBottomPart = $('#bottomPart');
+		console.log(oBox,oSpan,oBottomPart);
+
+		// 当点击span的时候先让oBottomPart的高度为0，再让box的宽度为0；
+		// oSpan.onclick = function() {
+		// 	move(oBottomPart,"height",10,0,function() {
+		// 		move(oBox,"width",10,0)
+		// 	});
+		// }
+		oSpan.onclick = function() {
+			move(oBottomPart,"height",5,0,function() {
+				startMove(oBox,{width:0,opacity:0});
+			})
+		}
+	</script>
+</html>

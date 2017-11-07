@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//each()  jQuery的遍历方法
+		// 它接收一个匿名函数    里面可以有两个形参  第一个形参  默认是每一次循环的索引     第二个形参  是每一次循环的元素
+		
+		
+		/*$("p:eq(0)").html("1:哈哈哈");
+		$("p:eq(1)").html("2:哈哈哈");
+		$("p:eq(2)").html("3:哈哈哈");
+		$("p:eq(3)").html("哈哈哈");
+		$("p:eq(4)").html("哈哈哈");
+		$("p:eq(5)").html("哈哈哈");*/
+		
+		//如果要对每个元素做不同的处理，这时候就用到了each方法
+		
+		
+		$("p").each(function(i,ele){
+			/*console.log(i);每一次循环的索引
+			console.log(ele);是每一次循环的元素*/
+			
+			$(ele).html((i+1)+":哈哈哈");
+			
+		});
+	</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div id="box2">box2</div>
+		<div id="box3">box3</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script src="myTool.js"></script>
+	<script type="text/javascript">
+		(function($){
+			
+			
+			$.fn.extend({
+				changeStyle:function(options){
+					// 给一个默认的配置参数项  是一个json数据格式
+					var defaultSettings = {
+						color:"white",
+						backgroundColor : "orange",
+						fontSize:20
+					}
+					
+					// jquery里面有一个方法 $.extend() 它除了可以实现扩展静态工具方法  之外  
+					//还有一个功能 就是可以将对象的属性进行遍历 并且赋值
+					
+					// 建立一个新的json对象  将默认对象配置参数  和 用户传入的配置参数 统一进行属性遍历  赋给 新的json对象
+					var settings = {};
+					
+					$.extend(settings,defaultSettings,options);
+					
+					console.log(options);
+					console.log(defaultSettings);
+					console.log(settings);
+					
+					this.css({
+						color:settings.color,
+						backgroundColor:settings.backgroundColor,
+						fontSize: settings.fontSize
+					})
+				}
+				
+				
+			})
+			
+			
+		
+			
+			
+		})(jQuery);
+		
+		
+		jQuery("#box").changeStyle();// 如果用户懒的传参  最好里面有一个默认值
+		jQuery("#box2").changeStyle({
+			color:"black",
+			backgroundColor:"red",
+			fontSize:30
+			
+		});
+		jQuery("#box3").changeStyle({
+			fontSize:40
+		});
+	</script>
+</html>

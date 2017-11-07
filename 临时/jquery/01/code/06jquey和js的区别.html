@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			// 入口函数
+			$(function(){
+				
+				console.log($("#box"));// 用$符号包装过的元素  称为 jQuery对象
+				
+				console.log(document.getElementById("box"));// DOM元素对象
+				
+				
+				/* jQuery对象: 就是通过$符号获取页面中的元素 就是jq对象
+				 DOM对象: 就是通过js获取页面中的元素 称为dom对象*/
+				
+				// jQuery对象 才可以用jq的方法 
+				// 原生js的DOM对象 可以使用js的方法
+				//document.getElementById("box").html("哈哈");
+				
+				//$("#box").html("哈哈")
+				$("#box").html("啦啦啦啦");
+				document.getElementById("box").style.background = "red";
+				/*jq和js可以共同存在在一个代码项目中共用
+				但是不能混用*/
+				
+				console.log($("span"));
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+	</body>
+</html>

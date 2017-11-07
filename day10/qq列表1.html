@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul , h2 { padding:0; margin:0; }
+li { list-style:none; }
+#list { width:240px; border:1px solid #333; margin:0 auto; }
+#list .lis {}
+#list h2 { height:30px; line-height:30px; text-indent:20px; background:url(img/ico1.gif) no-repeat 5px center #6FF; color:#000; }
+#list .active { background:url(img/ico2.gif) no-repeat 5px center #FF9; color:#000; }
+#list ul { display:none; }
+#list ul li { line-height:24px; border-bottom:1px solid #333; text-indent:24px; }
+#list ul .hover { background:#6FF; }
+</style>
+
+</head>
+
+<body>
+
+<ul id="list">
+	<li class="lis">
+		<h2>我的好友</h2>
+		<ul>
+			<li>张三</li>
+			<li>张三</li>
+			<li>张三</li>
+			<li>张三</li>
+		</ul>
+	</li>
+	<li class="lis">
+		<h2>企业好友</h2>
+		<ul>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+		</ul>
+	</li>
+	<li class="lis">
+		<h2>黑名单</h2>
+		<ul>
+			<li>张小三</li>
+			<li>李小四</li>
+		</ul>
+	</li>
+</ul>
+
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		// 当点击当前h2的时候，当前的ul就会显示出来，其他的会被隐藏，用到暴力清除
+		// 获取事件相关元素
+		var aH2 = $('h2');
+		var oList = $('#list');
+		var oUl = $('ul',oList);
+
+
+		// 设定一个开关假设为真
+		var onOff = true;
+		// 设置一个对象存储点过的h2
+		// var obj = null;
+		// 给每个h2添加单击事件
+		for(var i = 0; i < aH2.length; i++) {
+			aH2[i].index = i;
+			
+			aH2[i].onclick = function() {
+				// // 判断是否是否点击的是当前的这个H2
+				// if(obj != this.index) {
+				// 	onOff = true;
+				// }
+				if(this.className == '') {
+					onOff = true;
+				}
+				for(var i = 0; i < aH2.length; i++) {
+					oUl[i].style.display = 'none';
+					aH2[i].className = '';
+				}
+				oUl[this.index].style.display = "block";
+				this.className = 'active';
+				
+				// 开关判断
+				if(onOff) {
+					oUl[this.index].style.display = "block";
+					this.className = 'active';
+				 }else { 
+					oUl[this.index].style.display = "none";
+					this.className = '';
+				}
+				onOff = !onOff;
+				// obj = this.index;
+			}
+			
+			// 调用一个函数
+			fn(oUl[i]);
+		}
+
+		// 创建一个函数获取每个ul下面的li;
+		function fn(m) {
+			var  aLi = m.getElementsByTagName('li');
+			// 给所有的li添加鼠标 经过事件
+			for(var i = 0; i < aLi.length; i++) {
+				aLi[i].onmouseover = function() {
+					// 鼠标经过颜色改变
+					this.style.backgroundColor = "pink";
+				}
+
+				// 鼠标移开的时候颜色没有
+				aLi[i].onmouseout = function() {
+					this.style.backgroundColor = "";
+				}
+			}
+		}
+
+
+		// 下面的不对
+		// for(var i = 0; i < oUl.length; i++) {
+		// 	var  aLi = oUl[i].getElementsByTagName('li');
+		// 	for(var i = 0; i < aLi.length; i++) {
+		// 		aLi[i].onmouseover = function() {
+		// // 			// 鼠标经过颜色改变
+		// 			this.style.backgroundColor = "pink";
+		// 		}
+
+		// // 		// 鼠标移开的时候颜色没有
+		// 		aLi[i].onmouseout = function() {
+		// 			this.style.backgroundColor = "";
+		// 		}
+		// 	}
+		// }
+	</script>
+</html>

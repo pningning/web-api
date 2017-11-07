@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				padding: 50px;
+				color: white;
+			}
+			#box1 {
+				background-color: red;
+			}
+			#box2 {
+				background-color: blue;
+			}
+			#box3 {
+				background-color: green;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">box1
+			<div id="box2">box2
+				<div id="box3">box3</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		// w3c 认为存在事件捕获 和事件冒泡  而IE认为没有事件捕获
+		/*w3c标准 下面的绑定事件的写法 addEventListener() 支持两种理论
+		IE下的方法 attachEvent() 不支持捕获 只支持冒泡*/
+		// 一个事件发生的时候  要经历三个事件阶段   事件流
+		// 事件捕获 --->事件目标-->事件冒泡
+		function fn() {
+			alert(this.id);
+		}
+		
+		var oBox1 = document.getElementById("box1");
+		var oBox2 = document.getElementById("box2");
+		var oBox3 = document.getElementById("box3");
+		
+		/*oBox1.addEventListener("click",fn,false);// 在事件冒泡阶段进行侦听
+		oBox2.addEventListener("click",fn,false);
+		oBox3.addEventListener("click",fn,false);*/
+		// 参数： 第一个参数  事件类型 
+		/* 第二个参数 事件处理函数
+		 第三个参数: 是否捕获  true捕获  false 不捕获(是冒泡)*/
+		
+		
+		// 在事件冒泡阶段进行侦听
+		/*oBox2.addEventListener("click",fn,false);
+		oBox3.addEventListener("click",fn,false);
+		oBox1.addEventListener("click",fn,true);// 在事件捕获阶段进行侦听
+		
+		oBox3.addEventListener("click",fn,true);*/
+	</script>
+</html>

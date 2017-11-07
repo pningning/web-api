@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#fly {
+				width: 85px;
+				height: 81px;
+				background:url(fly.gif);
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="fly"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 需要个整个文档添加键盘按下事件  通过事件对象 获取当前按下的是哪个键 然后按下那个键就让小飞机往哪儿走
+		
+		// 1 获取相关元素
+		var oFly = document.getElementById("fly");
+		// 2 给document添加键盘按下事件
+		document.onkeydown = function(e) {
+			// 做一个事件对象的兼容处理
+			e = window.event || e;
+			
+			// 获取键盘编码 left:37  up:38  right:39 down:40
+			
+			if(e.keyCode==37) {// 往左走
+				// 想要让飞机 往前走一下 需要 获取原来的位置  加上或者减去一个值（5 10）
+				// 下一次 再获取当前的飞机的位置  然后再加上一个5 10
+				// offsetLeft 没有单位 获取的正好是飞机距离页面的左侧偏移量 它可以不但读取飞机的offsetLeft
+				oFly.style.left = oFly.offsetLeft - 10 + "px";
+				//                     100-10 == 90+"px"
+//								       90   - 10 == 80 + "px"
+//								        80 - 10 = 70+"px"
+				oFly.style.transform = "rotate(270deg)";
+			}else if(e.keyCode==39) {
+				
+				oFly.style.left = oFly.offsetLeft + 10 + "px";
+				oFly.style.transform = "rotate(90deg)";
+				
+			}else if(e.keyCode==38) {
+				
+				oFly.style.top = oFly.offsetTop - 10 + "px";
+				oFly.style.transform = "rotate(0deg)";
+				
+			}else if(e.keyCode==40) {
+				
+				oFly.style.top = oFly.offsetTop + 10 + "px";
+				oFly.style.transform = "rotate(180deg)";
+			}
+			
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<p>1111</p>
+			<p>222</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>33333</p>
+			<p>倒数第二个</p>
+			<p>最后一个</p>
+		</div>
+	</body>
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");
+		/*// A.appendChild(B)
+		// A.removeChild(B)  
+		var oSpan = document.createElement("span");
+		oSpan.innerHTML = "哈哈哈";
+		
+		var oEm = document.createElement("em");
+		oEm.innerHTML = "hehehe";
+		
+		oBox.appendChild(oSpan);
+		oBox.appendChild(oEm);*/
+		
+		// A.removeChild(B) 
+		
+		/*oBox.removeChild(oBox.children[0]);
+		oBox.removeChild(oBox.children[1]);*/
+		oBox.removeChild(last(oBox))
+	</script>
+</html>

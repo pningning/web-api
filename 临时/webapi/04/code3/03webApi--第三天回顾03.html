@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			
+		</ul>
+		1 节点的概念
+		2 A.childNodes：只读属性 子节点列表  可以获取直接子节点 不能获取孙级以及以下节点
+		// 标准浏览器下  可以获取空白文本节点 和元素节点
+		//    非标准浏览器下  只包含元素节点
+		我们往往实际开发过程中  只需要操作元素节点 需要排除空白文本
+		
+		隔行变色
+		
+		有一个好方法 children 没有兼容性问题  可以获取直接子节点 只包含元素节点类型
+		
+	</body>
+	<script type="text/javascript">
+		var k = 0;
+		for(var i = 0; i < oUl.childNodes; i++) {
+			if(oUl.childNodes[i].nodeType==1){
+				k++;
+				if(k%2){
+					oUl.childNodes[i].style.backgroundColor = "red";
+				}else {
+					oUl.childNodes[i].style.backgroundColor = "orange";
+					
+				}
+			}
+		}
+		
+		for(var i = 0; i < oUl.children; i++) {
+				if(i%2){
+					oUl.children[i].style.backgroundColor = "red";
+				}else {
+					oUl.children[i].style.backgroundColor = "orange";
+				}
+		}
+		
+		
+		A.firstChild  A的里面的第一个子节点
+		浏览器 标准下: 包含空白文本和元素节点
+		非标准  只包含元素节点
+		
+		在标准浏览器下  firstElementChild  它可以直接获取第一个元素类型的子节点
+		
+		function first(obj){
+			var ele = obj.firstElementChild || obj.firstChild;
+			if(ele&&ele.nodeType==1) {
+				return ele
+			}else {
+				return null;
+			}
+		}
+		
+	</script>
+</html>

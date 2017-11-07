@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*console.log(window.navigator);
+		console.log(window.navigator.platform);//Win32
+		console.log(window.navigator);*/
+		console.log(window.navigator.userAgent);//浏览器的用户代理信息　可以用来判断浏览器版本
+		//Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36
+		//Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0  
+		//Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko
+		
+	  var str = window.navigator.userAgent;
+	  isBrowserType(str);
+	  function isBrowserType(str) {
+	  	if(str.indexOf("Chrome")!=-1) {
+	  		alert("是谷歌浏览器")
+	  	}else if(str.indexOf("Firefox")!=-1) {
+	  		alert("是火狐浏览器")
+	  	} else if(str.indexOf("Trident")!=-1) {
+	  		alert("是IE浏览器")
+	  	}
+	  }
+	</script>
+</html>

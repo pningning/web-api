@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*继承性
+			概念 : 一个对象没有某些属性和方法，另外一个对象有，拿过来用，就是继承！*/
+			
+			
+			// Itouch  (产品)
+			
+			/*属性:  颜色   尺寸   价格 
+			
+			方法:  打游戏   听音乐  (但是不能打电话)*/
+			
+			// 写一个Itouch的构造函数 
+			function Itouch(color,price,size){
+				
+				this.color = color;
+				this.price = price;
+				this.size = size;
+				
+			}
+			Itouch.prototype.playGame = function(){
+				console.log("可以打游戏");
+			}
+			
+			Itouch.prototype.listenToMusic = function(){
+				console.log("可以听音乐");
+			}
+			
+			// 开始生产一个Itouch 
+			var itouch1 = new Itouch("red","200$","4.0");
+			
+			console.log(itouch1.color);
+			console.log(itouch1.price);
+			console.log(itouch1.size);
+			itouch1.playGame();
+			itouch1.listenToMusic();
+			
+			//itouch1.callPhone();
+			
+			
+			console.log("=========================================");
+			
+			var itouch2 = new Itouch("blue","250$","4.5");
+			console.log(itouch2.color);
+			console.log(itouch2.price);
+			console.log(itouch2.size);
+			itouch2.playGame();
+			itouch2.listenToMusic();
+	</script>
+</html>

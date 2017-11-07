@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				padding: 50px;
+				color: white;
+			}
+			#box {
+				background-color: red;
+			}
+			#box2 {
+				background-color: blue;
+			}
+			#box3 {
+				background-color: green;
+				
+			}
+		</style>
+	</head>
+	<body id="oo" style="height: 2000px;">
+		<div id="box">box
+			<div id="box2">box2
+				<div id="box3">box3</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function $(id) {
+			return document.getElementById(id);
+		}
+		function fn(){
+			alert(this.id);
+		}
+		
+		$("box").onclick = fn;
+		
+		$("box2").onclick = null;
+		
+		$("box3").onclick = fn;
+		
+		/*console.dir($("box2"));
+		console.dir($("box3"));
+		console.dir($("box"));*/
+		
+		document.body.onclick = fn;
+		 //事件冒泡
+		
+	</script>
+</html>

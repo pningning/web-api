@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		
+		//jq对象如何转成  ===> js的dom 对象
+		console.log($("#box"));
+		//$("#box")[0].style.background = "red";
+		
+		/*$("#box").get(0).style.background = "blue";
+		*/
+		//js的DOM对象 ===> jq对象
+		
+		var oBox = document.getElementById("box");
+		
+		$(oBox).css("background","purple");
+		
+//		js的dom对象和jq对象可以互转
+		</script>
+</html>

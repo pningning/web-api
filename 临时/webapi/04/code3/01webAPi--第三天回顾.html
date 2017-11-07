@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		一. 创建元素的方式
+				1 document.write();可以往页面中输入内容
+				<div id="box">box</div>
+	</body>
+	<script type="text/javascript">
+		document.write("<em>hello</em>");//不会覆盖原来内容 往里面追加写入
+		document.write("<em>hello</em>");
+		document.write("<em>hello</em>");
+		// oBox.write(); 不能往具体某一个元素里面去写内容
+		// 如果事件触发之后 再使用这个方法 
+		var oBox = document.getElementById("box");
+		
+		oBox.onclick = function() {
+			// 这个方法 在调用的时候 会开启一个文档流  （会将原来的内容清除掉）
+			document.write("<em>hello</em>");
+		}
+	</script>
+</html>

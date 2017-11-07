@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function Person(){
+			
+			
+		}
+		//Person.prototype
+		var p1 = new Person();
+		
+		console.dir(p1);
+		
+		
+		console.log(Object.prototype);
+		console.log(Object.prototype.__proto__);
+		
+//		Object.prototype.__proto__  ===>
+
+		//  原型链
+		/*p1.__proto__  ===> Person.prototype ==>Person.prototype.__proto__
+		===>  Object.prototype ===>Object.prototype.__proto__ ==>null; */
+		
+		
+		var arr = new Array();
+		
+		console.dir(arr);
+		//系统内置对象的所有的方法 都放在了 它的构造函数的原型下面
+		//arr.__proto__ ===>Array.prototype ==》Array.prototype.__proto__
+//		===> Object.prototype ==>Object.prototype.__proto__  ==>null
+
+			//系统内置对象 Array   Date  RegExp 包装对象
+			
+		
+		console.log(p1.toString()); //
+		
+		console.log(Object.prototype.toString());
+		
+		console.log(p1.toString == Object.prototype.toString); //true
+		
+		
+		var arr = [1,2,3];
+		console.dir(arr);
+		//console.log(arr.toString);
+			
+		Object.prototype.hahaha = "哈哈哈哈";
+		
+		
+		function Fn(){
+			
+		}
+		
+		var fn1 = new Fn();
+		console.log(fn1.hahaha);
+		
+		/*fn1.hahaha 在自己身上(在它的构造函数里面的this找)找一下这个属性 看看有没有  ===> 如果没有,
+		就去构造函数的原型上面去找一找 ===> 如果没有 ,构造函数的原型       的      构造的原型(Fn.prototype.__proto)它
+		直接指向 的Object 的prototype 去它身上找一找  ====> 如果没有  ,则彻底没有*/
+		
+		//var arr = [1,2,3];
+		var arr = new Array(1,2,3);
+		//console.log(arr.hahaha);
+		
+		Array.prototype.push = function(){
+			
+			for(var i = 0; i < arguments.length; i++) {
+				this[this.length] = arguments[i];
+			}
+			return this.length;
+		}
+		
+		Array.prototype.pop = function() {
+			var last = this[this.length-1];
+			this.length = this.length-1;
+			return last;
+		}
+		
+		Array.prototype.abc = function() {
+			console.log("嘻嘻嘻");
+		}
+		
+		/*var result = arr.push(4,5,6,7,"hello","hi");
+		console.log(arr);
+		console.log(result);*/
+		//arr.abc();
+		var result = arr.pop();
+		console.log(arr);//[1,2]
+		console.log(result); //3
+		/*console.log(arr);*/
+		
+	/*	var arr2 = ["hello","hi"];
+		
+		arr2.abc();*/
+		
+		var str = "    你好哈哈哈哈        ";
+		
+		var result = str.charAt(1);  // String.prototype
+		console.log(result);
+		
+		console.log(str.substring(3,5));
+		
+		console.log("("+str.trim()+")"); // leftTrim
+		
+		//console.log(String.prototype);
+		
+		// 你在给系统内置对象扩展api
+		String.prototype.leftTrim= function(){
+			return this.replace(/^\s+/,"")
+		}
+		
+		var newStr = str.leftTrim();
+		console.log("("+newStr+")");
+		
+		
+	</script>
+</html>

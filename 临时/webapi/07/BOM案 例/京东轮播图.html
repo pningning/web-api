@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        a {
+            display: none;
+            width: 400px;
+            height: 300px;
+            cursor: move;
+            text-align: center;
+            font: 700 80px/300px "simsun";
+        }
+        .show {
+            display: block;
+        }
+        ul {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -66px;
+        }
+        li {
+            float: left;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            color: #fff;
+            line-height: 18px;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.7);    
+        }
+        .current {
+            background-color: red;
+        }
+        span {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            font: 700 30px/60px "simsun";
+            color: #fff;
+            margin-top: -30px;
+            width: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        span:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .right {
+            right: 0;
+        }
+	</style>
+	
+</head>
+<body>
+	<div class="box">
+        <a href="#" class="show">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+
+        <ul>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+    </div>
+</body>
+    <script>
+        // 获取事件相关元素
+        var aA = document.getElementsByTagName('a');
+        var aLi = document.getElementsByTagName('li');
+        var aSpan = document.getElementsByTagName('span');
+        
+        // 给所有li添加单击事件
+        var  timer1 = null;
+        var timer2 = null;
+        var k = 0;//存储当前的li的下标
+        for(var i = 0; i < aLi.length; i ++) {
+             aLi[i].index = i;
+            aLi[i].onclick = function() {
+                for(var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aA[i].className = "";
+                }
+                this.className = "current";
+                aA[this.index].className = "show";
+                k = this.index;
+            }
+            // 给右侧添加鼠标移上事件
+            aSpan[1].onmouseover = function(e) {
+                e = e || event;
+                e.concelBubble = true;
+                timer1 = setInterval(function() {
+                    for(var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aA[i].className = "";
+                    }
+                        k++
+                    if(k>=0 && k <= 5) {
+                       aLi[k].className = "current";
+                        aA[k].className = "show"; 
+                    }else {
+                        aLi[0].className = "current";
+                        aA[0].className = "show";
+                        k = 0;
+                    }                    
+                    
+                },1000)
+            }
+            // 给左侧添加鼠标移上事件
+            aSpan[0].onmouseover = function(e) {
+                e = e || event;
+                e.concelBubble = true;
+                timer2 = setInterval(function() {
+                    for(var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aA[i].className = "";
+                    }
+                    k--
+                    if(k>=0 && k <=5) {
+                       aLi[k].className = "current";
+                        aA[k].className = "show"; 
+                    }else {
+                        aLi[5].className = "current";
+                        aA[5].className = "show";
+                        k = 5;
+                    }   
+                },1000)
+            }
+        }
+
+
+    </script>
+</html>

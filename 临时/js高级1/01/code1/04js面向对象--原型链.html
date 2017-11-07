@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//function Array(){}
+		
+		function Person(){
+			//this.num=25;
+		}
+		
+		//Person.prototype.num = 36;
+		
+		//Array.prototype.num = 45;
+		
+		Object.prototype.num = 58;
+		
+		var p1 = new Person();
+		
+		console.log(p1.num);//undefined
+		
+		
+		console.log(Object.prototype);
+		console.log(Object.prototype.__proto__);
+		
+		
+		//58
+		
+		
+		var  arr = new Array(1,2,3,4);
+		console.log(arr.num);
+		
+		// A instanceof B  看看B 是否在原型链上和A有继承关系 
+		console.log( p1 instanceof Person);// true
+		console.log(p1 instanceof Array ) // false
+		console.log(p1 instanceof Object ); // true
+		
+		
+		Object.prototype.abc = function(){
+			console.log("这是我随便加的方法");
+		}
+		
+		var arr = [1,2];
+		arr.abc();
+		
+		var str = "hello";
+		
+		str.abc();
+		
+		
+		console.log(Array.prototype);
+		
+		
+		console.log(String.prototype);
+		
+		console.log(Object.prototype);
+		
+		console.log(Person.prototype);
+	</script>
+</html>

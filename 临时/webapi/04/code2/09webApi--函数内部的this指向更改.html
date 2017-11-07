@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				margin-bottom: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div id="box2">box2</div>
+	</body>
+	<script type="text/javascript">
+		
+		function fn(a,b) {
+			console.log(a+b);
+			this.style.backgroundColor = "red";
+		}
+		
+//		fn();
+//		document.getElementById("box").onclick = fn;
+		//fn();// 函数下面都会有一个方法  函数名.call()
+		//fn();
+		var oBox = document.getElementById("box")
+		fn.call(oBox);// call() 方法 可以更改当前函数内部的this指向
+		/*如果不传参 那么它和直接执行函数一样
+		如果传参  第一个参数: 你需要更改的内部的this指向对象*/
+		
+		//fn(12,25);
+		fn.call(oBox,12,25);//执行函数的同时 可以把函数内部的this指向更改过来
+		// 如果你要串参数 从第二实参位置开始往后面写参数
+		
+		
+//		oBox.onclick = fn;
+		/*oBox.onclick = function(){
+			fn(12,25);
+		}*/
+	</script>
+</html>

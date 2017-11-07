@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		一、面向对象知识复习  (学习面向对象  就是在学习抽象事物的一种能力)
+			1 什么是对象
+			 对象就是对具体事物的抽象性的概括
+			
+			
+			 万物皆对象：
+			 世界万物都有其特定的状态和内在的运行规律，当然万物之间互相会有联系
+			 鼠标   飞机    女朋友  地球
+			 
+			 鼠标对象： 特征： 颜色 尺寸  价格   行为：单击 双击 移动  滚动
+			 
+			女朋友对象： 特征：姓名 性别  年龄  身高  体重  性格  行为：会做饭  会唱歌  会敲代码  会开车
+			
+			var girlFriend = {
+				name:"小美",
+				age : 25,
+				sex : "女",
+				height:"1.65m",
+				weight:"50kg",
+				charcter:"温柔",
+				cooking: function(){console.log("正在做饭")}
+				coding: function(){console.log("正在debug")}
+				singing: function(){console.log("正在唱歌")}
+				driving: function(){console.log("正在开车")}
+			}
+			
+			通过上面我们发现  我们用程序去描述一个对象？
+			对象的特征（静态的）用 属性描述
+			对象的行为 （动态的 功能性的） 用方法描述
+			
+			
+			学生分数统计：怎么抽象？ 特征 ： 姓名   分数   行为  打印分数   
+			
+			var student1 = {
+				name :"张三",
+				score:75
+			}
+			var student2 = {
+				name :"李四",
+				score:85
+			}
+			
+		2 如何创建对象？
+			1 创建对象的第一种方式  字面量创建方式
+			2  第二种方式     构造函数声明方式
+			
+			如何批量创建
+			 1 工厂方式
+			 2 构造函数批量创建方式
+	</body>
+	<script type="text/javascript">
+		
+		/*function sayHi(){
+			
+		}
+		function sleep() {
+			
+		}
+		function eating(){
+			
+		}*/
+		// 创建一个对象  用这个对象把这些实例对象需要公用的方法 收集起来  放到对象下面/
+		//  用对象来处理  给这些方法设定一个命名空间  防止在全局发生名称冲突
+		var obj = {
+			sayHi:function(){},
+			sleep:function(){},
+			eating:function(){}
+		}
+		
+		var sleep = 33;
+		
+		
+		function Person (name,age) {
+			this.name = name;
+			this.age = age;
+			this.sayHi = obj.sayHi;
+			this.sleep = obj.sleep;
+			this.eating = obj.eating;
+		}
+		
+		var p1 = new Person("小梦",35);
+		var p2 = new Person("小美",25);
+		
+		//console.log(function(){}==function(){});// false
+		
+		console.log(p1.sayHi == p2.sayHi); //true
+		console.log(p1.sleep == p2.sleep); // true
+	</script>
+</html>

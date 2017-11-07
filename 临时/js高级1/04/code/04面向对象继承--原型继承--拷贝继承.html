@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*继承性
+			概念 : 一个对象没有某些属性和方法，另外一个对象有，拿过来用，就是继承！*/
+			
+			
+			// Itouch  (产品)
+			
+			/*属性:  颜色   尺寸   价格 
+			
+			方法:  打游戏   听音乐  (但是不能打电话)*/
+			
+			// 写一个Itouch的构造函数 
+			function Itouch(color,price,size){
+				
+				this.color = color;
+				this.price = price;
+				this.size = size;
+				
+			}
+			Itouch.prototype.playGame = function(){
+				console.log("可以打游戏");
+			}
+			
+			Itouch.prototype.listenToMusic = function(){
+				console.log("可以听音乐");
+			}
+			
+			
+			
+			
+			
+		// 公司着手开发下一代产品   Iphone  （Iphone  颜色  价格 尺寸   打游戏  听音乐   还可以打电话）
+			// 继承 ： 一个对象没有一些属性和方法  但是别人有  直接拿过来用  就是继承
+			
+			function  Iphone(color,price,size){
+				// 在这里 调用一下父级函数 传入参数  的同时 将ITouch函数的内部this指向改成当前的IPhone手机的内部this对象
+				// 借用父级函数 偷偷的把this换成当前iphone手机内部的this
+				//Itouch.call(this,color,price,size);
+				Itouch.apply(this,[color,price,size]);  // ["red","200$","4.2"]
+				// 借用父级构造函数继承   也叫call或者apply继承  可以将父级构造函数里面的属性继承过来 
+			}
+			
+			
+			// 让ITouch的原型赋给IPhone的原型 
+			// 这样原型对象 直接赋给原型对象 会发生引用关系 一旦是引用关系 那么则子对象身上的自己的方法  父级也会拥有
+			//Iphone.prototype  = Itouch.prototype;
+			
+			// 拷贝继承  （将需要继承的父级的原型身上的所有方法依次拷贝复制给当前的手机的原型对象）
+			for(var attr in  Itouch.prototype){
+				Iphone.prototype[attr] = Itouch.prototype[attr];
+			}
+			
+			
+			// 给Iphone手机本身产品添加一个打电话功能
+			
+			Iphone.prototype.callPhone = function(){
+				console.log("可以打电话");
+			}
+			
+			//生产手机了
+			var iphone1 = new Iphone("red","200$","4.2");
+			var iphone2 = new Iphone("black","220$","4.6");
+			
+			console.log(iphone1.color);
+			console.log(iphone1.price);
+			console.log(iphone1.size);
+			iphone1.playGame();
+			iphone1.listenToMusic();
+			iphone1.callPhone();
+			
+			
+			console.log("========================");
+			var itouch1 = new Itouch();
+			itouch1.callPhone();
+			
+			
+			// 总结：  一般 想要继承  我们采用组合形式 继承  
+			/*call或者apply(借用构造函数继承)  + 拷贝继承   
+			   父级的构造函数里面的属性   我们子级想要继承  使用call或者apply(借用构造函数继承) 继承
+			   父级的原型身上方法  我们子级 想要继承  使用属性拷贝继承  */
+	</script>
+</html>

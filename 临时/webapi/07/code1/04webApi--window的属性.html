@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// function alert() {源码}    function alert(){
+		
+		//var alert;//undefined
+		//var alert = 10;// alert 
+		/*function alert() {
+			
+		}
+		
+		alert("你好");*/
+		
+		/*凡是window下面的属性和方法 都会默认在全局 提前声明了(也就是预解析了)
+		函数区别于 方法  函数是自由的   方法属于某一个对象
+		变量区别于属性   变量是自由的   属性属于一个对象
+		但是 更加严格的说 函数其实也是window下面的方法
+		           变量其实也是window下面的属性*/
+		          
+		          var abc = 123;
+		          console.log(window.abc);
+		          function fn() {
+		          	console.log("哈哈");
+		          }
+		          window.fn();
+	</script>
+</html>

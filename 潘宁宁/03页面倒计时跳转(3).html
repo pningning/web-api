@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h2 {
+			margin-top: 100px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h2>
+		<span>5</span>秒钟后页面将跳转到<a href="http://www.itcast.cn">传智播客</a>
+	</h2>
+</body>
+	<script>
+		// 获取事件相关元素
+		var aSpan = document.getElementsByTagName('span')[0];
+		var num = 5;
+		var timer = null;//设置定时器为空
+		timer = setInterval(function() {
+			num--;
+			aSpan.innerHTML = num;
+			if(num == 0) {
+				clearInterval(timer);
+				timer = null;
+				location.href = "http://www.itcast.cn";
+			}
+		},1000)
+	</script>
+</html>

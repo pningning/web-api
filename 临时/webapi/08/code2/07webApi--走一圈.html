@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="走一圈" id="btn1" />
+		
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 给按钮添加单击事件  让div的left 增加
+		var oBtn1 =document.getElementById("btn1");
+		var oBox = document.getElementById("box");
+		
+		// 设置一个变量 用来存定时器
+		var timer = null;
+		// 单击往前走
+		oBtn1.onclick =  function() {
+			/*move(oBox,"left",7,800);
+			move(oBox,"top",7,500);
+			move(oBox,"left",-7,100);
+			move(oBox,"top",-7,100);*/
+			move(oBox,"left",17,800,function(){
+				//alert("运动完了");
+				move(oBox,"top",17,500,function(){
+					move(oBox,"left",-17,100,function(){
+						move(oBox,"top",-18,100)
+					})
+				})
+			})
+		}
+
+		//  让谁运动   改变什么属性   速度   目标点
+		function move(obj,attr,speed,target,fn) {
+			
+			clearInterval(timer);
+				// 通过调用getStyle函数  获取任意样式 然后去掉单位
+				var dis = parseFloat(getStyle(obj,attr));  // 100px    
+			
+			//var dis = oBox.offsetLeft; // 100  offsetTop  offsetLeft
+			// 开新的定时器之前 先将之前的定时器清除
+			timer = setInterval(function() {
+				
+				dis += speed; // 100+7 +7 + 7
+				// +7   -7
+				// 往前走的判断　　100==>800    
+				/*if(dis >=target&&speed>0) {
+					
+					dis = target; // >=800   
+				}
+				//往回走的判断   800==>100
+				if(dis <=　target&&speed<0) { //<=100
+					
+					dis = target;
+				}*/
+				if(dis >=target&&speed>0||dis <=　target&&speed<0) {
+					
+					dis = target; // >=800   
+				}
+				
+				obj.style[attr] = dis + "px";
+				
+				if(dis ==target) { //800   100
+					clearInterval(timer);// 清除定时器
+					timer = null;
+					// 这里清除完定时器 说明当前运动已经运动完毕了
+					//然后 接着应该做下一步的事情
+					/*if(fn){
+						fn();
+					}*/
+					fn&&fn();// 
+				}
+								     // 120+10 
+			},30)
+			
+			
+		}
+		
+		//单击往回走
+		function getStyle(obj,attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}else {
+				return getComputedStyle(obj)[attr];
+			}
+		}
+		
+	</script>
+</html>

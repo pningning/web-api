@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#oUl {
+				width: 300px;
+				height: 200px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<!--
+		<a href="#">删除</a> 它会在本页面发生一次跳转
+		<a href="javascript:;">删除</a> 阻止当前链接进行跳转
+	-->
+	<body>
+		<ul id="oUl">
+			<!--<li>你发表的留言<a href="javascript:;">删除</a></li>-->
+		</ul>
+		<input type="text" id="text1" />
+		<input type="button" value="单击发送" id="btn1" />
+	</body>
+	<script type="text/javascript">
+		function $(id) {
+			return document.getElementById(id);
+		}
+		
+		// 分析功能： 单击按钮以后  我需要文本框中的内容 放到ul里面 作为一行存在  
+		
+		// 1 获取相关元素
+		var oUl = $("oUl"),oText1 = $("text1"),oBtn = $("btn1");
+		// 2 事件类型 单击事件  给按钮添加单击事件
+		
+		oBtn.onclick = function() {
+			//我需要文本框中的内容 放到ul里面 作为一行存在  
+			var str = oText1.value;// 页面中的文本一定是 字符串类型数据
+			
+			oUl.innerHTML += '<li>'+ str +'<a href="javascript:;">删除</a></li>';
+			
+			oText1.value = "";
+			//str = "";
+			//oText1.value = str;
+			
+			// 单击删除  删除这一行留言
+			
+			//1 获取相关元素 获取a
+			// 当上面单击之后 往页面上添加进去留言了 ，然后从ul里面获取所有的a
+			var aA = oUl.getElementsByTagName("a");
+			var aLi = oUl.getElementsByTagName("li");
+			
+			//2 给所有的a 都添加单击事件   单击完删除这一行
+			for(var i = 0; i < aA.length; i++) {
+				/*aA[i].index = i;*/
+				aA[i].onclick = function() {
+					  // 单击完删除这一行
+					
+					 this.parentNode.parentNode.removeChild(this.parentNode);
+//					 aLi[this.index].style.display = "none";
+				}
+			}
+		}
+		
+		/*console.log(function(){}==function(){});
+		console.log({}=={});
+		
+		obj.addEventListener("click",function(){console.log(11);},false);
+		obj.addEventListener("click",function(){console.log(22);},false);
+		
+		
+		obj.removeEventListener("click",function(){})
+		
+		
+		obj.handle = function(){
+			evFn.call(obj);
+		}*/
+		
+	</script>
+</html>

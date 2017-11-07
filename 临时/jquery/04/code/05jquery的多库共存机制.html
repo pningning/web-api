@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script>
+		var 潘宁宁 = $.noConflict();//将$身上的全部功能给了ZaG  将$控制权释放出来
+	</script>
+	<script src="myTool.js"></script>  
+	<!--zepto 移动端类似于jQuery的库   它也会用$  市面上也有很多框架和库--> 
+	<script type="text/javascript">
+		// $ === jQuery
+		
+		//console.log( $("#box") );
+		
+//		console.log( $==jQuery );
+
+		/*console.log( jQuery("#box") );
+   		jQuery("#box").css("backgroundColor","red");
+   		jQuery("#box").html("呵呵呵")*/
+   		
+   		潘宁宁("#box").css("background","orange");
+   		
+   		alert( 潘宁宁("#box").html());
+	</script>
+</html>

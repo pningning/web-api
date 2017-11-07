@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<span id="oSpan">span</span>
+		<li>111</li>
+		<li>222333</li>
+		<li>333</li>
+		<li>444</li>
+		<p>1111</p>
+		<p>1111</p>
+		<p>1111</p>
+		<p>1111</p>
+		<p>1111</p>
+	</body>
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		/*function $(id) {
+			return document.getElementById(id);
+		}
+		function $$(tagName) {
+			return document.getElementsByTagName(tagName);
+		}*/
+		/*function $(selector) {
+			
+			if(selector.charAt(0)=="#") { "#div"
+				return document.getElementById(selector.substring(1));
+			}else {
+				return document.getElementsByTagName(selector);
+			}
+			
+			
+		}*/
+		
+		
+		var oBox = $("#box");   //"div" ///#div  .div   div
+		var oSpan = $("#oSpan");
+		oBox.style.backgroundColor = "red";
+		oSpan.style.backgroundColor = "green";
+		var aLi =$("li");
+		var aP = $("p");
+		
+		for(var i = 0; i < aLi.length; i++) {
+			aLi[i].style.border = "2px solid red";
+		}
+		for(var i = 0; i < aP.length; i++) {
+			aP[i].style.fontSize = "40px";
+		}
+	</script>
+</html>

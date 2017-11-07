@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			#backTop {
+				width: 50px;
+				height: 50px;
+				background: #ccc;
+				text-align: center;
+				font: 20px/50px "微软雅黑";
+				position: fixed;
+				right: 10px;
+				bottom: 50px;
+				cursor: pointer;
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<input type="button" value="单击设置scrollTop值为300" />
+		<div id="backTop">Top</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		// 当整个浏览器窗口 滚动条发生滚动的时候 触发该事件
+		/*window.onscroll = function(){
+			
+			//　查看一下垂直方向滚动条滚动过的距离
+			// 浏览器由于兼容性问题  需要处理一下
+			var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+			
+			console.log(scrollT);
+			
+		}*/
+		
+		// jquery 
+		/*$(window).scroll(function(){
+			//scrollTop()  设置或者获取垂直滚动条在垂直方向上滚动过的距离（卷去的距离）的位置
+			// 读取一下这个值
+			console.log( $("html").scrollTop()  );// 没有兼容性问题
+			
+			
+			
+		});
+		
+		
+		$("input").click(function(){
+			
+			// 设置一下页面你上的垂直方向上滚动条滚动的距离
+			$("html").scrollTop(300);
+			
+		})*/
+		
+		
+		$(window).scroll(function(){
+			
+			var dis = $("html").scrollTop();
+			if(dis>=800) {
+				$("#backTop").fadeIn(600);
+			}else {
+				$("#backTop").fadeOut(600);
+			}
+			
+			
+		});
+		
+		var timer = null;
+		
+		$("#backTop").click(function(){
+			
+			//var cur = $("html").scrollTop();
+			
+			
+			$('html').animate({
+				scrollTop:0 //直接滚动到0
+			},100);
+
+			
+		/*	timer = setInterval(function(){
+				cur -= 50;
+				if(cur<=0) {
+					cur = 0;
+					clearInterval(timer);
+				}
+				$("html").scrollTop(cur);
+			},15);*/
+			
+		})
+		
+	</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img {
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="开灯" />
+		<input type="button" value="关灯" /><br />
+		<img src="09.jpg" alt="" />
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//  单击开灯按钮  让body的背景颜色变成白色    单击关灯按钮 让body背景的颜色黑色
+		
+		// 1 获取相关元素   
+		
+		
+		//2 绑定事件
+		//单击开灯按钮  让body的背景颜色变成白色
+		
+		// A.onclick = function(){}
+		
+		$("input:eq(0)").click(function(){
+			// 这里面做事情
+			//alert(123);
+			$("body").css("backgroundColor","white");
+		});
+		 //  单击关灯按钮 让body背景的颜色黑色
+		$("input:eq(1)").click(function(){
+			$("body").css("background","black");
+		})
+	</script>
+</html>

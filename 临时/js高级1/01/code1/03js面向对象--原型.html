@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function Person() {
+			
+		}
+		// 我们手动给当前的构造函数的原型这个属性上添加了两个方法
+		Person.prototype.sayHi = function(){
+			console.log("hello");
+		}
+		Person.prototype.sleep = function(){
+			console.log("sleeping");
+		}
+		
+		//console.log(Person.prototype);
+		
+		var p1 = new Person();
+		
+		var p2 = new Person();
+		
+		console.log(p1.constructor);
+		console.log(p2.constructor);
+		
+		console.log(p1.__proto__);  // __proto__ 它是一个只读属性  它直接指向当前实例对象的构造函数的原型
+		console.log(p1.__proto__ == Person.prototype); 
+	/*	p1.sayHi();
+		p2.sleep();*/
+		
+		
+		//console.log(p1.sayHi == p2.sayHi);
+		
+		//function fn(){}
+		
+		//console.dir(fn);
+		
+		//console.log(Person);
+		//console.dir(Person);// 把对象的详细信息打印出来
+		
+		/*任何函数下面都有一个属性 叫prototype  原型 这个prototype这个属性本身又是一个对象  
+		
+		它既然是对象 那么它下面一定可以挂载属性和方法*/
+		
+	</script>
+</html>

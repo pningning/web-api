@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box");
+		
+		oBox.onclick = function(e) {// 形参相当于局部变量
+			
+			//console.log(ev);// 
+			// event 事件对象
+			//console.log(event);
+			//事件对象 的兼容性处理
+			//var result = ev || event;
+			//将事件对象做一个兼容处理　然后在赋给ev本身
+			e = e || event;
+			
+			console.log(e);//这里的ev一定是处理兼容后的事件对象
+		}
+		
+		/*var result= null || 5>3;
+		console.log(result);*/
+		
+		 /*function fn(a){
+		 	a = a||0;
+		 	console.log(a);//0
+		 }
+		 fn()*/
+	</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>span1</span>
+			<span id="oSpan">span2</span>
+			<span>span3</span>
+			<p>1111</p>
+			<p>2222
+				<span>span1</span>
+				<span>span2</span>
+			</p>
+			<p>333
+				<span class="aa">span3</span>
+			</p>
+		</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//筛选选择器 都是方法  都有()
+		
+		//子类选择器   children(selector)  //  相当于$(“ul>li”)
+		//  括号中 可以写 参数 参数 是可选的   筛选的意思
+//		$("#box>span")
+			// box的下面的所有的直接子元素
+		//$("#box").children("span").css("background","red");
+		
+		// find(selector) 后代选择器            //    相当于$(“ul li”),
+		
+		
+		//$("#box").find("span").css("border","2px solid green");
+		
+		// A.siblings()  A的其他兄弟们   参数可选   用来筛选具体的兄弟们
+		
+//		$("#oSpan").siblings().css("backgroundColor","yellow");
+		$("#oSpan").siblings("span").css("backgroundColor","yellow");
+		
+		
+		// A.parent()  找到A的父级 (结构上的父级)
+		
+		$("#oSpan").parent().css("border","4px dashed purple");
+		
+		$("span.aa").parent().parent().css("background","gray");
+		
+		//  eq(index)
+		
+		//$("#box>span").eq(2).css("color","white");
+		//$("#box>span:eq(2)").css("color","white");
+	</script>
+</html>

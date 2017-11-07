@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.hehe{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">单击添加span 放入div中最前面</button>
+		<div id="box">
+			<p>pppp[pp]</p>
+			<p>pppp[pp]</p>
+			<p>pppp[pp]</p>
+			<p>pppp[pp]</p>
+			<p>pppp[pp]</p>
+			<p>pppp[pp]</p>
+			<em>em</em>
+		</div>
+		<!--1.父元素.appendChild(需要添加的子节点) 往里面的最后追加进去  
+		2.父元素.insertBefore(你需要添加的元素,原有的元素)
+		3.父元素.removeChild（需要移除的子节点） 
+		4.父元素.replaceChild(新的元素，你需要替换的元素)-->
+	</body>
+	<script type="text/javascript">
+		function first(obj){
+			var ele = obj.firstElementChild || obj.firstChild;
+			if(ele&&ele.nodeType==1) {
+				return ele
+			}else {
+				return null;
+			}
+		}
+		function last(obj){
+			var ele = obj.lastElementChild || obj.lastChild;
+			if(ele&&ele.nodeType==1) {
+				return ele
+			}else {
+				return null;
+			}
+		}
+		var oBox = document.getElementById("box");
+		var oBtn = document.getElementById("btn");
+		/*var oP = oBox.getElementsByTagName("p")[4];
+		
+		var span = document.createElement("span");
+		span.innerHTML = "span";
+		span.className = "hehe";
+		oBox.insertBefore(span,oP);*/
+		
+		oBtn.onclick = function() {
+			var span = document.createElement("span");
+			span.innerHTML = "span";
+			span.className = "hehe";
+			oBox.insertBefore(span,first(oBox));
+		}
+		
+		//创建一个div标签
+		
+		var oDiv = document.createElement("div");
+		
+		var oEm = last(oBox);
+		
+		oBox.replaceChild(oDiv,oEm);
+	</script>
+</html>

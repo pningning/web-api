@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" title="盒子">哈哈<!--这是一个注释--></div>
+		<ul id="oUl">
+			<li>1111</li>
+			<li>222</li>
+			<li id="aa">333</li>
+			<li>4444</li>
+		</ul>
+		<ol id="oOl">
+			
+		</ol>
+	</body>
+	<script type="text/javascript">
+		
+		var oUl = document.getElementById("oUl");
+		
+		//oUl.childNodes[1].style.backgroundColor = "blue";
+		//oUl.children[0].style.backgroundColor = "blue";
+		
+		//A.firstChild 只读属性     A的第一个孩子  直接子元素 
+		// 标准浏览器 包含空白文本和元素节点
+		// 非标准  只包含元素节点类型
+		//console.log(oUl.firstChild);
+		//oUl.firstChild.style.backgroundColor = "pink";
+		
+		// 在标准浏览器下 还有一个方法  firstElementChild第一个元素子节点
+		//oUl.firstElementChild.style.backgroundColor = "purple";
+		
+		
+		/*var child = oUl.firstElementChild || oUl.firstChild;
+		
+		if(child&&child.nodeType==1){
+			child.style.backgroundColor = "green";
+		}*/
+		
+		// 封装一个获取某个元素里面的第一个元素子节点
+		//first(oUl);
+		function first(obj) {
+			//    传入 obj 之后  
+			//     标准浏览器中 可以识别第一个属性 获取的是第一个元素节点类型
+			//     非标准    不能识别第一个属性 为假 然后走后面  可以识别第二个属性  并且只包含元素节点
+			//  如果一个子节点都没有  标准和非标准浏览器都获取不到元素节点  则  firstEle不存在 ，那么返回null
+			//  如果里面只有一个文本节点 那么 文本节点也是存在的 是真的  所以要再加一个条件 限制住文本
+			var firstEle = obj.firstElementChild || obj.firstChild;
+			
+			
+			if(firstEle&&firstEle.nodeType==1){
+				return firstEle;
+			}else {
+				return null;
+			}
+			
+		}
+		
+		var oUl = document.getElementById("oUl");
+		if( first(oUl) ) {
+			first(oUl).style.backgroundColor = "yellow";
+		}else {
+			alert("没有元素子节点");
+		}
+		
+		var oOl = document.getElementById("oOl");
+		if( first(oOl) ) {
+			first(oOl).style.backgroundColor = "yellow";
+		}else {
+			alert(oOl+"没有元素子节点");
+		}
+		
+		
+		/*childNodes ==> children
+		firstChild  firstElementChild  做兼容处理
+		lastChild 里面的最后一个子节点    lastElementChild 里面的最后一个元素子节点
+		
+		previousSibling 前一个兄弟节点    previousElementSibling 前一个元素兄弟节点
+		
+		nextSibling  下一个兄弟节点     nextElementSibling 下一个兄弟元素节点 */
+		
+		
+		
+		var aa = document.getElementById("aa");
+		prev(aa)
+		function prev(obj) {
+			var prevEle = obj.previousElementSibling || obj.previousSibling;
+		
+			if(prevEle&&prevEle.nodeType==1){
+				return prevEle;
+			}else {
+				return null;
+			}
+		}
+		
+	</script>
+</html>

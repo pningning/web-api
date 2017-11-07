@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function fn(a,b,c){
+			console.log(a+b+c);
+		 	console.log(this);	
+		}
+		// fn.call(); 用来更改this指向问题
+		
+		//fn();//window
+		
+		// 在函数下面有一个方法  call() 
+		fn(12,15,10);
+		fn.call(document,12,15,10); // 等价 fn();
+		
+		//call方法 可以传入参数  第一个参数：需要更改的this指向  从第二个参数起 后面都是实际传入参数
+		
+		// 如果第一个参数 为null 或者undefined  默认函数内部this指向window
+	</script>
+</html>

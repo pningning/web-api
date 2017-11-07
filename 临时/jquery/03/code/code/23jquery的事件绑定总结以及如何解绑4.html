@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//on绑定方式  用off解绑
+		
+		/*$("#box").on("click mouseout",["red","green","orange"],function(e){
+			console.log(e.data);
+		})
+		
+		$("#box").off("mouseout");*/
+		
+		
+		$("#box").on({
+			"mouseover":function(e){
+				$(this).css("background",e.data[0]);
+			},
+			"click":function(e){
+				$(this).css("background",e.data[1]);
+			},
+			"mouseout":function(e){
+				$(this).css("background",e.data[2]);
+			}
+		},["red","green","orange"])
+		
+//		$("#box").off("click");
+		//$("#box").off("mouseover mouseout");
+		$("#box").off();
+	</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 100px;
+				height: 100px;
+				border:1px solid red;
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box">
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+			<p>ppppp</p>
+		</div>
+		<!-- A.scrollTop  A元素内部的垂直滚动条滚动过(卷曲过的)（顶部）的距离
+		 A.scrollLeft  A元素内部的水平滚动条滚动过的（左侧）距离 （一般网页不允许出现水平滚动条 用户体验不好）-->
+	</body>
+	<script type="text/javascript">
+		
+		//console.log(document.documentElement.scrollTop);// 页面垂直方向滚动条滚动过的距离
+		//给文档添加滚动事件　　也就是页面滚动条一滚动　就立即触发该事件
+		/*document.onscroll = function() {
+			//console.log(111);
+			/*console.log(document.documentElement.scrollTop);// 265
+			console.log(document.body.scrollTop);*/
+			//console.log(document.documentElement.clientHeight); //1735+265+8*2
+		// 谷歌  火狐  IE 9以及以上
+		// 将页面的垂直方向滚动过的距离做一个兼容性处理
+		/*	var scrollT = document.documentElement.scrollTop || document.body.scrollTop
+			console.log(scrollT);
+		}*/
+			
+		var oBox = document.getElementById("box");
+		
+		oBox.onscroll = function() {
+			
+			console.log(this.scrollTop);
+			
+		}
+		oBox.onclick = function() {
+			this.scrollTop = 20;
+			//console.log(this.scrollTop);
+			
+		}
+	</script>
+</html>

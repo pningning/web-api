@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="单击跳转" />
+		
+	</body>
+	<script type="text/javascript">
+		//console.log(window.location);
+		var urlStr = "http:// www.baidu.com:80/login/login.php?username=zhangsan&age=26&password=1234";
+		// {
+//			username:"zhangsan",
+//			age : 26,
+//			password: 123456
+//		}
+		console.log( query(urlStr) );
+		
+		function query(str) {
+			// 建立一个空对象 用来存url地址中的参数
+			var obj = {};
+			
+			var idx = str.indexOf("?");
+		
+			var data = str.substring(idx+1);
+			//"username=zhangsan    &   age=26   &    password=1234"
+			console.log(data);
+			var arrData = data.split("&");
+			console.log(arrData);
+			//  ["username=zhangsan", "age=26", "password=1234"]
+			for(var i = 0; i < arrData.length; i++) {
+				
+				var  smallArr  = arrData[i].split("=");// ["username","zhangsan"]
+				
+				obj[smallArr[0]] = smallArr[1]; // { "username":"zhangsan"}
+				
+			}
+			return obj;
+		}
+		
+		
+		var oBtn = document.getElementsByTagName("input")[0];
+		
+		oBtn.onclick = function() {
+			location.href = "http://www.163.com";
+		}
+		
+	</script>
+</html>

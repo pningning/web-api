@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//1  [usb]  匹配其中的任意一个字符
+		
+		/*var str = "out";
+		
+		var re = /o[usb]+t/;
+		
+		if(re.test(str)){
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到")
+		}
+		*/
+		
+		//2 范围 [0-9] [a-z]  [0-9a-zA-Z]  [\w]
+		
+		/*var str2 = "a5c"; // 456
+		
+		//var re = /a[0-37-9]c/;
+		var re = /a[a-z]c/;
+		if(re.test(str2)){
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到")
+		}
+		*/
+		
+		//3  排除 [^c]  注意： ^ 符号 在[]里面的前面 加上 代表着取反                           ^符号 还有另外一个意思   作为定界符 （最开始的位置）
+		
+		var str = "cat";
+		var str2 = "bat";
+		
+		var re = /[^c]at/;
+		if(re.test(str2)){
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到")
+		}
+		
+		// 4  组合 [a-z0-9A-Z]    \w (字母数字下划线)
+	</script>
+</html>

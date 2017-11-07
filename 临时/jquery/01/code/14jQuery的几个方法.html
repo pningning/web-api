@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"><em>box</em></div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*
+		html()   text()
+        css()	*/	
+        //html(); 可以读取或者设置 某个元素中的内容
+        
+        //alert( $("#box").html() );
+        //alert( $("#box").text() );
+        
+        //$("#box").html("<strong>哈哈哈哈<strong>");
+       // $("#box").text("<strong>哈哈哈哈<strong>");
+       
+       
+        //css() 用来设置或者读取样式的
+        
+        //alert( $("#box").css("backgroundColor") )
+        
+        //设置: 有好多方式可以设置
+        //$("#box").css("backgroundColor","green");
+       /* $("#box").css("background-color","green");
+        $("#box").css("border","3px solid purple");
+        $("#box").css("fontSize","50px");*/
+        // 一次性设置多条样式
+        
+       /* $("#box").css({
+        	"background-color":"green",
+        	"border":"3px solid purple",
+        	"fontSize":"50px"
+        })*/
+        //$("#box").css("backgroundColor","green");
+        //$("#box").css("backgroundColor","green");
+        
+       /*  $("#box").css({
+        	"background-color":"green",
+        	"border":"3px solid purple",
+        	"font-size":"50px"
+        })
+         $("#box").css({
+        	backgroundColor:"green",
+        	border:"3px solid purple",
+        	fontSize:"50px"
+        })
+         json格式 在前面 键名加不加引号都行  但是后端服务器返回的json数据  键名必须加引号 而且是双引号*/
+	</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="哈哈" />
+		<input type="button" value="单击获取文本框的值" />
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//val() 方法  专门用来获取 表单中  类似于 input文本框 中的值   或者 textarea文本域中的值
+		
+		
+		$("input[type=button]").click(function(){
+			
+//			console.log( $("input[type=text]").attr("value") ); 用这个方法获取的只能是初始化设定的那个value值
+			//console.log( $("input[type=text]")[0].value );
+			
+			//console.log( $("input[type=text]").val() );
+			
+			
+			$("input[type=text]").val("这是我设置的内容")
+		})
+		
+		
+		
+	</script>
+</html>

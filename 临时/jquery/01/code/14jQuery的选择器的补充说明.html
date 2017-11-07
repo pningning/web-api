@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 500px;
+				border:1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>
+				<a href="">
+					<span>span</span>
+				</a>
+			</p>
+		</div>
+		<ul id="oUl">
+			<li>这是第1个li的内容</li>
+			<li>这是第2个li的内容</li>
+			<li class="abc">这是第3个li的内容</li>
+			<li>这是第4个li的内容</li>
+			<li>这是第5个li的内容</li>
+			<li>这是第6个li的内容</li>
+		</ul>
+		<div id="div">
+			<p>pppp11111</p>
+			<p>pppp22222</p>
+			<span>span11111</span>
+			<span class="abc">span2222</span>
+			<p><span>span33333</span>pppp33333</p>
+			<p>pppp444444</p>
+			
+			<p>pppp55555</p>
+		</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$("span").parents("#box").css("background","blue"); 
+		
+		//console.log( $("span").parents() );
+		
+		//$("span").parent().parent().parent().css("background","red");
+		
+		$("ul li.abc").next().css("backgroundColor","red");
+		$("ul li.abc").prev().css("backgroundColor","orange");
+		
+		
+		//console.log( $("ul li.abc").index()   );// 查看一下li.abc的索引  2
+		/*A.index() A在并列兄弟们之间排行老几 
+		console.log( $("#div .abc").index() );*/
+		console.log( $("#div p span").index() ); //0
+	</script>
+</html>

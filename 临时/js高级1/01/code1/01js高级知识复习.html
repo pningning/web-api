@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		一、js基础知识复习
+			1 什么是js？
+				js是一门运行在客户端（浏览器端）的以事件驱动为主的解释型脚本语言
+			2 js的语言特点：
+				
+				解释型：代码不需要事先编译，而是边解释边执行  遇到错误则停止  产出直接使执行结果 而不是编译型语言（产出另一种语言）
+				动态性： 代码在执行过程中 可以随时改变和添加函数或者方法 脚本语言都是动态性语言
+				运行环境： 浏览器（宿主环境） node平台（ecmascript）
+				语言范式：js是一门基于对象 而非面向对象的语言  采用函数式编程  语法较为简单，语句结构较为松散 （js是一门弱类型语言）
+			3 js和浏览器的关系
+			
+			4 js的组成： ecmascript  DOM  BOM
+			
+			5 js的应用及其广泛
+			
+			6 js的发展历史： 1995  网景公司 布兰登艾奇
+			
+			7 js的语法规则：
+				标识符的命名规则和规范：
+				
+				关键字（var  function ）和保留字（class）
+				
+				注释： 单行注释 和多行注释
+				
+				
+				严格模式：
+				 这种模式存在的意义：
+				 去掉一些模棱两可的一些不规范语法	js的语法更加规范  运行更加安全
+				 提供浏览器的js解析器的解析效率  为未来的新的js版本做一个铺垫
+				 
+				 声明方式：在js代码运行之前  "use strict";
+				举例： 函数直接调用，内置的this指向的是undefined 而非window
+				    不能出现隐式全局变量  
+				   a = 25;会报错
+				   
+				变量概念 ： 内存中用来存储数据的标识符
+				
+				数据类型： 6种
+				
+				
+				操作符
+				
+				流程控制语句
+				
+			8 js中的数据类型：
+				简单数据类型  也称之为值类型
+				Number  String Boolean  Undefined  Null	
+				复杂数据类型 也称之为引用类型（址类型）
+				Object （Array数组也属于对象）
+				
+				画图演示
+				
+				总结： 1 值类型数据一般在栈内存中存储  引用类型的数据一般堆内存中存储
+				    2  值类型传递的把它的值复制一份 产生一个新的值的副本 传递过去 （值传递）
+				               引用类型把它的地址复制一份  产生一个新的地址的副本 传递过去 （引用传递 址传递）
+				               
+		    9 Javascript的执行过程 (面试题 较多)
+		    
+		    10 异常处理语句  try catch 语句
+		    
+		             这个语句存在的意义：1  防止 一些程序出错 影响后面的代码的运行
+		                  2  屏蔽一些底层或者低端的错误 ，从而给用户一个友好的提示
+		     完整的一个异常处理语句 （常用于后端） ajax对象创建
+		     try{
+		     	尝试运行这里面的语句
+		     	如果出错 则进入catch中
+		     }catch(e) {
+		     	try语句有错误的情况发生 这里通过传入e （错误对象） 可以打印输出这个错误
+		     }finally{
+		     	无法是否进入catch语句  最后都会执行这里的代码
+		     }
+		     
+	</body>
+	<script type="text/javascript">
+		
+		var num = 25;
+		
+		var num2 = num;
+		/*num2 += 3;*/
+		console.log(num);
+		console.log(num2);
+		
+		
+		var  obj = {
+			name:"张三",
+			age: 26
+		}
+		
+		var obj2 = obj;
+		
+		console.log(obj);
+		console.log(obj2);
+		
+		
+	/*	var n = 36;
+		
+		function fn(n){
+			n+=3;
+			console.log(n);
+		}
+		fn(n);
+		console.log(n);*/
+		/*
+		var arr = [1,2,3];
+		fnction fn2 (arr) {
+			arr.push(4);
+			arr = [1,2,3,4];
+			console.log(arr);
+		}
+		fn2(arr);
+		console.log(arr);*/
+		
+		
+		
+		console.log(a);
+		
+		var  num1 = 25;
+		var num2 = 36;
+		alert(num1+num2);
+		
+		
+		
+		
+		
+	</script>
+</html>

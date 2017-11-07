@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		一、准备工作：
+		       项目页面搭建：
+		  在页面中html结构中 div#map
+		 在样式表中书写样式：
+		 	#map {
+			  width: 800px;
+			  height: 600px;
+			  background-color: #ccc;
+			  position: relative;
+			}
+       	 二 、 功能实现：
+       	 	1 分析一下思路: 整个游戏项目 较为复杂  一般对于较大型web项目 采用面向对象写法 ： 将功能进行分治，代码耦合性较低，
+       	 	有利于后期开发和维护
+       	 	2 通过观察页面 发现整个游戏当中 有 食物 和  蛇    地图   我们将这些事物进行抽象  抽象成对象 进行描述
+       	 	3 将整个游戏抽象成一个对象  统一管理各个子对象   由子对象来分别完成各个功能
+       	 	
+       	 	
+       	三  代码的实现：
+       		
+       		1  食物对象：
+       		     属性：
+       		    - x       
+				- y
+				- width
+				- height
+				- color 
+       		     
+       		   方法：随机创建一个食物对象，并输出到map上
+       		   
+       		   
+       		 需要写一个食物的构造函数
+       		 function Food(){
+       		 	将食物的属性特征 挂载到当前的构造函数中的this身上
+       		 	this.x = x || 0;
+       		 	this.color = color || "green";
+       		 }
+       		 
+       		 将渲染方法挂载到构造函数的原型上面
+       		 
+       		 Food.prototype.render= function(){
+       		 	remove(); 在重新生成新的食物之前先将页面上旧的食物删除
+       		 	随机x y坐标
+       		 	创建一个div作为食物
+       		 	给div 添加那些属性
+       		 	将div放入map中
+       		 }
+       		 
+       		 需要准备一个移除食物的方法
+       		 function remove(){
+       		 	在全局定义了一个数组变量  用来存放入页面的食物
+       		 	根据数组中的食物 找到它的页面上的父级map  让map去删除页面上的食物
+       		 	把数组清空  以便于下一次重新存入新的食物
+       		 }
+       		 
+       		 
+       	
+       	   2 蛇对象：
+       	       	属性：
+       	       	width  
+				height  
+				body数组，蛇的头部和身体，第一个位置是蛇头
+				direction
+       	        方法：
+       	        1 渲染蛇的方法 render
+       	        2 蛇有一个移动方法move
+       	        
+       	        
+       	    function Snake(){
+       	    	
+       	    	往this身上添加属性
+       	    	
+       	    }
+       	    //1 渲染蛇的方法
+       	    Snake.prototype.render = function(){
+       	    	remove()； 重新渲染新的蛇节之前 先删除旧的页面上的蛇
+       	    	根据蛇的body的蛇节数数组 循环  在循环中 创建div 作为蛇节
+       	    	把蛇节分别添加自己相应的属性
+       	    	把蛇节放入到map中
+       	    }
+       	    //  2 蛇有一个移动方法move
+       	    Snake.prototype.move = function(){
+       	    	
+       	    	倒序循环  将前一节的蛇的坐标赋给后一节 的蛇节的坐标  但是蛇头的坐标 要根据方向来判断
+       	    	
+       	    	每往前移动一下 就要判断是否吃到食物了
+       	    	如果吃到食物了，将蛇节数增加一节
+       	    	让食物重新渲染
+       	    }
+       	    // 写一个删除蛇节的方法
+       	    function remove(){
+       	    	在全局定义了一个数组变量  用来存放入页面的蛇节
+       		 	根据数组中的蛇节  循环  找到它的页面上的父级map  让map去删除页面上的对应的蛇节
+       		 	把数组清空  以便于下一次重新存入新的蛇节
+       	    }
+       	    
+       	    
+       	   
+       	   
+       	   3 游戏对象   统一所有的子对象  把子对象 作为游戏对象属性
+       	      	属性：
+       	                         食物的实例对象
+		       	    蛇的实例对象
+		       	    地图
+		       	  
+		      	  方法： start 开始游戏
+       	      
+       	      
+       	      function Game (map){
+       	      	this.food = new Food();
+       	      	this.map = map;
+       	      	this.snake = new Snake();
+       	      	
+       	      }
+       	      
+       	      Game.prototype.start = function(){
+       	      	让食物渲染一下  this.food.render()
+       	      	让蛇渲染一下   this.snake.render();
+       	      	让蛇自动走起来  runSnake();
+       	      	键盘控制方向方法  bindKey();
+       	      }
+       	      
+       	      
+       	      function runSnake(){
+       	      	
+       	      	开了一个定时器 在定时器里面 调用    蛇的移动方法move  蛇的渲染方法 render
+       	      	
+       	      }
+       	      
+       	      function bindKey（）{
+       	      	使用了一个封装好的事件绑定的兼容性函数 
+       	      	将document文档绑定键盘按下事件  获取键盘编码  判断编码 将蛇的方向改过来
+       	      }
+       	      
+       	      
+       	      注意： 整个项目：每一个对象的编写 功能代码的实现  都用函数的立即执行表达式 自调用 进行包裹
+       	      这样可以设定命名空间 防止放在全局发生名称冲突  将功能独立
+       	      (function(形参w){
+       	      	
+       	      	这里写代码
+       	      	
+       	      	暴露一下
+       	      	w.Food = Food;
+       	      	w.Snake =Snake;
+       	      })(window实参);
+       	      
+       	      
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function fn(x, y, z) {
+		  console.log(fn.length) // => 形参的个数  3
+		  console.log(arguments) // 伪数组实参参数集合  2  [12,20]
+		 // console.log(arguments.callee === fn) // 函数本身
+		  console.log(fn.caller) // 函数的调用者  null  这个函数被哪个函数嵌套这调用，那么caller就指向那个函数
+		  console.log(fn.name) // => 函数的名字 fn
+		}
+		//console.dir(fn);
+		
+		//fn(12,20);
+		
+		/*function a(){
+			fn(12,20);
+		}
+		a();*/
+		
+		function a(){
+			console.log(1);
+//			a();
+			arguments.callee();
+		}
+		a();
+	</script>
+</html>

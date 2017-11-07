@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+	<script src="myTools.js"></script>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+			//console.log(oDiv);
+		function fn() {
+			this.style.backgroundColor = 'pink';
+		}
+
+		function fn2() {
+			this.style.border = '3px solid green';
+		}
+		function fn3() {
+			this.style.borderRadius = '5px';
+		}
+
+		bind(oDiv,"click",fn);
+		bind(oDiv,"click",fn2);
+		bind(oDiv,"click",fn3);
+
+		unbind(oDiv,"click",fn3);
+
+	</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 一  jQuery的基础选择器：
+		 	1 id选择器   $("#box")
+		 	2  类选择器     $(".box")
+		 	3 标签选择器  $("div")
+		 	4 并集选择器  $("div,p,a")
+		 	5交集选择器   $("div.aa")
+		二  层级选择器
+		    1 子代选择器  $("ul>li")
+		    2 后代选择器  $("ul li")
+		    
+		三  过滤选择器 带：
+		   :eq(index)  $("ul li:eq(2)")  下标从0开始
+		   :odd  奇数  
+		   :even 偶数
+		   补充：:first    :last
+		四： 筛选选择器 都是方法  加括号
+		  1   A.children(selector)  A的直接孩子们    括号参数为可选参数   A.children("span")   A的直接孩子们专门指span
+		    		类似于$("ul>li")
+		    
+		  2  A.find(selector)  A里面的所有的被选元素   selector必须写  类似于$("ul li")
+		  
+		  3   A.siblings(selector) A的其他兄弟们   参数可选  写上之后是筛选的意思   $("p").siblings("span")
+		  
+		  4   A.parent() 找到A的父级
+		  补充： A.parents()  A的所有的直接父辈们   参数可以筛选   $("a").parents("div")
+		  
+		  5 eq(index) 选中所有元素中第几个  $("ul li").eq(2)
+		  
+		  补充：next()下一个兄弟   prev()上一个兄弟节点
+		  
+		  index()  直接可以获取索引    （相当于原生中 你建立索引   aBtn[i].index = i;）
+		  注意 它指的是 在当前的并列兄弟们之间 排行第几 索引就是几
+	</body>
+</html>

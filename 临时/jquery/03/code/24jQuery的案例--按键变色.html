@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 300px;
+				height: 250px;
+				border: 1px solid black;
+				margin: 0 auto;
+			}
+			p {
+				text-align: center;
+				font-weight: bold;
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>按键改变颜色</p>
+		<div id="box"></div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		
+		// 分析:  给document文档 添加 键盘事件 keydown  按下键盘 判断键盘编码
+		
+		$(document).keydown(function(e){
+		/*	R 82   G 71   B 66
+			console.log(e.keyCode);*/
+			
+			switch (e.keyCode) {
+				case 82:
+				$("#box").css("backgroundColor","red");
+				break;
+				case 71:
+				core("green");
+				break;
+				case 66:
+				core("blue");
+				break;
+				case 80:
+				core("pink");
+				break;
+			}
+			$("#box").html("键盘编码为"+e.keyCode);
+		})
+		
+		function core(color){
+			$("#box").css("backgroundColor",color);
+		}
+	</script>
+</html>

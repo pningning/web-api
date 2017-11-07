@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			ul {
+				list-style-type: none;
+			}
+			
+			.parentWrap {
+				width: 200px;
+				text-align: center;
+			}
+			
+			.menuGroup {
+				border: 1px solid #999;
+				background-color: #e0ecff;
+			}
+			
+			.groupTitle {
+				display: block;
+				height: 20px;
+				line-height: 20px;
+				font-size: 16px;
+				border-bottom: 1px solid #ccc;
+				cursor: pointer;
+			}
+			
+			.menuGroup>div {
+				height: 200px;
+				background-color: #fff;
+				display: none;
+			}
+		</style>
+		<!--第一步引入jq包-->
+		<script src="jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			
+			// 第二步 写入口函数
+			$(function(){
+				
+				//第三步　写具体代码功能实现
+				
+				//　分析　　给所有的span标题添加单击事件  单击任何一个span 让对应的div展开 让别的div 都收起来
+				
+				$("ul li span").click(function(){
+					
+					/*// 做事情
+					$(this).next().css("display","block");
+					// 当前单击的span 的父级li  父级li的其他兄弟们里面的div  都显示为none
+					$(this).parent().siblings().find("div").css("display","none");*/
+					$(this).next().show();// show方法  相当于原生js中  style.display = "block"
+					$(this).parent().siblings().find("div").hide(); // style.display = "none"
+				})
+				
+			})
+			
+		</script>
+	</head>
+
+	<body>
+		<ul class="parentWrap">
+			<li class="menuGroup">
+				<span class="groupTitle">标题1</span>
+				<div>我是弹出来的div1</div>
+			</li>
+			<li class="menuGroup">
+				<span class="groupTitle">标题2</span>
+				<div>我是弹出来的div2</div>
+			</li>
+			<li class="menuGroup">
+				<span class="groupTitle">标题3</span>
+				<div>我是弹出来的div3</div>
+			</li>
+			<li class="menuGroup">
+				<span class="groupTitle">标题4</span>
+				<div>我是弹出来的div4</div>
+			</li>
+		</ul>
+	</body>
+
+</html>

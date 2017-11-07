@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function fn(){
+			console.log(this);
+		}
+		
+		fn();// 直接调用 this指向window
+		
+		var obj = {
+			aa:function(){
+				console.log(this);
+			}
+		}
+		obj.aa();//obj在调用aa方法  方法里面的this指向obj
+		
+		setInterval(function(){
+			console.log(this);// 定时器里面的this 默认指向window
+		},100);
+		
+		
+		var fn1 = new fn();// new调用函数 函数里面的this 隐式对象  （实例化之后 this可以理解为实例化的对象）
+		
+		
+		document.onclick = fn; // 把函数当事件处理函数来使用 里面this指向触发该事件的前面的那个元素
+		
+		
+		// var abc = this; 把对的那个this 存一下  在this不对的地方用abc
+		
+		
+		
+	</script>
+</html>

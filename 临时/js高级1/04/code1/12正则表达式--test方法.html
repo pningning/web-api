@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*test(): 用来做字符串匹配的方法
+		返回值  : 用正则去匹配需要匹配的字符串  ,看一下是否匹配到了,如果匹配到 返回true   否则返回false
+		用法: 正则表达式.test(需要匹配的字符串);*/
+		
+		
+		/*var str  = "abdce"; //0--9
+		// 写了一个正则 
+		var re = /\d/;
+		
+		var bool = re.test(str);
+		
+		if(bool) {
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到");
+		}*/
+		
+		// 正则中的元字符 转义字符
+		/*.   任意字符             (注意:如果要专门去匹配.  那需要将. 转义一下  转义回本身意思  \.  )
+		\d  代表数字       \D  非数字
+		\s  代表 空格  \S  非空格
+		
+		\w  代表字符 （数字 字母  下划线  不包含空格）   \W  非字符  
+		\b  独立部分      \B 非独立部分       稍后讲*/
+		
+		
+		//var  str1 = "432432421";
+		
+		
+		var str2 = "      ";
+		
+		var str3 = "433cdsr_";
+		
+		var str4 = "fdsa.e3123_!";
+		
+		var re2 = /\./;
+		
+		 
+		
+		if(re2.test(str4)) {
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到");
+		}
+	</script>
+</html>

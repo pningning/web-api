@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//onmousedown  onmouseup  右键
+		//在整个文档下 鼠标按下 触发
+		document.onmousedown = function() {
+			console.log("按下触发了该事件");
+		}
+		document.onmouseup = function() {
+			console.log("弹起触发了该事件");
+		}
+		document.onclick = function() {
+			console.log("完整的单击触发了该事件");
+		}
+		
+		document.oncontextmenu = function() {
+			console.log("右键触发了");
+		}
+	</script>
+</html>

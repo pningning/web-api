@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// \b 独立部分 (开始位置  结束位置   空格隔开也算独立部分  非字符隔开 也算独立部分)    \B 非独立部分
+		var str = "onetwo";
+		
+		var re = /\bone\B/;
+		
+		if(re.test(str)) {
+			alert("匹配到了")
+		}else {
+			alert("没有匹配到")
+		}
+		
+	</script>
+</html>

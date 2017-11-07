@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//1  简单绑定方式 
+		
+		$("#box").click(function(){
+			console.log("单击事件触发了");
+		});
+		
+		$("#box").mouseover(function(){
+			console.log("鼠标移上事件触发了");
+		});
+		
+		//$("#box").off("mouseover");
+		$("#box").off()
+	</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function fn() {
+			
+		}
+		//js 所有的this指向基本上都在这里
+		//第一种调用方式　直接调用　　　函数内部的this指向window
+		// 第二种调用       对象调用 方法  方法里面的this 指向该对象
+		// 第三种调用方式  new 调用构造函数   构造函数里面的this 是一个初始化的模型  一个隐式对象  在根据this实例化一个对象
+		// 第四种调用方式  事件调用  一个事件触发一个事件处理函数  函数里面的this指向触发该事件的前面的那个元素
+		
+		// 第五种 调用方式  定时器调用函数   函数里面的this  指向window
+		// 第六种 调用方式  call或者apply调用                             函数的call方法调用   函数内部的this指向 call方法里面你更改的那个对象
+		/*setTimeout(function(){
+			console.log("123");
+			console.log(this);
+		},2000);  // 定时器调用函数
+		*/
+		/*setInterval(fn,1000);
+		function fn(){
+			console.log("哈哈");
+		}*/
+		
+		/*function fn(){
+			console.log("哈哈");
+		}*/
+		///setInterval("fn()",1000);// 第一个参数 可以接收一个可以执行功能的字符串   定时器内部会自动调用一个方法eval()
+		//eval() 它可以直接解析字符串中的语句  然后执行该语句
+		
+		/*var timer1 = setInterval("console.log('呵呵')",1000);*/
+		
+		var timer1 = setInterval(function() {
+			
+			console.log("刘能");
+			clearInterval(timer1);
+			console.log("该定时器编号"+timer1);
+		},2000);
+		
+		
+		
+		var i = 0;
+		 
+		var timer2 =  setInterval(function(){
+		 	i++;
+		 	if(i<=10) {
+		 		console.log(i);
+		 	}else {
+		 		clearInterval(timer2);// 清除定时器
+		 		// 将这个变量 设为null 这样彻底清除定时器痕迹
+		 		timer2 = null;
+		 		console.log("该定时器编号"+timer2);// 定时器清除完毕之后  timer2中并不是什么也没有 而是一个数字编号 代表着当前定时器编号
+		 		
+		 	}
+		 
+		 },1000);
+		 
+		 
+		/* if(timer2) {
+		 	console.log("定时器还在");
+		 }else{
+		 	console.log("定时器已经清除了");
+		 }*/
+		
+		/*var num  = 0;
+		
+		
+		var str = "";
+		
+		
+		var timer = null;*/
+		
+		
+		//设定一个变量　初始化为空　　后续用来存定时器
+		var timer = null;
+		
+		
+		
+		
+		timer = setInterval(function() {
+			
+			
+			
+			clearInterval(timer);
+			timer = null;
+			
+		},100);
+		
+		
+	
+	 
+	</script>
+</html>

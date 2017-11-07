@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				cursor: move;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");
+		// 让div 跟着我的鼠标走  mouseover mouseout
+		
+		//mousemove 鼠标移动事件
+		
+		//在整个文档下　　添加一个鼠标移动事件
+		var k = 0;　
+		// 这个事件  触发的频率 和距离像素没有关系   和在单位时间（很短的时间内） 判断 如果这一次的位置和上一次的位置不一样，
+		// 说明移动了，就会触发一次
+		document.onmousemove = function(ev) {// 传入事件对象
+			
+			//处理一下事件对象的兼容问题
+			ev = ev || event;
+			
+			console.log(ev);
+			
+			console.log(ev.clientX);
+			console.log(ev.clientY);
+			//console.log(111);
+			//document.body
+			//document.title = ++k;
+			//clientX 鼠标在可视区域的x水平坐标
+			//clientY 鼠标在可视区域的y垂直坐标
+			
+			// 让div的left 等于 鼠标的x坐标
+			oBox.style.left = ev.clientX - 50 +"px";
+			//让div的top值等于 鼠标的y坐标
+			oBox.style.top = ev.clientY - 50 + "px";
+		}
+	</script>
+</html>

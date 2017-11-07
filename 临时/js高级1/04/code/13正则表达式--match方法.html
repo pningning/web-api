@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*match()  匹配字符串的方法
+		返回值: 返回一个数组 里面是匹配到的结果
+		用法: 字符串.match(正则);*/
+		
+		
+		//var str = "abbbvde";
+		/*var str = "abvde";
+		
+		var re = /B/i;
+		
+		var result = str.match(re);
+		
+		console.log(result); // ["b", index: 1, input: "abbbvde"]*/
+		
+		
+		
+		
+		/*匹配模式: i  简写  全称  ignore 忽略的意思
+		正则表达式 默认 严格区分大小写   如果想要匹配的时候 忽略大小写   在正则表达式 第二个斜杠后面加 i  
+		意思是 忽略大小写*/
+		
+		
+		/*var str = 'abbbvdeBdbBzzsB';
+		
+		var re = /B/gi;
+		var result =  str.match(re);  // ["B", index: 7, input: "abbbvdeBdbBzzsB"]
+		
+		console.log(result);*/
+		// 匹配模式  g 简称    global 全局的意思  正则表达式 默认 只要匹配到 就不往后匹配了 想要整体全部找完
+		// 在正则表达式的第二个斜杠后面 加g  意思是全局匹配
+		
+		// match方法 如果不开启全局模式 那么它只会匹配最开始的一次  数组中还会显示 那个找到的字符的位置索引 还有 整体字符串
+		// 如果开启全局匹配 那么它会全部找到所有的匹配字符  但是不会输出 位置和整体字符串
+		
+		//总结: 两个匹配模式   i   g   都是放在第二个斜杠后面  不分先后顺序
+		
+		var str = 'haj123sdk54hask33dknalsd789';// ["123","54","33","789"]
+		
+		var re = /\d+/g;
+		 
+		var result = str.match(re);  // [“123”  “54”  “33”  “789”] 
+		
+		console.log(result);
+		
+		// 正则中  :   + 是一个量词  连续 匹配一次或者多次
+	</script>
+</html>

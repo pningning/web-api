@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#oUl {
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">box
+			<p>pppp</p>
+			<span>span</span>
+			<p>pppp</p>
+		</div>
+		<ul id="oUl">
+			<li>这是第1个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第2个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第3个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第4个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第5个li添加的留言<a href="javascript:;">删除</a></li>
+			<li>这是第6个li添加的留言<a href="javascript:;">删除</a></li>
+		</ul>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*jquery中的事件机制
+		1  简单的事件绑定机制*/
+		
+		//2 bind绑定方式  
+		
+		// 3 delegate事件绑定  它支持动态绑定事件  实现事件委托
+		
+		//4 on的绑定方式
+		
+		// 写法1 : 
+		/* $("#box").on("click",function(){
+		 	
+		 	alert(123)
+		 	
+		 })*/
+		// 写法2 :
+		/*$("#box").on("click mouseover mouseout",function(){
+		 	
+		 	console.log(123);
+		 	
+		 })*/
+		// 写法3 :
+		
+		/*$("#box").on({
+			"click":function(e){
+				console.log("这是一个"+e.type+"事件");
+			},
+			"mouseover":function(e){
+				console.log("鼠标移上了，这是一个"+e.type+"事件");
+			},
+			"mouseout":function(e){
+				console.log("鼠标移出啦， 这是一个"+e.type+"事件");
+			}
+		})*/
+		
+		
+		/*$("#oUl").on("click","a",function(e){
+			$(e.target).parent().remove();
+		})*/
+		
+		
+		/*var person= {
+			name :"张三",
+			age : 25,
+			job:"frontEnd"
+		}
+		*/
+		/*$("#oUl").on("click","a",person,function(e){
+			$(e.target).parent().remove();
+			console.log("当前的li已经删除了");
+			console.log("从外面接收到了一个数据："+"姓名:"+e.data.name + "年龄："+e.data.age );
+		})*/
+		
+	/*	$("#box").on("click",["red","green"],function(e){
+			console.log(e.data);
+			
+			
+			$(this).css({
+				"backgroundColor":e.data[0],
+				"border":"3px solid "+e.data[1]
+			})
+		})*/
+		
+		// on事件绑定方式：推荐使用这个方法
+	/*	参数 :  第一个参数  事件类型  "click"   "click  mouseover"
+		      第二个参数  需要被委托的内部的元素  "a"  如果不需要事件委托   这个参数 可以省略不写
+		        第三个参数:  可以传入一些数据  如果不需要传入  那么 则可以省略不写
+		        第四个参数 : 事件处理函数  
+		        
+		        另外on 也支持  传入一个json格式  里面同时绑定多个事件  和多个事件处理函数*/
+		       
+		       
+		/*  $("#box").on({
+			"click":function(e){
+				console.log("这是一个"+e.type+"事件");
+				console.log(e.data[1]);
+			},
+			"mouseover":function(e){
+				console.log("鼠标移上了，这是一个"+e.type+"事件");
+				console.log(e.data[0]);
+			},
+			"mouseout":function(e){
+				console.log("鼠标移出啦， 这是一个"+e.type+"事件");
+				console.log(e.data[2]);
+			}
+		},"p",["red","green","orange"]) */    
+	</script>
+</html>

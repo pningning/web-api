@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="box">box</div>
+		
+	
+	</body>
+	<script>
+		
+		// 第一种通过js往页面上生成元素以及内容的 方式 
+		//document.wirte(你要输入的内容); // 往文档页面中 写入内容
+		document.write("<strong>哈哈哈</strong>");
+		document.write("<strong>哈哈哈</strong>");
+		document.write("<strong>哈哈哈</strong>");
+		//缺点： 无法往某一个具体元素添加内容
+		var oBox = document.getElementById("box");
+		//oBox.write("<strong>哈哈哈</strong>");
+		
+		oBox.onclick = function() { 
+			// 如果你在事件里面 执行这个写入方法  它会把之前的页面上和已经添加进去的内容
+			// 全部清除  
+			// 文档流： 打开页面的第一次 文档流会开启  页面里面的内容全部会加进去 整个页面加载完毕 之后 文档流会关闭
+			// 你单击事件触发之后， 执行这个document.write（） 它会再开启一个文档流，（一个新的文档流一旦开启
+			// 会把原来的内容全部清空）
+			document.write("<strong>呵呵呵</strong>");
+			
+		}
+		
+	</script>
+</html>

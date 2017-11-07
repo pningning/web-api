@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" title="盒子">哈哈<!--这是一个注释--></div>
+		<ul id="oUl">
+			<li>111</li>
+			<li>222</li>
+			<li id="aa">333</li>
+			<li>444</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		
+		// A.childNodes : A元素里面的孩子们 直接子节点  不包含孙级以及以下节点
+		//  只读属性  直接子节点  不包含孙级以及以下节点
+		//  标准浏览器: childNodes 包含空白文本节点以及元素节点   
+		//  非标准：只包含元素节点 
+		// 还有一个更好的方法  没有兼容性问题  children 孩子们  一律不包含空白文本
+		var oUl = document.getElementById("oUl");
+		
+		console.log(oUl.childNodes);
+		console.log(oUl.children);
+		/*var k = 0;
+		
+		// 实现一下隔行变色
+		for(var i = 0; i < oUl.childNodes.length; i++) {
+			//  0   1   2   3
+			if( oUl.childNodes[i].nodeType == 1) {
+				k++;//  2
+				if(k%2==0){
+					oUl.childNodes[i].style.backgroundColor = "red";
+				}else {
+					oUl.childNodes[i].style.backgroundColor = "orange";
+				}
+			}
+			
+			
+		}*/
+		
+		for(var i = 0; i < oUl.children.length; i++) {
+			
+			if(i%2==0) {
+				oUl.children[i].style.backgroundColor = "red";
+			}else {
+				oUl.children[i].style.backgroundColor = "orange";
+				
+			}
+			
+		}
+	</script>
+</html>

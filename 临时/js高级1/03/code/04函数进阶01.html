@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*一.函数的定义方式
+		
+		  1  函数声明*/
+		  /* function fn(){
+		   	alert(123);
+		   }
+		   fn();*/
+		  //2 函数表达式
+		 /* var fn = function(){alert(123)}
+		  fn();*/
+		 
+		// 二者区别: 1 有名字和没有名字  2 关键的地方： 预解析
+		
+		
+		/*alert(fn);//    function fn(){alert(1)}
+		alert(fn2);//    undefined
+		
+		function fn(){
+			alert(1);
+		}
+		
+		var fn2 = function(){alert(2)}*/
+		
+		 /* 3 采用函数的构造函数声明函数
+		   函数其实也是new出来 的  函数也是对象   函数也有构造函数  Function
+		   var arr = new Array();  var arr = [];
+		   var obj = new Object(); var obj = {}
+		   
+		   var fn  = new Function();*/
+		  /* function fn(){}
+		   var fn = function(){}*/
+		   
+		/* var a = new Function("num1","num2","num3","console.log(num1+num2+num3)");
+		 
+		 a(3,5,8);
+		 
+		 var fn = new Function("a","b","return a*b");*/
+		 
+		 //alert( fn(2,9) );
+		 
+		/* 既然函数也可以new出来 说明它其实也是对象
+		 
+		 只有对象才可以挂载属性和方法   */
+		 
+		 function fn(){
+		 	
+		 }
+		 console.dir(fn);
+		 console.dir(Function);
+		 //console.dir(Function.prototype);
+		 
+		// 所有的函数都是Function的实例   Function也是Function的实例  函数也是对象  Function也是对象
+	</script>
+</html>

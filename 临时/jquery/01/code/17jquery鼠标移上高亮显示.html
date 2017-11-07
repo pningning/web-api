@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				// 移到任何一个li上面 让当前的li加上背景 pink  让别的li没有背景
+				
+				$("ul>li").mouseover(function(){
+					$(this).css("backgroundColor","pink");
+				})
+				$("ul>li").mouseout(function(){
+					$(this).css("backgroundColor","");
+				})
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>这是第1个li 的内容</li>
+			<li>这是第2个li 的内容</li>
+			<li>这是第3个li 的内容</li>
+			<li>这是第4个li 的内容</li>
+			<li>这是第5个li 的内容</li>
+			<li>这是第6个li 的内容</li>
+		</ul>
+	</body>
+</html>

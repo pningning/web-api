@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function eat (aa) {
+		  setTimeout(function () {
+		    console.log('吃完了')
+		    aa()
+		  }, 1000)
+		}
+		
+		eat(function () {
+		  console.log('去唱歌')
+		})
+		
+		
+		
+		function fn(a){
+			
+			
+			setTimeout(function(){
+				console.log("哈哈");
+				a();
+			},1000)
+			
+			
+			
+		}
+		fn(function(){
+			console.log(123)
+		});
+	</script>
+</html>

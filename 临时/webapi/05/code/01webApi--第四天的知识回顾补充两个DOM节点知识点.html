@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="box">
+			<span id="oSpan">span</span>
+			<p>ppppppp</p>
+			<div id="abc"><em>em</em></div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		/*A.parentNode 找到A的父节点   没有兼容性问题
+		A.childNodes A的子节点列表们*/
+		var oSpan = document.getElementById("oSpan");
+		oSpan.parentNode.style.backgroundColor = "pink";
+	/*	console.log(oSpan.parentNode);*/
+		var oEm = document.getElementsByTagName("em")[0];
+		
+		oEm.parentNode.parentNode.style.border = "2px solid green";
+		
+		// A.cloneNode()  把A元素节点 复制克隆一份
+		var oBox = document.getElementById("box");
+		console.log(oBox.cloneNode());
+		// 我根据页面上的box  把它复制一份一模一样的  新的这个复制出来的元素 再放入页面中
+		var newBox = oBox.cloneNode(true);// true参数  它会深度复制
+		
+		document.body.appendChild(newBox);
+
+	</script>
+
+</html>

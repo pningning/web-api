@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="box" style="width: 100px;height: 100px;background-color:red;">box</div>-->
+		<div id="box" style="color: white;">box</div>
+	</body>
+	<script type="text/javascript">
+		
+		//
+		var oBox = document.getElementById("box");
+		
+		//var aaa = "color";
+		//oBox.style.color = "blue" ;
+		//oBox.style["color"]  = "blue";
+		//console.log(oBox.style.);
+		
+	
+		
+		/*console.log(oBox.style.width);
+		console.log(oBox.style.height);
+		console.log(oBox.style.backgroundColor);*/
+		
+		//oBox.style.width = "100px";
+		/*	oBox.style.height = "200px";
+		oBox.style.backgroundColor = "red"; */
+		
+		/*console.log(oBox.style.width);
+		console.log(oBox.style.height);
+		console.log(oBox.style.backgroundColor);
+		*/
+		// 标准浏览器下 有一个方法  谷歌 火狐 IE9以及以上     IE11
+		/*getComputedStyle(obj元素).属性*/
+		
+		/*var result = getComputedStyle(oBox).height;
+		var result2 = getComputedStyle(oBox).backgroundColor;
+		console.log(result);
+		console.log(result2);*/
+		
+		//IE8以及以下浏览器不支持上面的方法 
+		//IE内核  IE9 10 11 ()
+		//obj元素.currentStyle.属性
+		//IE 系列浏览器
+		//console.log( oBox.currentStyle.backgroundColor );
+		
+		
+		/*console.log(oBox.currentStyle); //undefined 假
+		if(oBox.currentStyle) {
+			console.log(oBox.currentStyle.backgroundColor);
+		} else {
+			console.log(getComputedStyle(oBox).backgroundColor);
+		}
+		if(oBox.currentStyle) {
+			console.log(oBox.currentStyle.width);
+		} else {
+			console.log(getComputedStyle(oBox).width);
+		}*/
+		
+		// 封装函数
+		
+		/*function getStyle(obj,attr) {
+			if(obj.currentStyle) {
+				return oBox.currentStyle[attr];
+			} else {
+				return getComputedStyle(obj)[attr];
+			}
+		}*/
+		
+		function getStyle(obj,attr) {
+			
+			if(window.getComputedStyle) {
+				return getComputedStyle(obj)[attr];
+			} else {
+				return oBox.currentStyle[attr];
+			}
+		}
+		console.log(getStyle(oBox,"width"));
+		console.log(getStyle(oBox,"backgroundColor"));
+		//var a;
+		//console.log(a);
+		//console.log(window.a);
+		
+		/*var a = 10;*/
+		//console.log(window.a);
+		//console.log(a);
+	</script>
+</html>

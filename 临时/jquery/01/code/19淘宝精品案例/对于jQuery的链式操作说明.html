@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+			}
+		</style>
+		<script src="../jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				// 链式操作 是能是 设置方法执行完毕之后才可以后续继续使用  读取方法不行
+				$("#box").html("呵呵呵").next().css("background","red").prev().click(function(){
+					alert( $(this).html() );
+				});
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+		<span>span</span>
+	</body>
+</html>

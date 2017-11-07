@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div>
+			姓名：<input id="nameText" type="text"><br> 年龄：
+			<input id="ageText" type="text">
+			<input type="button" value="添加学生">
+			<input type="button" value="删除一行">
+		</div>
+		<table id="stuInfo" width="200" border="1">
+			<tbody>
+				<tr >
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+				<tr >
+					<td>江泽民</td>
+					<td>50</td>
+				</tr>
+				<tr >
+					<td>芙蓉</td>
+					<td>30</td>
+				</tr>
+				<tr >
+					<td>凤姐</td>
+					<td>28</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+	<!--引入一个你自己写的工具库-->
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		// 分析功能：
+			//用js实现一下隔行变色
+			// 先获取表格
+			var oStuInfo = $("#stuInfo");
+			var tBody = oStuInfo.children[0];
+			setColor();
+			
+			function setColor() {
+				// 获取tr
+				var aTr = tBody.children;
+				
+				// 实现隔行变色
+				for(var i = 0; i < aTr.length; i++) {
+					if(i%2==0){
+						aTr[i].style.backgroundColor  = "orange";
+					}else {
+						aTr[i].style.backgroundColor  = "aqua";
+					}
+					
+				}
+			}
+			
+			
+			//1 添加学生 通过创建元素的方式 往里面添加姓名和年龄
+			// td  td  tr   tBody
+			// 事件三要素
+			// 1 先获取事件相关元素
+			var userName = $("#nameText");
+			var age = $("#ageText");
+			var addBtn = $("input")[2];
+			//2 事件类型  单击事件 单击添加学生按钮  
+			addBtn.onclick = function() {// 3绑定事件处理函数
+				
+				// 获取姓名和年龄 两个文本框中的内容
+				var stuName = userName.value;
+				var stuAge = age.value;
+				//console.log(stuName);
+				// 创建两个td
+				var nameTd = document.createElement("td");
+				var ageTd = document.createElement("td");
+				// 分别将姓名和年龄放入两个td中
+				nameTd.innerHTML = stuName;
+				ageTd.innerHTML = stuAge;
+				//创建一个tr
+				var oTr = document.createElement("tr");
+				// 需要将两个td 放入tr
+				// A.appendChild(B)
+				oTr.appendChild(nameTd);
+				oTr.appendChild(ageTd);
+				
+				// 将创建好的tr放入页面中的tbody中
+				
+				tBody.appendChild(oTr);
+				
+				// 在让隔行变色执行一下
+				
+				setColor();
+				
+			}
+			
+			//2 删除一行
+			// 先获取单击删除一行的按钮
+			var removeBtn = $("input")[3];
+			// 给删除按钮加单击事件
+			removeBtn.onclick = function(){
+				// 如果最后一个孩子 不等于第一个孩子 那么则删除最后一行  
+				if(first(tBody)!=last(tBody)){
+					tBody.removeChild(last(tBody));
+				}
+				
+			}
+			
+	</script>
+</html>

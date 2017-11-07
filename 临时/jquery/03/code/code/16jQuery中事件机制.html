@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: deeppink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*jquery中的事件机制
+		1  简单的事件绑定机制*/
+		
+		//  单击click   mouseover   mouseout  （mouseenter mouseleave ） contextmenu   dbclick  
+		
+		//jQuery对象 .事件名称类型 (事件处理函数)
+		
+		
+		$("#box").click(function(){  // jquery内部 不会发生事件覆盖  绑定形式 addEventListener  attachEvent
+			alert(123)
+		})
+		$("#box").click(function(){
+			alert(456)
+		})
+	/*	$("#box").mouseover(function(){
+			alert(123)
+		})*/
+		
+		/*缺点: 不能一次性绑定多个事件  (当然分开写多次写 不会覆盖)*/
+		
+//		write less  do  more    
+	</script>
+</html>

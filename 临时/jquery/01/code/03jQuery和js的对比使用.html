@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border:1px solid black;
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			// 当整个浏览器程序全部加载完毕之后 触发该事件 执行里面的代码 相当于一个入口函数
+			window.onload=function(){
+				// 获取元素
+				var oBtn1 = document.getElementById("btn1");
+				var oBtn2 = document.getElementById("btn2");
+				var aDiv = document.getElementsByTagName("div");
+				// 添加事件
+				// 单击按钮1 让所有div全部显示  
+				oBtn1.onclick = function(){
+					
+					// 循环所有的div 让每一个div都显示出来
+					for(var i = 0; i < aDiv.length; i++) {
+						aDiv[i].style.display = "block";
+					}
+					
+				};
+				
+				oBtn2.onclick = function(){
+					
+					for(var i = 0; i < aDiv.length; i++) {
+						
+						aDiv[i].innerText = "div的内容";
+						
+					}
+					
+				}
+				
+				alert("这里的代码能执行")
+				
+			};
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="单击生成div" id="btn1" />
+		<input type="button" value="设置div内容" id="btn2" />
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	
+</html>

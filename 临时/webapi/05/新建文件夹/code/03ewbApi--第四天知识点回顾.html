@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">单解绑</button>
+		<div id="box">box</div>
+		<div id="box2">box2</div>
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box");
+		//var oBox2 = document.getElementById("box2");
+		function fn1() {
+			oBox.style.border = "2px solid red";
+		}
+		
+		//oBox.addEventListener("click",fn1,false); 
+		
+		//oBox.attachEvent("onclick",fn1);
+		
+		bind(oBox,"click",fn1);
+		
+		//单击按钮解绑
+		//var oBtn = document.getElementById("btn");
+		
+		unbind(oBox,"click",fn1);
+		
+		
+		function unbind(obj,evType,evFn) {
+			if(obj.removeEventListener) {
+				obj.removeEventListener(evType,evFn,false);
+			}else if(obj.detachEvent) {// 能找到obj对象  那一定可以找到obj身上属性 handle 这个属性里面存的是之前的那个匿名函数
+				obj.detachEvent("on"+evType,obj.handle);
+			}else {
+				obj["on"+evType] = null;
+			}
+		}
+		
+//		removeEventListener()
+//		
+//		detachEvent()
+		
+		
+		function bind(obj,evType,evFn){
+			// 给当前的对象 添加一个自定义属性  给当前的自定义属性上挂载 匿名函数  也就是让匿名函数 存到当前对象的属性里面			
+			obj.handle = function() {
+				evFn.call(obj);
+			}
+			
+			if(obj.addEventListener) {
+				obj.addEventListener(evType,evFn,false);
+			} else if(obj.attachEvent) {
+				obj.attachEvent("on"+evType,obj.handle);
+			} else {
+				obj["on"+evType]= evFn;
+			}
+		}
+		
+		
+	</script>
+</html>

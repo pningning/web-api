@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*replace() 用来做字符串匹配
+		返回值: 把匹配到的字符 进行替换   返回的是替换后的新字符
+		用法:1 str.replace(正则,要替换成的字符);*/
+		//用法2   str.replace(正则,function(){})
+		
+		//var str = 'aaa';
+		/*var str = 'aaca';
+		
+		//var re = /a/g;
+		var re = /a+/g;
+		
+		//console.log(str.replace(re,'b')); // "bbb"  
+		console.log(str.replace(re,'b')); // "bcb" */ 
+		
+		
+	/*	var str = 'abbbvdeBdbBzzsB';
+		
+		var re = /B+/ig;
+		
+		//console.log(str.replace(re,'o')); //   'aooovdeodoozzso';
+		console.log(str.replace(re,'o')); //   'aovdeodozzso';*/
+		
+		// 敏感词 过滤
+		var str = '雾霾出现以后，空气极度的差，雾霾这种现象都是政府责任';
+		//var str = '**出现以后，空气极度的*，**这种现象都是****';
+		//         替换成   *
+		
+		// 正则中   |  或的意思       逻辑运算符 ||  &&
+		
+		var re  = /雾霾|差|政府责任/g;  
+		
+		var result = str.replace(re,function($0){
+			/*console.log($0); // $0 是正则在每一次匹配的整体字符
+			console.log(typeof a); // 字符串  长度
+			console.log(a.length);*/
+			// 设定一个变量 用来累加*号
+			var str = "";
+			for(var i = 0; i < $0.length; i++) {
+				str += "*";
+			}
+			return str; // "**"  "*"  "**"  "****"
+		});
+		
+		console.log(result);
+		
+		var str = '菲称仁爱礁附近17艘中国船均在菲监视之下';
+		// 菲   中国船   监视之下
+	</script>
+</html>

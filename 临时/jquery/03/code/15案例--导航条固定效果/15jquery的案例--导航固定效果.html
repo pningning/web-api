@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0
+			}
+			
+			img {
+				vertical-align: top;
+			}
+			
+			.main {
+				margin: 0 auto;
+				width: 1000px;
+				padding-top: 10px;
+			}
+			
+			.fixed {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		<script src="../jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				// 分析： 
+				//先获取顶部div#top 的高度 
+				//height()  innerHeight()  outerHeight()   outerHeight(true)
+				
+				var topH = $("#topPart").outerHeight();
+				
+				
+				
+				/*在浏览器窗口滚动过程中  判断  scrollTop  是不是大于等于 div的高度 
+				如果大于等于 就让导航div 加上fixed类  否则 去掉fixed类*/
+				$(window).scroll(function(){
+					
+					var scrollT = $("html").scrollTop();
+					//如果 垂直方向滚动过的距离 大于等于 顶部div 的高度  
+					if(scrollT >= topH) {
+						// 让导航div 加上 一个固定定位的类
+						$("#navBar").addClass("fixed");
+						// 让顶部div 加上一个下边距margin-bottom ： 应该是导航的div 的高度
+						$("#topPart").css("margin-bottom",$("#navBar").outerHeight());
+					}else {
+						$("#navBar").removeClass("fixed");
+						// 让顶部div 去掉下边距margin-bottom ：0
+						$("#topPart").css("margin-bottom",0);
+					}
+					
+				})
+				
+				
+			})
+			
+		</script>
+	</head>
+
+	<body>
+		<div class="top" id="topPart">
+			<img src="images/top.png" alt="">
+		</div>
+		<div class="nav" id="navBar">
+			<img src="images/nav.png" alt="">
+		</div>
+		<div class="main" id="mainPart">
+			<img src="images/main.png" alt="">
+		</div>
+	</body>
+
+</html>

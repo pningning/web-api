@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#oUl {
+				width: 300px;
+				height: 200px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="oUl">
+			<!--<li>这是你说的话</li>-->
+		</ul>
+		<span id="person">小明:</span><input type="text" id="text1" />
+		<input type="button" value="发送" id="btn" />
+	</body>
+	<script>
+		function $(id) {
+			return document.getElementById(id)
+		}
+		var oUl = $('oUl');
+		var oText1 = $("text1");
+		var oBtn = $('btn');
+		var oPerson = $('person');
+
+		//		打开页面文本框自动获得焦点
+		oText1.focus();
+
+		oBtn.onclick = function() {
+			var str = oText1.value; //存储文本输入的文字
+			oUl.innerHTML = "<li><strong style='color:green'>" + oPerson.innerHTML + "</strong>" + str + "</li>" + oUl.innerHTML;
+//			把文本框的内容清除,让光标聚焦到文本框上
+oText1.value = '';
+oText1.focus();
+		}
+//	 实现名字切换
+
+//获得span标签,给span添加单击事件
+	oPerson.onclick = function() {
+		if(this.innerHTML == "小明:") {
+			this.innerHTML = "小花:";
+		} else {
+			this.innerHTML = "小明:";
+		}
+	}
+	</script>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="height: 2000px;">
+		<img src="fly.gif" alt="" />
+	</body>
+	<script type="text/javascript">
+		// 我想按下空格键 不让它产生默认行为       return false 阻止默认行为的方法
+		
+		document.onkeydown = function(e) {
+			e = e || event;
+			
+			if(e.keyCode == 32){
+				return false;
+			}
+			
+		}
+		
+	</script>
+</html>

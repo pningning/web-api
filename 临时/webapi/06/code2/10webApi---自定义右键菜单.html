@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#menu {
+				width: 80px;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				border:2px solid #ccc;
+				cursor: pointer;
+				display: none;
+				padding: 5px;
+			}
+			
+			#menu ul,h3 {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: center;
+				font:16px/30px "微软雅黑";
+			}
+			#menu ul li {
+				height: 30px;
+				
+			}
+			#menu ul li a {
+				display: block;
+				text-decoration: none;
+				color: black;
+			}
+			#menu ul li a:hover {
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<h3>标题</h3>
+			<ul>
+				<li><a href="http://www.baidu.com">百度</a></li>
+				<li><a href="javascript:;">复制</a></li>
+				<li><a href="javascript:;">粘贴</a></li>
+				<li><a href="javascript:;">属性</a></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oMenu = document.getElementById("menu");
+		
+		var aLi = oMenu.children[1].children;
+		//右键  oncontextmenu
+		//右击事件之后　　让div的left和top等于 我的鼠标的x坐标和y坐标
+		document.oncontextmenu = function(e) {
+			e = e || event;
+			//console.log("触发右击事件");
+			console.log(e.clientX,e.clientY);
+			oMenu.style.display = "block";
+			oMenu.style.left = e.clientX + "px";
+			oMenu.style.top = e.clientY + "px";
+			
+			return false;
+			
+		}
+		
+		document.onclick = function() {
+			oMenu.style.display = "none";
+		}
+		
+		// js实现一下隔行变色
+		for(var i = 0; i < aLi.length; i++) {
+			if(i%2==0) {
+				aLi[i].style.backgroundColor = "#ddd";
+			}else {
+				aLi[i].style.backgroundColor = "#f1f1f1";
+			}
+		}
+		
+	</script>
+</html>

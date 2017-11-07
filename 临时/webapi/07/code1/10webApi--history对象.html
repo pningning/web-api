@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>首页</h1>
+		<p>去下一级页面</p>
+		<input type="button" value="前进" />
+	</body>
+	<script type="text/javascript">
+		//history 历史记录  
+		var oP = document.getElementsByTagName("p")[0];
+		var aInp = document.getElementsByTagName("input")[0];
+		oP.onclick = function() {
+			//
+			location.href = "demo.html";
+		}
+		
+		aInp.onclick = function(){
+			//history.go(0);// 在本页面进行跳转  
+			history.forward();
+		}
+		
+		
+		// web前端中 有哪些方式可以实现页面跳转
+		
+		//a链接   location.href    history.go(0)
+		
+		location.reload();//将当前的url进行一个重新载入 （刷新）
+		
+	</script>
+</html>

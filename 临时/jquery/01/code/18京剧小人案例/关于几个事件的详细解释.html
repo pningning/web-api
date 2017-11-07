@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 400px;
+				height: 400px;
+				background: red;
+				margin: 50px;
+				overflow: hidden;
+			}
+			#box2 {
+				margin: 50px;
+				width: 200px;
+				height: 200px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--mouseover 鼠标移上     mouseout 鼠标移开事件
+		
+		mouseenter 鼠标进入事件    mouseleave 鼠标离开事件
+		
+		鼠标指针穿过任何子元素，同样会触发 mouseover 事件
+		只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件-->
+		
+		<div id="box">
+			<div id="box2"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box");
+		
+		/*oBox.onmouseover = function(){
+			console.log("触发移上事件了");
+		}
+		oBox.onmouseout = function(){
+			console.log("触发移出事件了");
+		}*/
+		oBox.onmouseenter = function(){
+			console.log("触发移上事件了");
+		}
+		oBox.onmouseleave = function(){
+			console.log("触发移出事件了");
+		}
+/*触发移上事件了    直接触发了box的移上事件
+触发移出事件了   mouseover这个事件它认为  你移到子元素上  意味着离开box了  所以触发 box移出事件
+触发移上事件了    子元素往上传递给box鼠标移上事件了   所以是因为  事件冒泡导致的
+触发移出事件了     子元素往上传递给box鼠标移出事件了   所以是因为  事件冒泡导致的
+触发移上事件了   mouseover事件认为 你从子元素上进入box里面 所以会触发box的移上事件
+触发移出事件了  离开box   直接触发了box的移出事件
+*/
+
+//用mouseenter   和mouseleave  两个事件   它们 不论穿不穿过子元素 都不会触发父级元素的事件  另外  它们这两个事件不会冒泡
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function CreatePerson(name,age) {
+			this.name = name;
+			this.age = age;
+			/*this.sayHi = function() {
+				
+			}*/
+			/*this.sleep = function() {
+				
+			}*/
+		}
+		
+		//console.dir(createPerson);//   函数下面  有一个属性  叫 prototype  它的意思是原型 这个属性本身也是一个对象
+		
+		//console.log(typeof createPerson.prototype); // prototype 原型 也是对象  object
+		
+		//console.log(CreatePerson.prototype);
+		
+		CreatePerson.prototype= {
+			constructor:CreatePerson,// 这是他默认存在的一个属性 叫constructor 它直接指向了当前的构造函数
+			sayHi:function(){ //你给添加的
+				console.log("你好，萨瓦迪卡");
+			},
+			sleep:function(){　//你给添加的
+				console.log("正在睡觉");
+			}
+		}
+		
+		var p1 = new CreatePerson("zs",26);
+		var p2 = new CreatePerson("lisi",30);
+		
+		p1.sayHi();
+		p1.sleep();
+		p2.sayHi();
+		p2.sleep();
+		
+		console.log(p1.sayHi == p2.sayHi);
+		console.log(p1.sleep == p2.sleep);
+		
+		// 把相同的方法往构造函数的原型上面去加  这样的话 实例对象一样可以拥有这些方法 并且这些实例对象们都共同
+		//引用同一个方法  共享同一个方法  避免内存浪费 提高性能
+		
+		//我们可以在构造函数的原型上面去添加一些公用的方法
+		
+		
+		/* CreatePerson.prototype  = {
+			fn : function (){
+				console.log("大家好，我叫"+ this.name+ ",我今年"+this.age + "岁了");
+			},
+		 	sleep: function (){
+				console.log("正在睡觉");
+			}
+		}*/
+	</script>
+</html>

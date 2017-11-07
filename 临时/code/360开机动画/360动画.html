@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+			}
+			#top {
+				background: url(img/t.jpg);
+				width: 322px;
+				height: 244px;
+			}
+			#btm {
+				background:url(img/b.jpg);
+				width: 322px;
+				height: 101px;
+			}
+			#close {
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				right: 6px;
+				top: 6px;
+				cursor: pointer;
+			}
+		</style>
+		<script src="../startMove.js"></script>
+		<script type="text/javascript">
+			
+			window.onload=function(){
+				
+				// 分析思路： 1  单击关闭按钮  让360开机画面  向下运动（可以让btmDiv高度变成0）   
+				//然后再向右（让整个box盒子位置向右移动出去）  最后出去
+				
+				//1 获取事件相关元素
+				var oBox = $("#box");
+				var oClose = $("#close");
+				var oBtm = $("#btm");
+				// 2 给按钮 添加单击事情
+				oClose.onclick = function() {
+					//向下运动（可以让btmDiv高度变成0）   
+					startMove(oBtm,{
+						height:0
+					},10,function(){
+						
+						startMove(oBox,{right:-322,opacity:0},8);
+						
+					})
+					
+				}
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<span id="close"></span>
+			<div id="top"></div>
+			<div id="btm"></div>
+		</div>
+	</body>
+</html>

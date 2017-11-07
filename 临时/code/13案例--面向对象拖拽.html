@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			
+			var drag1 = new Drag("box");
+		};
+		
+		//把拖拽整个功能抽象成一个对象
+		function　Drag(id) {
+			
+			this.ele = document.getElementById(id);
+			
+			this.disX = 0;
+			this.disY = 0;
+			this.init();
+		}
+		Drag.prototype.init = function(){
+			var that  = this;
+			this.ele.onmousedown = function(ev){
+				
+				that.fnDown(ev);
+			};
+		}
+		Drag.prototype.fnDown = function(ev) {
+			ev = ev || event;
+			//console.log(this);
+			this.disX = ev.clientX - this.ele.offsetLeft;
+			this.disY = ev.clientY - this.ele.offsetTop;
+			var that = this;
+			document.onmousemove =function(ev){
+				 that.fnMove(ev);
+			};
+			
+			document.onmouseup = this.fnUp;
+		}
+		Drag.prototype.fnMove = function(ev){
+			ev = ev || event;
+				
+			this.ele.style.left =  ev.clientX - this.disX+ "px";
+			this.ele.style.top  = ev.clientY - this.disY  + "px";
+			
+		}
+		Drag.prototype.fnUp = function(){
+			document.onmousemove = null;
+		}
+		
+		
+	/*	var oBox = 
+		
+		oBox.onmousedown = function(ev){
+			ev = ev || event;
+			
+			var disX = ev.clientX - oBox.offsetLeft;
+			var disY = ev.clientY - oBox.offsetTop;
+			
+			document.onmousemove = function(ev) {
+				ev = ev || event;
+				
+				oBox.style.left =  ev.clientX - disX + "px";
+				oBox.style.top  = ev.clientY - disY  + "px";
+				
+			}
+			document.onmouseup = function() {
+				document.onmousemove = null;
+			}
+		}
+		*/
+		
+	</script>
+</html>

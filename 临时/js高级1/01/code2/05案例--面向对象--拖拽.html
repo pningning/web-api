@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				 background: red;
+				 position: absolute;
+				 left: 100px;
+				 top: 100px;
+			}
+			#box2 {
+				width: 100px;
+				height: 100px;
+				 background: blue;
+				 position: absolute;
+				 left:300px;
+				 top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+	</body>
+	<script src="drag.js"></script>
+	<script type="text/javascript">
+		
+		// 构造函数通过new来调用  从而实例化一个对象   并且传入特定的id名
+		var drag1 = new Drag("box");
+		var drag2 = new Drag("box2");
+	</script>
+</html>

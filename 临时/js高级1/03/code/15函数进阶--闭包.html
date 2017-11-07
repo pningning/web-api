@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*var a = 15;
+		
+		function aaa(){
+			alert(123);
+		}
+		aaa();*/
+		
+		// 闭包： fn函数内部定义了abc函数， abc函数就是一个闭包,
+		//这个闭包可以引用外部函数的变量或者参数  使该变量或者参数常驻内存 避免被垃圾回收机制所回收
+		function fn(num2){
+			
+			var num = 15;
+			
+			function abc(){
+				num++;
+				
+				console.log(num+num2);
+			}
+			
+			return abc;
+			
+		}
+		
+		var aa = fn(20);// 15
+		aa();// 36   15+ 1 + 20
+		aa();// 37   16+ 1 +20
+		aa();// 38   17+1+20
+		
+		
+		/*fn(20)();//  36
+		fn(20)();//  36
+		fn(20)();//  36
+		*/
+		
+		/*alert(a);
+		alert(abc);*/
+	</script>
+</html>

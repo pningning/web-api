@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//只有对象才可以挂载属性和方法
+		//location: window下面的一个属性 但是同时他自己有一个对象 所以它下面有很多方法和属性
+		console.log(window.location);  html(超文本标记语言)
+		/*protocol:"http:" http超文本传输协议  (默认端口80)  https:(默认端口443)(ssl)  ftp:// 文件传输协议（端口21）
+		port:默认缺省  */
+		host: 包含域名(ip) + 端口  127.0.0.1:8020  /  www.baidu.com:80
+		hostname:主机域名  www.baidu.com
+		http:// www.baidu.com:80/login/login.php?username=zhangsan&age=26#id   
+		path:  /后面的某个目录或者文件
+		query: ?后面的数据  可能有多条 用来作为参数传入后端 ?username=zhangsan&age=26
+				? 代表的意思 search  username=zhangsan&age=26 serach值
+		fragment: # hash值    (和后面我们学习的一些框架内部的路由实现机制有关)  
+		
+		
+		http: www.baidu.com:80/login/login.php?username=zhangsan&age=26&password=123456
+	</script>
+</html>

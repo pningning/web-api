@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function fn(){
+			console.log(this); // this在函数定义的时候 不确定，  只有在函数调用的时候 才知道指向谁
+			// 当前函数被谁所调用 ，this 就指向谁，（难点不在于this  而在于你不太清楚函数被谁调）
+		}
+		
+		//fn();// 如果你把它当成普通函数来看待 那么它就可以直接调用   this指向window
+		
+		//var fn1 = new fn();// 你把它看成构造函数了， 构造函数 里面this  当前函数是被new所调用  this是是一个初始化的模型 是一个隐式对象
+		// 如果进一步 再说的话  当new调用完成这个构造函数之后  那么this是你实例化的一个对象
+		
+		//var fn2 = new fn();// this 相当于实例化对象fn2
+		
+		/*函数:如果一个函数是自由的  那么它就是一个函数   其实函数虽然是自由 但是也属于window下的
+		方法:如果一个函数是属于某个对象下的  那么我们可以称这个函数就是当前这个对象的方法*/
+		
+		
+		/*var obj = {
+			fn:function(){console.log(this);} // 寄人篱下
+		}
+		//obj.fn();// 相当于一个对象在调用一个方法
+		
+		var aa = function(){console.log(this);};
+		aa();//window*/
+		
+		
+		//document.onclick = fn;// 事件调用函数 函数里面的this指向当前触发该事件前面的那个元素
+		/*document = {
+			onclick:function(){
+				
+			}
+		}*/
+		
+		document.onclick = function(){ // onclick  onmouseover onmouseout 物理依托  onabc
+			console.log(this);
+		}
+		
+		//document.onclick();
+		
+		var timer = window.setInterval(function(){ // 定时器里面的this指向window
+			console.log(this);
+		},500)
+		
+		//window   主人对象
+		
+	</script>
+</html>

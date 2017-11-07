@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");
+		
+		// 1 我需要先按下鼠标 
+		//在box身上按下鼠标　需要给box添加鼠标按下事件
+		//在按下鼠标的时候 可以获取鼠标的坐标点 也可以获取div初始的位置  目的是为了获取那个固定的距离；
+		oBox.onmousedown  = function(e) {
+			e = e || event;
+			
+			//e.clientX  e.clientY
+			
+			console.log(oBox.offsetLeft);// 获取的box的左侧偏移量
+			console.log(oBox.offsetTop);// 获取的box的顶部偏移量
+			
+			// 想办法得到那个鼠标按下的点距离box边缘左侧偏移量和顶部的偏移量
+			var disX = e.clientX - oBox.offsetLeft;
+			var disY = e.clientY - oBox.offsetTop;
+			
+			
+			//添加鼠标移动事件 
+			//在鼠标移动过程当中：应该让div的left和top值 等于 当前移动的鼠标的位置减去固定距离
+			document.onmousemove = function(e) {
+				e = e || event;
+				//移动的时候　需要让div跟着走了
+				
+				oBox.style.left =  e.clientX - disX + "px";
+				oBox.style.top =  e.clientY - disY + "px";
+			}
+			// 添加一个鼠标弹起事件
+			document.onmouseup = function() {
+				// 取消拖拽  把自己的弹起事件取消一下 把移动事件取消一下
+				document.onmousemove = null;
+			}
+			
+		}
+		
+		
+		
+	</script>
+</html>

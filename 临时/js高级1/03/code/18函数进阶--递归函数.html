@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*递归函数: 就是函数自身调用自身的编程技巧 如果不加限制条件 可以无限递归 最终会到最后栈内存溢出 一般一定要给递归一个出口
+		让它停止递归*/
+		
+		var n = 0;
+		
+		function tellStory(){
+			
+			n++;
+			console.log("从前有座山，山里有座庙，庙里有个老和尚在给小和尚讲故事，故事是：");
+			
+			if(n<10){
+				tellStory();
+			}
+			
+		}
+		
+		//tellStory();
+		
+		/*3! = 3*2*1;
+		5! = 5*4*3*2*1 = 120
+		10! =? 
+		n!= n*(n-1)*(n-2)…… *2*1;*/
+		
+		
+		/*5!= 5*4!
+		      4*3!
+		      	3*2!
+		      	  2*1
+		var result = jiecheng(5); //120
+		function jiecheng(5){
+			
+			return 5*4!
+			
+		}*/
+		
+		
+		var result = jiecheng(4);
+		console.log(result);
+		
+		function jiecheng(n){
+		  if(n<2){
+			   return 1;
+			}
+		 return n*jiecheng(n-1);
+		
+		}
+		
+		console.log(qiutuzi(12));
+		function qiutuzi(n){
+		  if(n<=2){
+		    return 1;
+		  }
+		  return qiutuzi(n-1)+qiutuzi(n-2);
+		}
+	</script>
+</html>

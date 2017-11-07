@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		
+		// 元素.innerHTML  可以设置获取读取某个元素或者body里面的内容
+		
+		var oBox = document.getElementById("box");
+		
+	/*	oBox.innerHTML += "<em>倾斜</em>";
+		console.log(oBox.innerHTML);
+		//body  title head 比较特殊 js可以直接通过document下面直接读取
+		//document.body.innerHTML = document.body.innerHTML + "<em>倾斜</em>";
+		//document.body.innerHTML += "<em>倾斜</em>";
+		document.title = "这是一个标题";*/
+		
+		/*for(var i = 0; i < 3000; i++) {
+			
+			oBox.innerHTML += "<button>按钮</button>";
+		}*/
+		// js中操作dom是昂贵的 往页面里面添加元素或者修改元素 是需要花时间的 
+		//　js写入页面的次数3000次
+		var str = "";// 变量在内容
+		for(var i = 0; i < 3000; i++) {
+			str += "<button>按钮</button>";
+		}
+		oBox.innerHTML = str;// 写入一次
+		
+	</script>
+</html>

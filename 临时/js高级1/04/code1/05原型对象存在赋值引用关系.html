@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*var itouchprototype = {
+			name :"zs",
+			age:25
+		}
+		
+		var iphoneprototype = itouchprototype
+		
+		iphoneprototype.callPhone = function(){
+			
+		}
+		
+		console.log(iphoneprototype);
+		console.log(itouchprototype);*/
+		
+		
+		var obj = {
+			name :"zs",
+			age:25
+		}
+		
+		var obj2 = {}
+		
+		//obj2 = obj;
+		
+		/*obj2.name = obj.name; // obj2.name = "zs"
+		obj2.age = obj.age //  obj2.age = 25*/
+		
+		// 通过一个for in 语句将父级的属性诸个遍历 依次赋给子对象的属性
+		for(var attr in obj){
+			
+			obj2[attr] = obj[attr];
+		}
+		
+		
+		
+		obj2.job = "frontEnd";
+		
+		console.log(obj2);
+		
+		console.log(obj);
+	</script>
+</html>
+ 

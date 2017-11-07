@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*ul>li:nth-child(odd) {
+				background-color: red;
+			}
+			ul>li:nth-child(even){
+				background-color: pink;
+			}*/
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>这是第1个li的内容</li>
+			<li>这是第2个li的内容</li>
+			<li>这是第3个li的内容</li>
+			<li>这是第4个li的内容</li>
+			<li>这是第5个li的内容</li>
+			<li>这是第6个li的内容</li>
+			<li>这是第7个li的内容</li>
+			<li>这是第8个li的内容</li>
+		</ul>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//  :eq（index） 
+		
+		//$("ul li:eq(3)").css("background","red");
+		
+		// :odd  奇数  even 偶数
+		
+		/*var aLi = document.getElementsByTagName("li");
+		for(var i = 0; i < aLi.length; i++) {
+			if(i%2==0) {
+				aLi[i].style.backgroundColor = 'red';
+			}else {
+				aLi[i].style.backgroundColor = 'orange';
+			}
+		}*/
+		
+		/*$("ul li:odd").css("background","blue");
+		$("ul li:even").css("background","deepskyblue");*/
+		
+		// 补充 ： :first   :last
+		
+		$("ul li:last").css("background","orange");
+		
+		$("ul>li:first").css("border","3px solid black");
+	</script>
+</html>

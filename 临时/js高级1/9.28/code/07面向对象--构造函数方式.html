@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//工厂方式 ===》 更加优雅的方式  （构造函数方式）
+			function CreateStudent(name,score) {
+				// 创建一个对象   1 准备原材料   先new objec 创建出来一个空白的对象
+			/*	var student = new Object();*/
+				
+				// 2 加工
+				
+				// 给这个对象添加一个属性叫name  等于张三
+				this.name = name;
+				// 给这个对象添加一个属性叫score  等于75
+				this.score = score;
+				// 给这个对象添加一个方法叫printScore  等于函数
+				this.printScore = function(){
+					console.log("姓名："+ this.name + " 分数:" + this.score);
+				}
+				
+				//3 出厂 
+			/*	return this;*/
+			}
+		
+		
+		
+		
+		 var stu1 = new CreateStudent("张三",75);// 这是你自己写的构造函数  用来创建学生对象的构造函数
+		 var stu2 = new CreateStudent("李四",85);
+		 
+		 stu1.printScore();
+		 stu2.printScore();
+		
+		/*var arr = [1,2,3,4];
+		var arr = new Array(1,2,3,4);*/ // 不是普通函数 而是构造函数  这是系统内置的数组的构造函数
+		
+		//我们也来模拟实现一下   最好和系统定义的构造函数一样
+		
+	/*	
+		构造函数区别于普通函数  它是用来专门构造对象的函数 
+		
+		构造函数需要 用new 来调用
+		业界有一个不成文的规定 : 构造函数区别于普通函数  函数名称要首字母大写
+		
+		构造函数内部   需要变化:
+			准备原材料   var obj = new Object() 这一步不用写了
+			出厂       return this   不用写了
+			加工的时候  你直接将你需要添加的属性 和方法  给this加
+			
+			this:  this是一个初始化模型  是一个隐式对象   */
+			
+		1 构造函数 内部 自动 会创建一个对象
+		2 将构造函数中的this 指向当前的这个创建出来的隐式对象 
+		3 你直接给this添加你需要加的属性和方法
+		4 构造函数会自动返回this隐式对象
+		
+		在外面调用的时候 需要用new来调用构造函数
+		构造函数的名称首字母要大写
+		
+		构造函数批量创建对象的好处: 1 代码精简  2 有专门的函数去创建对象  区别于普通函数   可以知道返回的数据的确切类型  就是你需要的对象
+	</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border:1px solid black;
+				display: none;
+			}
+		</style>
+		<!--第一步 引包-->
+		<script src="jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			
+			// 第二步 写 入口函数
+			$(function(){
+				
+				// 第三步  写具体代码实现
+				$("#btn1").click(function(){
+					$("div").show();
+				})
+				
+				$("#btn2").click(function(){
+					$("div").text("div的内容");  
+					// 原生 js  innerHTML =   和jq  html("fdfd")
+					// 原生 js  innerText =  jq   text("ffd")
+				})
+				alert("这里的代码能执行")
+			})
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="单击生成div" id="btn1" />
+		<input type="button" value="设置div内容" id="btn2" />
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	
+</html>

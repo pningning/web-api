@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*var a = 25;
+		function abc (){
+		  alert(a);//undefined
+		  var a = 10;
+		}
+		abc();*/
+		
+		
+	/*	js解析过程:
+			第一步 :预解析 在一个作用域会发生预解析  (全局会有预解析  函数是局部作用域也会发生预解析)
+				走一走 瞧一瞧  (有么有声明 的变量和声明的函数)
+			  /*
+			   * 预解析环境  
+			   * function a()  
+			   * */
+			  
+			/*第二步:代码执行 (顺序执行)
+				
+		
+		console.log(a);// function a
+		
+		function a() {
+		  console.log('aaaaa');
+		}
+		var a = 1;  // a是一个数字1
+		
+		console.log(a);//	 1*/
+		
+		/*
+		 *   第一步  预解析   走一走瞧一瞧
+		 *   
+		 *        function a() {
+				      alert(3);
+				    }
+		 * function b() {
+	      alert(4);
+	    }
+		 *   第二步代码执行
+		 * */
+		
+		
+		alert(a);// function a () {alert(3)}
+	    var a;	    
+	    alert(a);	// function a () {alert(3)}    
+	    function a() {
+	      alert(1);
+	    }
+	    alert(a);// function a () {alert(3)}    
+	    var a = 2; // a彻底变成2
+	    alert(a); //2
+	    function a() {
+	      alert(3);
+	    }
+	    alert(a);//2 
+	    function b() {
+	      alert(4);
+	    }
+	    alert(a); //2
+	</script>
+</html>

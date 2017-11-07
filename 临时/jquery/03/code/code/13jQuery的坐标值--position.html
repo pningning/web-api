@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 300px;
+				height: 300px;
+				background: red;
+				margin:50px;
+				position: relative;
+				left: 30px;
+				top:50px;
+				padding: 50px;
+			}
+			#box2 {
+				margin: 30px;
+				width: 100px;
+				height: 100px;
+				background: blueviolet;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box2"></div>
+		</div>
+	</body>
+	<!-- 引入百度的jQuery的Cdn-->
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		//A.offsetParent  找的是距离a最近的具有定位属性的父级  如果没有定位的父级  直接指向body
+		
+		//jq: postion()  position方法只能获取，不能设置    不算自身margin值
+		//它返回json格式   {left: ,top:}
+		
+		/*$(function(){
+			alert(123);
+		})*/
+		
+		console.log( $("#box2").position() ); // {left:50,top:50}
+		
+		
+		console.log( $("#box2").offset() );// 直接参考的是document文档页面
+		
+	</script>
+</html>

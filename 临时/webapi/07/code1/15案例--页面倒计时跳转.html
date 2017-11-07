@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h1 {
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1><span>5</span>秒钟后页面将跳转到<a href="http://www.itcast.cn">传智播客</a></h1>
+	</body>
+	<script type="text/javascript">
+		
+		// 倒计时 5秒自动跳转  从5开始
+		
+		// 设定一个变量 为5
+		var oSpan = document.getElementsByTagName("span")[0];
+		var num = 5;
+		var timer = null;
+		
+		timer = setInterval(function(){
+			num--;
+			oSpan.innerHTML = num;
+			if(num==0) {
+				// 清除定时器  并且设定timer为空
+				clearInterval(timer);
+				timer=null;
+				//自动跳转
+				location.href = "http://www.itcast.cn";
+			}
+		},1000);
+		
+	</script>
+</html>

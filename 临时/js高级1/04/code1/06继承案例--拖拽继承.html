@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			#box2 {
+				left: 300px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+	</body>
+	<script src="drag.js"></script>
+	<script src="drag2.js"></script>
+	<script type="text/javascript">
+		
+		// 我写一个构造函数 Drag2 继承 Drag 构造函数得所有功能   让Drag2 实现拖拽功能  但是 Darg2 限制一下范围
+		// 借用构造函数继承 + 拷贝继承 (如果要是对象中嵌套对象  递归方式实现深度拷贝)
+		
+		
+		
+		
+		var drag1 = new Drag("box");
+		
+		
+		var drag2 = new Drag2("box2");
+	</script>
+</html>

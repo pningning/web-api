@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="单击往前走" id="btn1" />
+		<input type="button" value="单击往回走" id="btn2" />
+		<input type="button" value="单击往下走" id="btn3" />
+		<input type="button" value="单击往上走" id="btn4" />
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 给按钮添加单击事件  让div的left 增加
+		var oBtn1 =document.getElementById("btn1");
+		var oBtn2 =document.getElementById("btn2");
+		var oBtn3 =document.getElementById("btn3");
+		var oBtn4 =document.getElementById("btn4");
+		var oBox = document.getElementById("box");
+		
+		// 设置一个变量 用来存定时器
+		var timer = null;
+		// 单击往前走
+		oBtn1.onclick =  function() {
+			move(oBox,"left",7,800);	
+		}
+		oBtn2.onclick = function() {
+			move(oBox,"left",-7,100);
+			/*clearInterval(timer);
+			timer = setInterval(function() {
+				
+				var speed = oBox.offsetLeft - 7;
+				
+				if(speed <=100) {
+					
+					speed = 100;
+				}
+				
+				oBox.style.left = speed + "px";
+				
+				if(speed ==100) { //796 +8 ==804
+					clearInterval(timer);
+					timer = null;
+				}
+								     // 120+10 
+			},30)*/
+			
+			
+		}
+		
+		// 往下走
+		oBtn3.onclick = function() {
+			move(oBox,"top",8,500);// top值
+		}
+		// 往上走
+		oBtn4.onclick = function() {
+			move(oBox,"top",-8,100);// top值
+		}
+		//          让谁运动   改变什么属性   速度   目标点
+		function move(obj,attr,speed,target) {
+			
+			clearInterval(timer);
+				// 通过调用getStyle函数  获取任意样式 然后去掉单位
+				var dis = parseFloat(getStyle(obj,attr));  // 100px    
+			
+			//var dis = oBox.offsetLeft; // 100  offsetTop  offsetLeft
+			// 开新的定时器之前 先将之前的定时器清除
+			timer = setInterval(function() {
+				
+				dis += speed; // 100+7 +7 + 7
+				// +7   -7
+				// 往前走的判断　　100==>800    
+				if(dis >=target&&speed>0) {
+					
+					dis = target; // >=800   
+				}
+				//往回走的判断   800==>100
+				if(dis <=　target&&speed<0) { //<=100
+					
+					dis = target;
+				}
+				obj.style[attr] = dis + "px";
+				
+				if(dis ==target) { //800   100
+					clearInterval(timer);
+					timer = null;
+				}
+								     // 120+10 
+			},30)
+			
+			
+		}
+		
+		//单击往回走
+		function getStyle(obj,attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}else {
+				return getComputedStyle(obj)[attr];
+			}
+			
+		}
+		
+	</script>
+</html>

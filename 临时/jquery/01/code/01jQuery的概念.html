@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		一. jQuery的基本概念
+		  1  什么是jQuery?
+		   jQuery是一个轻量级的javascript的类库
+		   直白的说: jQuery就是封装好的js文件  类似于  myTool.js  (low版的轻量级的函数库)  startMove.js
+		   
+		   //mootool.js  prototype.js    yui.js
+		   
+		/*    库: 辅助性的工具文件  能够帮助提高开发效率    库为辅   如虎添翼  
+		 *    库分为 两种   类库  ：（代码的组织形式不一样   采用面向对象的形式组织代码  ）  函数库  （采用面向过程的代码组织形式）
+		     框架: 提供一个整体的基础的解决方案  你需要在它的规则上进行开发  框架为主   */
+		   
+		   官网:  jquery.com     说了一堆好处:
+		   github仓库所在地:
+		   jQuery特点(区别于js):
+		    1  强大的DOM选择器
+		    2  封装了大量丰富且实用的方法
+		    3  丰富的动画效果
+		    4  灵活的ajax
+		    5  完整的事件机制
+		    6  已经处理好兼容性问题  不再需要考虑兼容性
+		    7  操作非常简单和方便
+		    
+		   
+		   2 学习jQuery 学什么  该如何学?
+		    学习jQuery就是在学它已经封装好的一大堆方法
+		    
+		    该如何学?
+		     1官网学习
+		     2github学习
+		     3其他相关网站和论坛
+		     4离线文档和书籍 (电子书 锋利的jQuery)    js (js高级程序设计  js权威指南)
+		    
+		    3 如何下载jQuery?
+		      渠道:
+		       1  去官网下载
+		       2  github下载
+		       3 其他相关网站和论坛
+		       4 通过包管理器安装    npm    bower  yarn (后面会学)    //  node 通过npm  install  jquery   通过命令安装
+		       5 通过在线cdn使用: jquery的Cdn 
+		         cdn概念: 网络资源分发节点
+		    4 jQuery的版本:
+		    	大的版本:
+		    	 1.x.x   兼容了IE 6 7 8  所以更加适合pc端开发使用 
+		    	        jquery.1.6.2.js   jquery.1.10.5.js   jquery.1.12.4.js
+		    	        1.12.3   1.12.4 
+		    	        咱们使用1版本里面的最高版本 1.12.4
+		    	 2.x.x   没有兼容IE 6 7 8 一般 在移动端使用
+		    	 3.0.0   添加了很多新的特性和功能,摈弃了很多旧的特性  是未来jQuery的发展趋势  适合移动端使用
+		    	 
+		       版本中 分为 
+		          压缩版  1.12.4.min.js  适合生产阶段使用 运行在线上  (将代码进行压缩  体积更小  传输速度更快)
+		           	未压缩版      1.12.4.js 适合开发阶段使用  (适合参考学习)
+		       
+		        jQuery的开发者发起者 约翰·莱西阁 j john resig
+		        
+		二  使用jQuery   想要用jQuery? 怎么办  花钱  花什么钱  花美元  $
+		 1 引包
+		  常见错误: 1 引包路径错误  2 把jq引到使用它的后面 或者忘记引包
+		  
+		 2 使用的jq的步骤
+		  1 引包  2 编写入口函数   3 具体代码实现
+		  
+		 3 入口函数
+		  js 中   window.onload = function(){}
+		  jQuery 中  $(function(){}); // 就相当于 window.onload = function(){}
+		  $(document).ready(function(){要做事情})
+		  但是有区别:  
+		  js 当整个浏览器程序全部加载完毕( html css  以及外部引入图片和其他资源)之后 触发该事件 执行里面的代码 相当于一个入口函数
+			jQuery 中  当整个浏览器程序全部加载完毕( html 和css 渲染树生成  不需要考虑外部的资源的引入)之后 触发
+			
+			
+		jq中的入口函数 有两种写法:
+		    $(function(){});
+		    
+		    $(document).ready(function(){
+		    	
+		    })
+		    
+		  
+		jQuery 和 js的对比 
+		
+		1  入口函数   js 多个入口函数 后者覆盖前者   jq 多个入口函数 不会发生覆盖
+		2  js 代码有错误 会报错  直接停止   jq 有错误 不报错  后面代码仍然可以继续执行
+		3  兼容性方面 : innerText (老版火狐浏览器 不支持 textContent) 说明有兼容性
+		   js中有很多兼容性问题 需要考虑 
+		   jq  text() 已经处理了兼容性问题       js  ev = ev || event;    jq ev 
+		4 js操作繁琐  jq操作简便  
+		
+		
+		jQuery的中的$ 符号  
+		
+		 $(); $本质上是一个函数  可以接收参数 
+		 
+		 
+	</script>
+</html>

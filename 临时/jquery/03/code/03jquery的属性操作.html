@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.aa{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="box" title="呵呵" class="abc aa box" haha="哈哈"></div>-->
+		<div id="box" style="color:red" ></div>
+		
+		
+	<!--	oBox.id = "aaa";
+		
+		oBox.style.color = "red"-->
+		
+		
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*var oBox = document.getElementById("box");
+		/*alert(oBox.id);
+		alert(oBox.title);
+		alert(oBox.haha);// .无法获取自定义属性
+		*/
+		//alert(oBox.getAttribute("haha"));// 这个js方法可以获取自定义属性*/
+		
+		// jquery  attr() 可以设置获取html属性
+		//读取   $().attr(需要读取的html属性名)
+		//var result = $("#box").attr("class")
+		//var result = $("#box").attr("haha");
+		/*var result = $("#box").attr("title");
+		
+		alert( result );*/
+		
+		// 设置 方法      attr(需要设置的属性名，设置的值)
+		
+		//设置单条html属性
+		/*$("#box").attr("class","aa")
+		$("#box").attr("title","哈哈标题")
+		$("#box").attr("alt","说明文字") */
+		
+		//一次性设置多条属性  用json格式 
+		
+		/*$("#box").attr({
+			class:"abc",
+			title:"哈哈",
+			alt:"呵呵",
+			style:"color:red;background-color:blue;"
+		})*/
+		
+		alert( $("#box").attr("title") );// 如果没有这个属性 那么则获取的是undefined
+	</script>
+</html>

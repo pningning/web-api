@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		var stu1 = {
+			name:"张三",
+			score : 75,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}
+		
+		/*var stu2 = {
+			name:"李四",
+			score : 85,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}*/
+		// 如何创建对象？
+		//两种方式
+		//1 字面量创建对象的方式  json格式的方式去书写对象
+		
+		/*var stu1 = {
+			name:"张三",
+			score : 75,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}*/
+		// 2 采用构造函数的创建对象的方式
+		//var stu1 = new Object();
+/*		var stu1 = {};
+		stu1.name = "张三";
+		stu1.score = 75;
+		stu1.printScore = function(){
+			console.log("姓名："+ this.name + " 分数:" + this.score);
+		}
+		
+		console.log(stu1);
+		stu1.printScore();
+		
+		
+		
+		var stu1 = {
+			name:"张三",
+			score : 75,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}
+		
+		var stu2 = {
+			name:"李四",
+			score : 85,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}
+		
+		var stu3 = {
+			name:"王五",
+			score : 95,
+			printScore:function () {
+				
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+		}*/
+		// 如果创建的对象 非常多  这样一个个去写  代码冗余 非常繁琐  能不能批量创建对象呢？
+		// 批量创建对象的方式----  工厂方式
+		
+		//工厂:  铸剑 工厂
+		/*  1 原材料
+			  2 加工
+			  3 出厂*/
+		
+		function createStudent(name,score) {
+			// 创建一个对象   1 准备原材料   先new objec 创建出来一个空白的对象
+			var student = new Object();
+			
+			// 2 加工
+			
+			// 给这个对象添加一个属性叫name  等于张三
+			student.name = name;
+			// 给这个对象添加一个属性叫score  等于75
+			student.score = score;
+			// 给这个对象添加一个方法叫printScore  等于函数
+			student.printScore = function(){
+				console.log("姓名："+ this.name + " 分数:" + this.score);
+			}
+			
+			//3 出厂 
+			return student;
+		}
+		var stu1 =  createStudent("张三",75);
+		var stu2 =  createStudent("李四",85);
+		var stu3 =  createStudent("王五",95);
+		
+		stu1.printScore();
+		stu2.printScore();
+		stu3.printScore();
+		
+		console.log(stu1==stu2);
+		
+		/*var  a = new Object();
+		var b = new Object();
+		console.log(a==b);*/
+		
+		
+		/*function fn() {
+			fdsfds
+			return "12"; // 25  null;
+		}
+		var aa = fn();*/
+		
+		工厂方式 批量创建对象  不好的地方: 和普通函数调用 没有区别  不能确定返回什么类型的数据,不能确定返回的是你要创建的对象
+		  书写起来还是很繁琐
+	</script>
+</html>

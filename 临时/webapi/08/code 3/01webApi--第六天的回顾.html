@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+		一. 什么是BOM  (浏览器对象模型)
+			
+		二 . window 是浏览器窗口中的顶级对象  BOM 中的顶级对象
+			
+			window.setTimeout()  全局下的方法和属性可以直接使用 可以省略window
+			window.alert()
+			
+			function fn(){
+				
+			}
+			window.fn();// 函数是自由的 但是其实这个自由的函数也属于某一个对象 window对象
+			
+			var abc = 123;
+			console.log(window.abc);// 我将在全局下定义的变量 ，默认已经挂载到window下面了
+			
+			*/
+			var name = 123;
+			console.log(typeof name);// name 其实属于window的属性    即使你声明的是数字类型数据  它也会转成字符串"123"
+			
+			var top = 123;
+			console.log(window.top);// top 是属于window下的属性  top本身指向window
+			
+			//变量声明的时候　　不要用　关键字和保留字　　　　　不要用window下的一些属性和方法名 （不推荐）
+			
+			//不同浏览器window下的属性和方法数量不一样  和浏览器厂商有关系
+			
+			
+			/*alert()	//不同浏览器中的外观是不一样的
+			confirm()//确认框
+			prompt()	//输入框*/
+			//alert("123");
+			
+			window下的几个事件
+			
+			load 载入事件  window.onload = function(){}      //img.onload = function(){}
+			unload  卸载事件   window.onunload = function(){}  
+			
+			scroll   window.onscroll = function(){}
+			resize    window.onresize = function(){}  
+			
+			location对象  : window.location  浏览器地址栏   url  可以设置和获取url
+			
+			/*url:  tcp: 三次握手   udp*/
+			/*协议:// 主机名+端口号 /路径/路径/login.php?username=zhangsan&age=25
+			var arr = ["username=zhangsan","age=25"]
+			arr[0]=
+			
+			arr[0].split("=");  var smallArr = ["username","zhangsan"];
+			
+			var obj = {};
+			
+			obj[smallArr[0]] = smallArr[1];
+			obj["username"] ="zhangsan";
+			obj.username = "zhangsan";*/
+			
+			location.href // 它里面存的是当前完整的url地址
+			// 这个属性可以设置  实现自动跳转
+			location.href = "https://www.baidu.com";
+			
+			location.reload(true);// 刷新  强制刷新
+			
+//			window.navigator : 代表浏览器中相信信息
+
+			navigator.platform// 判断当前的系统平台
+			navigator.appName; // 浏览器的版本
+			
+			navigator.userAgent;// 用户代理信息  可以判断浏览器的版本 IE  谷歌  火狐
+			// isBrowserType
+			
+			定时器: var aa = setTimeout(函数,事件) 延迟定时器 延迟多长时间之后 执行这个函数 只执行一次
+			//setTimeout("console.log(123)",1000);//eval()
+			
+			var bb = setInterval(函数,时间);//循环定时器  每隔一段时间 重复执行这个函数   
+			
+			clearTimeout(aa);
+			
+			clearInterval(bb);
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		// jQuery插件   一般有两种形式    
+		
+		/*第一种形式: 开发工具方法  给$函数直接挂载和添加方法  (静态方法) (不常用)
+		如何进行开发  $.extend() (这是jq内部给你提供的一个api接口 这个接口可以帮您实现静态工具方法的开发)进行添加即可*/
+		
+		// 第二种形式: 直接给jq对象扩展方法  (一般开发者就是基于这种形式实现)
+	/*	如何开发 :  $.fn.extend()  通过这个接口  我们可以实现 给jq对象扩展方法*/
+		
+		/*$.fn.extend({
+			abc:function(){
+				
+			},
+			cc:function(){
+				
+			}
+			
+		})*/
+		
+		/*$.fn.abc = function() {
+			
+		}
+		
+		$.fn.cc = function(){
+			
+		}*/
+	</script>
+</html>

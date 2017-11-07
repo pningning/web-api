@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#map {
+				width: 800px;
+				height: 600px;
+				background: #ccc;
+				margin: 0 auto;
+				position: relative; /*后续在地图上要有很多运动对象进行运行，我们将地图先进行相对定位 作为参照*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+	<script src="food.js"></script>
+	<script src="snake.js"></script>
+	<script type="text/javascript">
+	
+		// 创建一个整体的游戏对象  将里面的小对象们（食物  蛇  地图）    统一起来
+	
+	    // 创建一个游戏的构造函数   Game
+	    // Game的属性：
+	   //    把小对象们统一作为他的属性挂载
+	    (function(window){
+	    	/*console.log(window.Food);
+	    	console.log(window.Snake);*/
+	    	// 创建一个游戏的构造函数   Game
+	    	function Game(map){
+	    		// 将食物构造函数实例化一下 产生一个实例对象 食物  存到当前的游戏Game构造函数里面的this身上
+	    		this.food = new Food();
+	    		// 把蛇实例化一下 产生一个蛇 把这个蛇挂载到当前的this的属性snake身上
+	    		this.snake = new Snake();
+	    		
+	    		// 把传入的地图对象也挂载到当前的this身上 作为属性存在
+	    		this.map = map;
+	    	}
+	    	// 给游戏添加一个开始游戏 一键触发 就可以让蛇动起来啦
+	    	// 给游戏构造函数的原型上面添加一个方法 开始游戏方法
+	    	Game.prototype.start = function(){
+	    		// 让食物随机产生一个 让食物执行渲染方法
+	    		this.food.render(this.map);
+	    		// 让蛇执行一下渲染方法 将蛇放入页面中
+	    		this.snake.render(this.map);
+	    	}
+	    	
+	    	// 暴露出去
+	    	window.Game = Game;
+	    })(window);
+	     
+	
+	
+		
+		
+		
+		
+		
+		// 从页面上先获取到那个地图
+		var oMap = document.getElementById("map");
+		
+	/*	// 创建一个食物的实例对象
+		var food = new Food();
+		// 让实例对象主动去调用渲染方法 在页面上随机产生一个食物
+		food.render(oMap);
+		
+		// 创建一个蛇的实例对象
+		var snake = new Snake();
+		snake.render(oMap);*/
+		
+		var game = new Game(oMap);
+		game.start();
+	</script>
+</html>

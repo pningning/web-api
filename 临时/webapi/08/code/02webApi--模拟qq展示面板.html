@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 250px;
+				height: 400px;
+				background-color: pink;
+				margin: 40px;
+			}
+			#box #photo {
+				width: 60px;
+				height: 60px;
+				background-color: deeppink;
+				float: right;
+				margin: 20px 10px 0 0;
+			}
+			#msg {
+				width: 150px;
+				height: 250px;
+				background-color: blue;
+				position: absolute;
+				left: 310px;
+				top: 40px;
+				display:none;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="photo">头像</div>
+		</div>
+		<div id="msg">个人信息</div>
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById('box');
+		var oPhoto = document.getElementById('photo');
+		var oMsg = document.getElementById('msg');
+		var timer = null;
+		oPhoto.onmouseover = function() {
+			oMsg.style.display = "block";
+		}
+		oPhoto.onmouseout = function() {
+			timer = setTimeout(function() {
+			oMsg.style.display = "none";
+			},100)
+			
+		}
+		oMsg.onmouseover = function() {
+			clearTimeout(timer);
+		}
+		oMsg.onmouseout = function() {
+			oMsg.style.display = "none";
+		}
+	</script>
+</html>

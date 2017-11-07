@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		一  jQuery中的样式操作
+		 1  css方法
+		    读取 样式    $().css("backgroundColor")
+		 设置单条样式  $().css("backgroundColor","red");
+		 设置多条样式  $().css({
+		 	width:300,
+		 	height:300
+		 })
+		
+		 2 类的class方法操作
+		   addClass()添加类
+		   removeClass() 移除类
+		   hasClass() 判断是否有类
+		   toggleClass() 切换类
+		   
+		案例：tab栏切换案例 选项卡
+		
+	二  jQuery的动画系列
+	  三组封装好的小动画方法
+	  1   show和hide方法    toggle 在显示和隐藏之间切换
+	    如果不写参数   直接显示和隐藏
+	  参数：
+	  第一个参数： 动画执行时间 单位 毫秒   支持固定字符串  "fast" 200ms  normal 400ms   slow 600ms
+	  第二参数  回调函数 可选
+	  
+	  2  slideDown 滑入  slideUp 滑出   slideToggle 滑入滑出切换
+	   不写参数 默认是400ms normal   
+	   参数： 
+	    第一个参数： 动画执行时间 单位 毫秒   支持固定字符串  "fast" 200ms  normal 400ms   slow 600ms
+	  第二参数  回调函数 可选
+	  
+	  案例  ： 修改下拉菜单 为滑动效果
+	  
+	  3 fadeIn 淡入  fadeOut 淡出    fadeToggle 淡入淡出之间来回切换    fadeTo 变化指定透明度
+	    参数： 
+	    第一个参数： 动画执行时间 单位 毫秒   支持固定字符串  "fast" 200ms  normal 400ms   slow 600ms
+	  第二参数  回调函数 可选
+	  
+	  
+	  fadeTo 变化指定透明度 
+	  参数：
+	   第一个参数 动画执行时间    必须写  因为 需要执行第二个参数  
+	 第二个参数： 指定透明度
+	 第三个参数  回调函数 可选
+	 
+	案例： 
+		 京剧小人淡入淡出  
+		淡入淡出轮播图
+		
+		
+	自定义动画： animate 方法
+	  $().animate(动画运动属性（json格式）， 动画执行时间 ， [可选参数 运动形式]，callback)
+	  第一个参数： 运动属性 用json格式
+	  第二个参数：  动画执行时间 
+	  第三个参数 运动形式  可选参数  jQuery里面默认支持两种运行形式  swing（默认  慢快慢）  linear匀速
+	   但是我们可以引入一个基于jQuery的动画库  实现多种运行形式   （tween.js）
+	第四个参数  回调函数   callback
+	
+	注意： css大部分属性都可以实现运动  但是有些特殊属性无法实现运动  比如 backgroundColor   color  
+	但是如果想要实现   需要引入一个插件  jquery.color.js  
+	
+	
+	stop（） 专门用来停止动画队列   最常用的
+	
+	stop() // stop(false,false) 停止当前动画   继续执行后续动画      （  不清除动画队列  不跳转到最终效果）
+	stop(true) // stop(true,false) 停止当前动画   不继续执行后续动画      （  清除动画队列  不跳转到最终效果）
+	stop(true，true) // stop(true,true) 停止当前动画   不继续执行后续动画 直接跳转到当前动画的最终效果     （  清除动画队列  跳转到最终效果）
+	stop(false,true) // stop(false,true) 停止当前动画  跳转到当前的动画最终效果  不继续执行后续动画      （  不清除动画队列  跳转到最终效果）
+	finish（）  清除整个动画队列  停止当前动画 直接跳转到所有的动画的最终效果
+	
+	
+	jQuery的DOM节点操作
+	
+	  1  如何创建节点
+	     方法1    var newDiv = $("<div>文明</div>")  $("<div>");  $("#box").append(newDiv);
+	  方法2     $().html("<strong></strong>")
+	  
+	  2 如何添加节点的方法
+	    A.append(B)  将B放在A的里面的最后面
+	    A.prepend(B) 将B放在A的里面的最前面
+	    A.after(B) 将B放在A的后面
+	    A.before(B) 将B放在A的前面
+	    
+	   3 清空元素  empty()
+	   $().empty()  会清空元素里面的内容
+	   
+	   remove()  会清空元素里面的内容  还有自杀
+	   
+	   html("")  这个方法也可以达到清空的效果
+	   
+	   4 克隆方法 clone()
+	   参数  true  可以将之前元素的事件复制过来
+	</body>
+</html>

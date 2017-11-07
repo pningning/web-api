@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				/*border: 1px solid tra;*/
+				/*display: none;*/
+				/*visibility: hidden;*/
+				/*opacity: 0;*/
+				/*background-color: transparent;*//* css三角形*/
+			}
+			#box2 {
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div id="box2"></div>
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box");
+		
+		oBox.onmouseover = function() {
+			alert("触发啦");
+		}
+		
+		//oBox.style.display = "none"; // 这种方式隐藏  不占位 页面重排
+		//oBox.style.visibility = "hidden";// 让box的可见性为隐藏状态  占位 不能触发事件
+		
+		//oBox.style.opacity = "0";
+		
+		
+	</script>
+</html>

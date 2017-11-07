@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			// 当浏览器窗口 全部加载完毕(意思是  页面中的html css 以及外部引入的资源（图片 视频）全部加载完毕)之后 才会触发该事件 
+			var a = 10,b=20;
+			console.log(a+b);
+			
+			
+			
+			
+			window.onload = function() {
+				
+				console.log(document.getElementById("box"));// null
+				document.getElementById("box").style.backgroundColor = "red";
+				
+			}
+			
+			window.onunload = function() {  //窗口关闭之前  会把某一个浏览器的缓存清除掉  用来清空当前的购物车
+				console.log("窗口关闭了");
+			}
+			
+			window.onscroll = function() {
+				console.log("窗口滚动了");
+			}
+			
+			window.onresize = function() {
+				console.log("你调整窗口大小了");
+			}
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box">box</div>
+	</body>
+	<script type="text/javascript">
+		
+	</script>
+</html>

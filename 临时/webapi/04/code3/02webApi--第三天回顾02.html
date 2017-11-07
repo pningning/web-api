@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		获取和设置样式的函数封装
+		<div id="box" >box</div>
+	</body>
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");
+		
+		//box添加一个边框
+		oBox.style.border = "2px solid green";
+		console.log(oBox.style.color);
+		// js可以直接设置或者获取行间的样式
+		
+		// 标准浏览器下 （谷歌 火狐 IE9以及以上） 非标准 IE6 7 8 
+		// IE内核 Ie5---IE11  非IE
+		// 标准浏览器  ：getComputedStyle(obj元素).属性
+		
+		//console.log(getComputedStyle(oBox).height);
+		
+		// IE内核  obj元素.currentStyle.属性
+		
+		//console.log(oBox.currentStyle.width);// 
+		
+		// 兼容函数的封装 通用性
+		
+		if(oBox.currentStyle){
+			console.log(oBox.currentStyle.width);
+		}else {
+			console.log(getComputedStyle(oBox).width);
+		}
+		
+		function getStyle(obj,attr) { // 形参相当于局部变量
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else {
+				return getComputedStyle(obj)[attr];
+			}
+		}
+		// 谁   的什么属性
+		var result = getStyle(oBox,"width");
+		var result2 = getStyle(oBox,"background-color");
+		console.log(result);
+		console.log(result2);
+		
+		function getStyle(obj,attr) { // 形参相当于局部变量
+			if(window.getComputedStyle){
+				return getComputedStyle(obj)[attr];
+			}else {
+				return obj.currentStyle[attr];
+			}
+		}
+		
+		
+		//console.log(window.a);
+		for(var i = 0; i < 1000; i++) {
+			var l = i%10*52
+		
+			var t = parseInt(i/10)*60
+		}
+		
+		0  1 2 3  4  5   6  7   8  9   left值不一样 0*52  1*52 2*52  9*52
+		
+		10  11  12              18  19     10*52(10%10*52)   11%10*52(1*52)  19%10*52(9*52)
+		20 21  22               28   29   20%10*52(0*52)
+		
+		
+		top  parseInt(22/10)*60    parseInt(16/10)*60   2*60
+		
+		
+		
+	</script>
+</html>

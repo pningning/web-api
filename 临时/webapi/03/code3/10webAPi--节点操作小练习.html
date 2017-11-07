@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="oUl">
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+			<li>5555</li>
+			<li>6666</li>
+			<li>7777</li>
+			<li>88888</li>
+		</ul>
+	</body>
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		/*移到到哪个li身上 让当前的li的下一个兄弟背景颜色为aqua
+		如果没有前一个兄弟 那么则让自己背景为aqua*/
+		
+		// 先获取oUl 然后从oUl里面获取所有的孩子们  children
+		var oUl = document.getElementById("oUl");
+		
+		var childs = oUl.children;
+		//给所有的孩子们（li）添加鼠标移上事件
+		for(var i = 0; i < childs.length; i++) {
+			
+			childs[i].onmouseover = function() {
+				for(var i = 0; i < childs.length; i++) {
+					childs[i].style.backgroundColor = "";
+				}
+				if(next(this)) {
+					next(this).style.backgroundColor = "green";
+				}else {
+					this.style.backgroundColor = "pink";
+				}
+			}
+			 
+			
+		}
+	</script>
+</html>

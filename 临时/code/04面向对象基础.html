@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		一 什么是对象:
+			万物皆对象:在客观世界中 一切具体事物够可以看成对象
+			
+			对象: 对具体的一个事物的抽象
+			
+			鼠标是一个对象   键盘也是对象   地球是一个对象   飞机是一个对象 女朋友/男朋友 也是对象
+			
+			对象肯定是有特征和行为的
+			
+			鼠标:
+				特征:颜色  大小尺寸    价格 等
+				行为:单击  移动  右击 (行为看上去是一个个小功能)
+			女朋友:
+				特征:姓名  年龄  性别   身高 体重  性格  (静态的)
+				行为:做饭    开车   洗衣服    写代码    唱歌 (动态的  功能)
+				
+			在程序中  我们该如何表示?
+				把女朋友看成一个对象  
+				她的特征  可以用对象 的属性表示
+				她的行为 可以用对象的方法来表示
+			
+			var girlFriend = {
+				name:"刘涛",
+				age : 35,
+				sex : "女",
+				height:"165cm",
+				weight:"50kg",
+				character:"温柔",
+				cooking:function(){
+					console.log("正在做饭……");
+				},
+				driving:function(){
+					console.log("正在开车……");
+				},
+				coding:function(){
+					console.log("正在写bug……");
+				}
+			}
+	</script>
+</html>

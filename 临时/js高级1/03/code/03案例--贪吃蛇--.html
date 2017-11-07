@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#map {
+				width: 800px;
+				height: 600px;
+				background: #ccc;
+				margin: 0 auto;
+				position: relative; /*后续在地图上要有很多运动对象进行运行，我们将地图先进行相对定位 作为参照*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+	<script type="text/javascript">
+	(function(window){
+	
+	// 在全局定义一个变量 用来存食物
+	var oldFood = [];
+	/*食物对象 
+	1 创建构造函数 构造食物*/
+	              // 用户可以自行传入一些自定义设置
+	function Food(width,height,x,y,color){
+		// 把一些属性进行添加  并且给一写默认的初始化数据
+		this.width = width || 20;
+		this.height = height || 20;
+		//将坐标先挂载到构造函数的this隐式对象上
+		this.x = x || 0;
+		this.y = y || 0;
+		// 颜色默认给一个绿色
+		this.color = color || "green";
+		
+	}
+	// 渲染到页面上  render方法           把方法放在原型上
+	Food.prototype.render = function(map){
+		
+		if(oldFood[0]) {
+			remove();
+		}
+		
+		
+		// 需要将食物随机产生 并且放置在页面上
+		// 因为食物不能放在42  57这样的位置 按照最小20的格子单位走  
+		// 用地图的width/食物的宽度 = 40   Math.random()*40 == 0--40       进行取整parseInt
+		// 进行取整parseInt 0--39之间的随机整数   （0--39）*20 ====（0---780之间的随机整数里面的整数一定是20个倍数）
+		this.x = parseInt(Math.random()*( map.offsetWidth/this.width))*this.width;
+		// 进行y坐标的设置
+		this.y = parseInt(Math.random()*(map.offsetHeight/this.height))*this.height;
+		
+		// 我们在渲染方法里面产生一个小方块 将这个小方块进行设置  然后放在页面上
+		
+		// 可以通过dom元素节点创建的方式去创建
+		var oDiv = document.createElement("div");
+		// 给div添加宽高  
+		oDiv.style.width = this.width + "px";
+		oDiv.style.height = this.height + "px";
+		// 给div添加位置
+		oDiv.style.left = this.x + "px";
+		oDiv.style.top = this.y + "px";
+		// 想要让食物在页面上根据left值和top值来进行随机放置 就需要让它相对于地图进行绝对定位
+		oDiv.style.position = "absolute";
+		// 添加颜色
+		// 将this.color进行随机颜色
+		this.color = "rgb("+ Math.round(Math.random()*255) +","+ Math.round(Math.random()*255) +","+ Math.round(Math.random()*255) +")";
+		oDiv.style.background = this.color;
+		//需要将创建好的div节点放入地图当中
+		// 使用节点添加方法 放入页面地图中
+		map.appendChild(oDiv);
+		// 将这个数组中存入这个食物
+		oldFood.push(oDiv);
+		console.log(oldFood);
+	}
+	
+	
+	function remove() {
+		//console.log(oldFood[0]);
+		// 将页面上的旧的蛇删除
+		oldFood[0].parentNode.removeChild(oldFood[0]);
+		// 将内存中的数组里面清除那个食物数据
+		oldFood.splice(0,1);
+	}
+	
+	// 将食物的构造函数放在window全局对象的一个属性下面 挂载着 然后这样外面可以直接访问window ，与此同时就可以访问window.food
+	// 从而将此对象暴露出去
+	window.Food = Food;
+	
+})(window);
+(function(window){
+	// 创建一个蛇的数组变量 用来存往页面里面添加的蛇节
+	var snakeEles = [];
+	
+	
+	// 创建蛇的构造函数
+	function Snake(width,height,direction) {
+		// 添加了一些宽高属性 给了一个默认值
+		this.width = width || 20;
+		this.height = height || 20;
+		// 设置蛇的身体
+		this.body = [
+		 {x:3,y:2,color:"red"},//蛇头
+		 {x:2,y:2,color:"orange"},// 蛇身1
+		 {x:1,y:2,color:"orange"}// 蛇身2
+		];
+		// 设置蛇头方向
+		this.direction = direction || "right";
+	}
+	// 让蛇产生并且先放置在页面上  渲染方法  render
+	Snake.prototype.render = function(map){
+		// 执行一个删除方法 将之前的页面上的蛇删除
+		remove();
+		// 根据body蛇节数量 循环生成3个div 分别放入地图中
+		for(var i = 0; i < this.body.length; i++) {
+			
+			// 采用dom创建节点的方式进行创建
+			var oDiv = document.createElement("div");
+			
+			oDiv.style.width = this.width + "px";
+			oDiv.style.height = this.height + "px";
+			// 让创建好的节点div 的left 值等于body的第i个里面的x坐标  x  格子单位20 = 真正的页面中的位置
+			oDiv.style.left = this.body[i].x * this.width + "px";
+			oDiv.style.top = this.body[i].y * this.height + "px";
+			// 需要个div设置绝对定位
+			oDiv.style.position = "absolute";
+			
+			// 给蛇节分别设置颜色
+			oDiv.style.backgroundColor = this.body[i].color;
+			// 将创建好的蛇节放入到页面地图中
+			map.appendChild(oDiv);
+			// 同时把当前的蛇节 存入一个数组里面  
+			snakeEles.push(oDiv);
+		}
+	}
+	//给蛇的构造函数的原型上 添加一个移动方法
+	Snake.prototype.move = function(food,map){
+		
+		// 想要让蛇往前挪 每挪一下
+		for(var i = this.body.length-1; i > 0; i--) {
+			        /* 第三节.x = 第二节.x   
+			         	第二节.x = 第一节.x*/
+			this.body[i].x = this.body[i-1].x;
+			this.body[i].y = this.body[i-1].y;
+		}
+		// 蛇头的往哪走 取决于方向
+		switch (this.direction){
+			case "right":
+			this.body[0].x += 1;
+			break;
+			case "left":
+			this.body[0].x -= 1;
+			break;
+			case "up":
+			this.body[0].y -= 1;
+			break;
+			case "down":
+			this.body[0].y += 1;
+			break;
+		}
+		
+		// 添加一个判断  在挪的过程中  判断是否和食物的坐标一样啦  如果一样 说明碰撞上了 吃到了，
+		
+		// 获取一下蛇头的坐标 x y 
+		var headX =  this.body[0].x * this.width;  
+		var headY = this.body[0].y * this.height;
+		// 获取一下食物的坐标x y
+		var foodX = food.x;  
+		var foodY = food.y;
+		
+		
+		if(headX == foodX &&headY == foodY ) {
+			// 只要进来这里面 说明吃到了
+			// 把蛇身数组的最后一节 用一个存起来
+			var last = this.body[this.body.length-1];
+			
+			//var obj2 = obj;
+			
+			
+			var newJie = {
+				x:last.x,
+				y:last.y,
+				color:last.color
+			}
+			this.body.push(newJie);
+			console.log(this.body);
+			// 需要重新渲染新的食物 重新渲染食物之前  需要先删除页面上的那个旧的食物
+			food.render(map);
+		}
+		
+		
+	}
+	// 创建一个删除原来的页面上的旧的方法
+	function remove(){
+		//console.log(snakeEles);
+		// 根据蛇数组里面存的蛇节数进行循环
+		for(var i = 0; i < snakeEles.length; i++) {
+			// sankeEles[0] 蛇头 的parentNode ==map  
+			// map.removeChild (sankeEles[0]蛇头)
+			
+			// sankeEles[1] 蛇身1  的parentNode ==map  
+			// map.removeChild (sankeEles[1]蛇身1)
+			
+			// sankeEles[2] 蛇身2  的parentNode ==map  
+			// map.removeChild (sankeEles[2]蛇身2)
+			snakeEles[i].parentNode.removeChild(snakeEles[i]);
+			
+		}
+		snakeEles = []; // js有一个内存垃圾回收机制（小程序定期巡逻 看看有没有废了不用的代码 如果由回收）
+		//snakeEles.splice(0,snakeEles.length);
+	}
+	
+	
+	// 暴露出去
+	window.Snake = Snake;
+	
+})(window);    
+function bind(obj,evType,evFn) {
+	if(obj.addEventListener){
+		obj.addEventListener(evType,evFn,false);
+	}else if(obj.attachEvent) {
+		obj.attachEvent("on"+evType,evFn);
+	}else {
+		obj["on"+evType] = evFn;
+	}
+	
+}
+
+
+// 创建一个整体的游戏对象  将里面的小对象们（食物  蛇  地图）    统一起来
+
+// 创建一个游戏的构造函数   Game
+// Game的属性：
+   //    把小对象们统一作为他的属性挂载
+    (function(window){
+	/*console.log(window.Food);
+	console.log(window.Snake);*/
+	// 创建一个游戏的构造函数   Game
+	function Game(map){
+		// 将食物构造函数实例化一下 产生一个实例对象 食物  存到当前的游戏Game构造函数里面的this身上
+		this.food = new Food();
+		// 把蛇实例化一下 产生一个蛇 把这个蛇挂载到当前的this的属性snake身上
+		this.snake = new Snake();
+		
+		// 把传入的地图对象也挂载到当前的this身上 作为属性存在
+		this.map = map;
+	}
+	// 给游戏添加一个开始游戏 一键触发 就可以让蛇动起来啦
+	// 给游戏构造函数的原型上面添加一个方法 开始游戏方法
+	Game.prototype.start = function(){
+		// 让食物随机产生一个 让食物执行渲染方法
+		this.food.render(this.map);
+		// 让蛇执行一下渲染方法 将蛇放入页面中
+		this.snake.render(this.map);
+		
+		//==============================================
+		// 不应该让蛇动一下 应该让蛇自动走起来 需要开定时器
+		runSnake(this);
+		// 将蛇的方向控制的方法作为私有方法 进行编写
+		// 调用键盘绑定事件方法
+		bindKey(this);
+	}
+	// 我们可以不往构造函数的原型上添加 （这样加 会暴露外面去 ）
+	// 如果你想只是在内部使用一下 可以直接写一个函数作为私有方法 外面访问不到
+	function runSnake(that){
+		// 开启一个定时器 在定时器中 调用蛇的移动方法
+		var timer = setInterval(function(){
+			//console.log(this);// window*/
+			// 调用蛇的移动方法的时候 只是将蛇的body里面的每一节的身体的坐标往前挪了一下 页面上没有发生变化
+			that.snake.move(that.food,that.map);
+			
+			
+			
+			// 检测是否撞墙
+			
+			// 先获取蛇头的坐标  
+			var headX = that.snake.body[0].x * that.snake.width;
+			var headY = that.snake.body[0].y * that.snake.height;
+			// 地图 最左边0 最上面0  最右边maxX  最下面 maxY
+			var maxX = that.map.offsetWidth;
+			var maxY = that.map.offsetHeight
+			
+			// 判断是否坐标出去 是否撞墙
+			if(headX < 0 || headX >= maxX) { // 39*20==780 ==> 800   800
+				// 清除定时器
+				clearInterval(timer);
+				alert("Game Over");
+				return 
+			}
+			if(headY <0 || headY >= maxY) {
+				// 清除定时器
+				clearInterval(timer);
+				alert("Game Over");
+				return;
+			}
+			
+			
+			// 你需要在蛇移动方法执行完之后， 需要渲染到页面上去， 
+			// 在渲染蛇之前先删除原来页面上渲染的蛇  再去渲染新的蛇放到页面上去
+			that.snake.render(that.map);
+			
+		},200);
+		
+		
+	}
+	
+	// 编写键盘控制方向方法
+	function bindKey(that){
+		
+		// 在整个文档下document 下 添加键盘按下事件 
+		// 调用封装好的一个兼容性的绑定事件的函数
+		// 实现键盘控制方向
+		bind(document,"keydown",function(ev){
+			// 做事件对象兼容
+			ev = ev || event;
+			// 根据按下的键盘编码是多少 从而 将蛇的对应的方向改成对应的左或者右或者其他方向
+			switch(ev.keyCode) {
+				case 37:
+				that.snake.direction = "left";
+				break;
+				case 39:
+				that.snake.direction  = "right";
+				break;
+				case 38:
+				that.snake.direction  = "up";
+				break;
+				case 40:
+				that.snake.direction = "down";
+				break;
+			}
+			
+		})
+		
+	}
+	
+	
+	// 暴露出去
+	window.Game = Game;
+})(window)	
+		
+		
+		
+		// 从页面上先获取到那个地图
+		var oMap = document.getElementById("map");
+		var game = new Game(oMap);
+		game.start();
+		
+		
+	</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		//一  jQuery非常受欢迎开发者的特点  链式操作  (链式编程)
+		
+	/*	$("#box").css("background-color","red");
+		
+		alert($("#box").html());*/
+		
+		//alert( $("#box").css("background-color","red").html() );
+		
+		/*链式编程原理：在jq方法调用之后   在方法内部会 return this  (就是将当前的对象返回出去);*/
+		//注意的地方  必须是设置方法 不能使读取方法
+		
+		var obj = {
+			name: "",
+			setName : function(name){
+				this.name = name;
+				return this;// jq中一般设置方法  将设置操作设置完毕之后 可以返回当前的对象  this
+			},
+			getName:function(){
+				return this.name;//jq中 读取 方法 一般会将读取的结果返回 所以就不能返回当前对象啦  
+				
+			}
+			
+		}
+		
+	/*	obj.setName("李四");
+		alert( obj.getName() ); //
+		console.log(obj);*/
+		
+		//alert(obj.setName("哈哈").getName());
+		
+		//obj.getName().setName("哈哈");
+	</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="单击往前走" id="btn1" />
+		<input type="button" value="单击往回走" id="btn2" />
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 给按钮添加单击事件  让div的left 增加
+		var oBtn1 =document.getElementById("btn1");
+		var oBtn2 =document.getElementById("btn2");
+		var oBox = document.getElementById("box");
+		
+		// 设置一个变量 用来存定时器
+		var timer = null;
+		// 单击往前走
+		oBtn1.onclick =  function() {
+			clearInterval(timer);
+			// 开新的定时器之前 先将之前的定时器清除
+			timer = setInterval(function() {
+				
+				var speed = oBox.offsetLeft + 7;
+				
+				if(speed >=800) {
+					
+					speed = 800;
+				}
+				
+				oBox.style.left = speed + "px";
+				
+				if(speed ==800) { //796 +8 ==804
+					clearInterval(timer);
+					timer = null;
+				}
+								     // 120+10 
+			},30)
+			
+		}
+		
+		//单击往回走
+		
+		oBtn2.onclick = function() {
+			clearInterval(timer);
+			timer = setInterval(function() {
+				
+				var speed = oBox.offsetLeft - 7;
+				
+				if(speed <=100) {
+					
+					speed = 100;
+				}
+				
+				oBox.style.left = speed + "px";
+				
+				if(speed ==100) { //796 +8 ==804
+					clearInterval(timer);
+					timer = null;
+				}
+								     // 120+10 
+			},30)
+			
+			
+		}
+		
+		
+	</script>
+</html>

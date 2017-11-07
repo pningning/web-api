@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 40px 20px;
+				padding: 20px 10px;
+				border:5px solid green;
+				border-top-width: 10px;
+			}
+			#box2 {
+				width: 300px;
+				height: 300px;
+				background-color: pink;
+				/*position: absolute;
+				left: 100px;
+				top: 50px;*/
+				padding: 50px;
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box2">
+			<div id="box">box</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		//页面可视区域的宽高 没有兼容性问题
+		/*console.log(document.documentElement.clientWidth);
+		console.log(document.documentElement.clientHeight);
+		
+		// offset系列:
+		console.log(box.offsetParent);// parentNode*/
+//		A.offsetParent:距离A最近的具有定位属性的父级 就是offsetParent,如果他的父级们都没有定位属性，
+//   那直接指向body
+		
+		/*console.log(box.offsetLeft);// 它一定是参考的box的offsetParent，产生的左侧偏移量
+		console.log(box.offsetTop);// box距离它的offsetParent的顶部偏移量
+		
+		console.log(box.offsetWidth);// 定义好的宽+左右padding + 左右的border
+		console.log(box.offsetHeight);//
+		
+		console.log(box.clientLeft);//5
+		console.log(box.clientTop);//10
+		
+		console.log(box.clientWidth); // 定义好的宽+ 左右的padding
+		console.log(box.clientHeight);*/
+		
+		
+		
+		/*A.scrollLeft  A元素的滚动条水平方向滚动过的距离左侧距离    
+		A.scrollTop   A元素的滚动条垂直方向滚动过的距离顶部的距离*/
+		//给文档对象添加一个滚动条滚动事件　只要一滚动就触发该事件
+		
+		// IE7 8 它认为document对象上面没有onscroll事件
+		/*document.onscroll = function() {
+			// 查看页面的滚动条垂直方向滚动过的距离
+			console.log(document.documentElement.scrollTop);
+			//console.log(document.body.scrollTop);
+		}*/
+		
+		/*window.onscroll = function() {
+			// 查看页面的滚动条垂直方向滚动过的距离
+			console.log(document.documentElement.scrollTop);
+			//console.log(document.body.scrollTop);
+		}*/
+		
+		// 在获取页面的滚动条的scrollTop的时候  才会做兼容处理
+		
+		var  scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+		//console.log(scrollT);
+		
+		//scrollWidth   scrollHeight
+		
+		console.log(document.documentElement.scrollHeight);//2000+8+8
+		console.log(document.documentElement.clientHeight);//426
+		console.log(scrollT);//1590
+		document.documentElement.scrollHeight = document.documentElement.clientHeight + scrollT;
+	</script>
+</html>

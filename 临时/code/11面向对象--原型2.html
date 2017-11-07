@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function Coder(name,age,hobby) {
+		
+			this.name  = name;
+			this.age = age;
+			/*this.coding = function(){
+				console.log("正在写bug");
+			}*/
+		}
+		
+		
+	
+		console.dir(Coder);
+		Coder.prototype.hobby = "shy";
+		
+		Coder.prototype.coding=function(){
+			
+			console.log( this.name + "正在写bug");
+		}
+		
+		Coder.prototype.sleeping = function() {
+			console.log(this.name + "正在睡觉");
+		}
+		// 把一些相同的属性和方法往构造函数的原型上面加 
+		
+		// 把不同的属性 和方法往构造函数里面的this上面加
+		
+		//一般我们说 静态的属性 可能不一样   动态的方法 大体相同   属性一般往构造函数里面的this身上加  方法一般构造函数的原型上加 让他们共享一份
+	/*	Coder.prototype= {
+			constructor:CreatePerson,// 因为这种写法会把之前的对象覆盖 所以要补上它原来有的默认属性
+			coding:function(){
+				console.log("正在写bug");
+			}
+		}*/
+		console.log(Coder.prototype);
+		
+		var coder1 = new Coder("李梦",25);
+		var coder2 = new Coder("覃佳佳",22);
+		
+		console.dir(coder1);// __proto__
+		
+		/*coder1.sleeping();
+		coder2.coding();*/
+		/*程序猿  程序媛*/
+		console.dir(Object); //  function Object(){}
+		
+		console.log(Object.prototype);
+		
+		var aa = new Object();
+		aa.name = "ss";
+		aa.haha = "哈哈"
+		console.log(aa.haha);
+//		Object.prototype.haha = "哈哈";
+		
+		var bb = new Object();
+		console.log(bb.haha);
+	</script>
+</html>

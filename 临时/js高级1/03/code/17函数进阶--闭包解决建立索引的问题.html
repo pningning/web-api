@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				text-align: center;
+				font: 50px/200px "微软雅黑";
+				display: none;
+			}
+			.active {
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮1" class="active" />
+		<input type="button" value="按钮2" />
+		<input type="button" value="按钮3" />
+		<div style="display: block;">内容1</div>
+		<div>内容2</div>
+		<div>内容3</div>
+	</body>
+	<script type="text/javascript">
+		
+		var aInp = document.getElementsByTagName("input");
+		var aDiv = document.getElementsByTagName("div");
+		
+		/*for(var i = 0; i < aInp.length; i++) {
+			
+			// 0 1 2
+			aInp[i].onclick =(function(m){
+				
+				return  function(){
+					for(var j = 0; j < aInp.length; j++) {
+						aInp[j].className = "";
+						aDiv[j].style.display = "none";
+					}
+					aInp[m].className = "active";
+					aDiv[m].style.display = "block";
+				}
+				
+			})(i);
+		}*/
+		
+		
+		
+	/*	for(var i = 0; i < aInp.length; i++) {
+			
+			(function(m){
+				// 0 1 2
+				aInp[m].onclick =function(){
+					for(var j = 0; j < aInp.length; j++) {
+						aInp[j].className = "";
+						aDiv[j].style.display = "none";
+					}
+					aInp[m].className = "active";
+					aDiv[m].style.display = "block";
+				}
+				
+				
+			})(i);
+				
+			
+		}*/
+		
+		
+		for(var i = 0; i < aInp.length; i++) {
+			
+			fn(i);
+				
+			
+		}
+		
+		
+		
+		function fn(m){
+			// 0 1 2
+			aInp[m].onclick =function(){
+				for(var j = 0; j < aInp.length; j++) {
+					aInp[j].className = "";
+					aDiv[j].style.display = "none";
+				}
+				aInp[m].className = "active";
+				aDiv[m].style.display = "block";
+			}
+			
+			
+		}
+	</script>
+</html>

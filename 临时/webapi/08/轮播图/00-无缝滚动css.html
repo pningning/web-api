@@ -1,0 +1,174 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+
+    </style>
+
+    <script>
+       
+    </script>
+</head>
+
+<body>
+
+    <!--外盒子-->
+    <div class="all" id='all'>
+        <!--内盒子-->
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images/1.jpg" width="500" height="200"/></li>
+                <li><img src="images/2.jpg" width="500" height="200"/></li>
+                <li><img src="images/3.jpg" width="500" height="200"/></li>
+                <li><img src="images/4.jpg" width="500" height="200"/></li>
+                <li><img src="images/5.jpg" width="500" height="200"/></li>
+            </ul>
+            <!--小方块-->
+            <ol id="ool">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>	
+            </ol>
+            <!--左右小三角-->
+            <div id="arr">
+                <span id="left"><</span>
+                <span id="right">></span>
+            </div>
+        </div>
+    </div>
+    
+</body>
+    <script src="myTools.js"></script>
+    <script>
+        // 获取事件相关元素
+            var oAll = $('#all');
+            // var oScreen = oAll.children;
+            var oUl = $("#ul");
+            var aLi = oUl.children;
+            var oOl = $("#ool");
+            var oOlLi = oOl.children;
+            // console.log(oOlLi);
+
+            // 循环ul里面的图片
+                // 要在ol里面添加
+                // 移动的距离
+                var target = 0;
+                var k = 0;
+            for(var i = 0; i < oUl.children.length; i++) {
+                aLi[i].index = i;
+                // target = -i*aLi[i].offsetWidth;
+                // obj,attr,speed,target,callback
+                // move(oUl,"left",10,target)
+                oOlLi[i].innerHTML = i+1;
+
+                 oOlLi[i].onmouseover = function() {
+                    // move(oUl,"left",10,target)
+                    // oUl.style.left = -i*aLi[i].offsetWidth+"px";
+                    for(var i = 0; i < oOlLi.length; i++){
+                        oOlLi[i].className = '';
+                    }
+                    // target = -i*aLi[i].offsetWidth;
+                    // move(oUl,"left",10,target);
+                    this.className = "current";
+                    k = this.index;
+                }
+            }
+
+            // 给盒子添加鼠标移上事件
+            oAll.onmouseover = function() {
+                target = -k*aLi[k].offsetWidth;
+                move(oUl,"left",10,target);
+            }
+           
+    </script>
+</html>
+

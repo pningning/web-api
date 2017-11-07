@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		var obj = {
+			fn : function (){
+				console.log("大家好，我叫"+ this.name+ ",我今年"+this.age + "岁了");
+			},
+		 	sleep: function (){
+				console.log("正在睡觉");
+			}
+		}
+		
+		
+		
+		
+		//var fn = 123;
+		
+		// 创建一个person
+		
+		function CreatePerson(name,age) {
+			this.name = name;
+			this.age = age;
+			this.sayHi = obj.fn;
+			this.sleep = obj.sleep;
+		}
+		
+		var p1  = new CreatePerson("张三",20);
+		var p2 = new CreatePerson("李四",28);
+		
+		p1.sayHi();
+		p2.sayHi();
+		console.log(p1.sayHi == p2.sayHi);// false
+		console.log(p1.sleep == p2.sleep);
+		
+		// 两个实例对象  的方法  是不相同的   说明各自分别执行和创建了自己的方法  因为方法是功能相同的，但是重复创建 性能会差
+		// 最好是将相同的功能  只创建一次   让每一次的实例对象 都用这一个方法  这样可以节省内存 性能会好很多
+		//  我们可以将 相同的方法 放到外面 的一个大的对象里面  每次构造函数创建的对象 都共同引用同一个对象下的方法 
+		// 避免重复多次创建方法  避免内存浪费 提高性能
+		
+		/*new 一个构造函数的过程 就是创建对象的过程  是一个实例化对象的过程  根据隐式对象  实例化一个一个的真是的具体的对象
+		p1 是一个实例化对象    p2 也是一个实例化对象*/
+		
+	    /*console.log(p1); 	
+	    console.log(p1.constructor); // 实例对象下面有一个属性 叫constructor  （构造器）
+	    p1.constructor 意思是 找到 p1的构造函数  contructor这个属性直接指向的是当前的实例的构造函数*/
+	   
+	  
+	</script>
+</html>

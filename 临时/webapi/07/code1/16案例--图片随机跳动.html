@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				margin:100px 0;
+				width: 700px;
+				height: 400px;
+				position: relative;
+				border: 1px solid red;
+			}
+			img {
+				position: absolute;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="high起来" />
+		<input type="button" value="敲代码去" />
+		<div id="box">
+			<img src="img/00.jpg" id="oImg" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		//分析思路：　单击嗨起来　　让图片的位置随机　　left值随机  top随机  但是在大盒子范围内随机 不能出去
+		// 单击停止   让定时器停止
+		//Math.random();// 0---1 随机小数
+		
+		
+		// 1 获取相关元素
+		var aInp = document.getElementsByTagName("input");
+		var oBox = document.getElementById("box");
+		var oImg = document.getElementById("oImg");
+		var timer = null;
+		// 2 事件类型   单击事件     给嗨起来按钮添加单击事件      给敲代码去按钮添加单击事件
+		 // 给嗨起来按钮添加单击事件
+		aInp[0].onclick = function(){
+			timer = setInterval(function() {
+				oImg.style.left = Math.round(Math.random()*(oBox.offsetWidth-oImg.offsetWidth)) + "px";
+				oImg.style.top = Math.round(Math.random()*(oBox.offsetHeight-oImg.offsetHeight)) + "px";
+			},30);
+		}
+		
+		
+		
+		//给敲代码去按钮添加单击事件
+		aInp[1].onclick = function(){
+			// 清除定时器
+			clearInterval(timer);
+			timer = null;
+		}
+	</script>
+</html>

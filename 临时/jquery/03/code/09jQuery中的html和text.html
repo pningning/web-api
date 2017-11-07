@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<em>倾斜标签</em>
+		</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		/*html方法   它能够识别标签   和原生js中的  innerHTML 相同
+		  text方法   不识别标签   和原生js中的innerText 相同*/
+		  
+		  //设置
+		  //$("#box").html("<strong>加粗标签</strong>");
+		  //$("#box").text("<strong>加粗标签</strong>");
+		  
+		  
+		  // 读取
+		  
+		  //console.log( $("#box").html() );
+		 console.log( $("#box").text() );
+	</script>
+</html>

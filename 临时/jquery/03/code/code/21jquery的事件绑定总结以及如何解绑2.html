@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box
+			<p>pppppp</p>
+			<span>span</span>
+			<p>pppppppp</p>
+		</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		$("#box").delegate("p","dblclick click",function(e){
+			console.log("该事件触发了");
+			$(e.target).remove();
+		})
+		
+		
+		// 如何解绑  undelegate
+		
+		//$("#box").undelegate("dblclick");
+		//$("#box").undelegate("click")
+		$("#box").undelegate()
+	</script>
+</html>

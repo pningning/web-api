@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		// 键盘按下
+		//在整个文档下　　按下键盘
+		document.onkeydown = function(ev) {
+			//到底当前事件按下了哪儿个键 关于当前事件触发的详细信息 都在黑匣子（事件对象）
+			
+			ev = ev || event;
+			//console.log(ev);  // ev.keyCode  键盘编码 （ascii码）
+			console.log(ev);
+			// 32:空格  left:37  up:38   right:39   down:40
+			// 13:回车键
+			console.log("键盘按下了");
+			//ctrlKey altKey shiftKey 辅助键 默认都是false 也就是没有按下
+			// 如果按下了其他哪一个辅助键 哪个辅助键就会变成true
+			
+		}
+		
+	</script>
+</html>

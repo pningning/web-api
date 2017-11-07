@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*继承性
+			概念 : 一个对象没有某些属性和方法，另外一个对象有，拿过来用，就是继承！*/
+			
+			
+			// Itouch  (产品)
+			
+			/*属性:  颜色   尺寸   价格 
+			
+			方法:  打游戏   听音乐  (但是不能打电话)*/
+			
+			// 写一个Itouch的构造函数 
+			function Itouch(color,price,size){
+				
+				this.color = color;
+				this.price = price;
+				this.size = size;
+				
+			}
+			Itouch.prototype.playGame = function(){
+				console.log("可以打游戏");
+			}
+			
+			Itouch.prototype.listenToMusic = function(){
+				console.log("可以听音乐");
+			}
+			
+			var itouch1 = new Itouch();
+			
+		// 公司着手开发下一代产品   Iphone  （Iphone  颜色  价格 尺寸   打游戏  听音乐   还可以打电话）
+			// 继承 ： 一个对象没有一些属性和方法  但是别人有  直接拿过来用  就是继承
+			
+			function  Iphone(color,price,size){
+				
+			}
+			// 想继承
+			Iphone.prototype = new Itouch(color,price,size);
+			// 原型继承： 优点：可以一次性将父级所有的方法和属性全部继承过来 方便快捷 
+			//缺点：无法实参传参 会把子对象的构造函数的  原型上面的默认的构造器属性覆盖
+			
+			// 给Iphone手机本身产品添加一个打电话功能
+			
+			Iphone.prototype.callPhone = function(){
+				console.log("可以打电话");
+			}
+			
+			//生产手机了
+			var iphone1 = new Iphone("red","200$","4.2");
+			
+			console.log(iphone1.color);
+			console.log(iphone1.price);
+			console.log(iphone1.size);
+			iphone1.playGame();
+			iphone1.listenToMusic();
+			iphone1.callPhone();
+	</script>
+</html>

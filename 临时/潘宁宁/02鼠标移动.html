@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width:100px;
+				height:100px;
+				background-color: red;
+				position:absolute;
+				left:100px;
+				top:100px;
+				cursor:move;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+//		获取事件的相关元素
+//		给div添加鼠标移动事件
+		var oDiv = document.getElementById('box');
+		
+//		给整个文本添加移动事件
+		document.onmousemove = function(ev) {
+			ev= ev ||event;
+//			div移动的x,y其实就是鼠标的x,y坐标
+			oDiv.style.left = ev.clientX- 50+ "px";
+			oDiv.style.top = ev.clientY - 50+ "px";
+		}
+	</script>
+</html>

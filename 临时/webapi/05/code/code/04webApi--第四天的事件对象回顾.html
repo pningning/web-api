@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div> 
+	</body>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box");
+		
+		
+		//console.log(event); // 你要这样直接打印 里面没有信息 但是不会报错 不报错 意味着在全部window下面有这个东西
+		
+		//console.log();
+		
+		oBox.onclick = function(e) {
+			//console.log(ev);
+			//console.log(event);
+			//var abc = ev || event;
+			//var abc = window.event || ev; // 
+			e = e || event;
+			console.log(e);
+		}
+		
+		oBox.onmouseover = function() {
+			
+		}
+		
+		
+	</script>
+</html>

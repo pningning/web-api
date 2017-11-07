@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+				margin:50px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var oBox = document.getElementById('box');
+		function fn() {
+			oBox.style.backgroundColor = "red";
+		}
+		function fn2() {
+			oBox.style.border = "5px solid green";
+		}
+			
+			
+			
+		oBox.addEventListener('click',fn,false);//绑定事件
+		oBox.addEventListener('click',fn2,false);//绑定事件
+		
+//		取消绑定事件函数()
+//		removeEventListener 标准浏览器支持,ie678不支持
+		oBox.removeEventListener('click',fn,false);//标准浏览器解绑
+		
+//		
+//		detachEvent();  //ie 678解绑的方式
+//		oBox.attachEvent('onclick',fn);
+//		oBox.attachEvent('onclick',fn2);//绑定事件
+//		oBox.detachEvent("onclick",fn);//ie6.7.8解绑事件
+
+		
+		
+//		绑定事件和解绑事件的兼容问题最终解决方法 		
+		
+//		这是一个绑定事件函数封装
+//		function bind(obj,evType,evFn) {
+//			// 根据浏览器能力进行检测  如果识别支持addEventListener 就直接使用这个绑定方式
+//			// 如果不支持这个方法 则按照后面的方式进行绑定
+//			
+//			obj.handle = function(){
+//				evFn.call(obj);
+//			}
+//			
+//			if(obj.addEventListener){
+//				// 标准浏览器走这个绑定
+//				obj.addEventListener(evType,evFn,false);
+//				obj.handle = evFn;
+//			}else if(obj.attachEvent) {
+//				//IE6 7 8 走这个绑定方式
+//				obj.attachEvent("on"+evType,obj.handle);
+//			} else {
+//				// 以上方法都不支持的很老的浏览器 走这个方法
+//				obj["on"+evType] = evFn;
+//				
+//			}
+//		}
+//		
+//		
+////		这是一个解绑函数
+//		function unbind(obj,evType,evFn) {
+//			if(obj.removeEventListener) {
+//				obj.removeEventListener(evType,obj.handle,false);
+//			}else if(obj.detachEvent) {
+//				obj.detachEvent("on"+evType,obj.handle);
+//			}else {
+//				obj["on"+evType] = null;
+//			}
+//			
+//		}
+//		bind(oBox,'click',fn);
+//		bind(oBox,'click',fn2);
+//		
+//		unbind(oBox,'click',fn);
+//			
+	</script>
+</html>

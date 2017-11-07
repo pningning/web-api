@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.error{
+				color: red;
+			}
+			.right {
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		用户名：<input type="text"id="text" /><span></span>
+	</body>
+	<script type="text/javascript">
+		
+		
+		var oText = document.getElementById("text");
+		var oSpan = document.getElementsByTagName("span")[0];
+		
+		oText.onblur = function(){
+			
+			var str = oText.value;
+			
+			var  re = /^[\u4e00-\u9fa5]{2,4}$/;
+			
+			if(re.test(str)) {
+				oSpan.className = "right";
+				oSpan.innerHTML  = "恭喜输入正确"
+			}else {
+				oSpan.className = "error";
+				oSpan.innerHTML  = "您输入的格式错误"
+			}
+			
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*初始化  reset*/
+			blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+			body,button,input,select,textarea{font:12px/1.5 "Microsoft YaHei", "微软雅黑", SimSun, "宋体", sans-serif;color: #666;}
+			ol,ul{list-style:none}
+			a{text-decoration:none}
+			fieldset,img{border:0;vertical-align:top;}
+			a,input,button,select,textarea{outline:none;}
+			a,button{cursor:pointer;}
+			
+			.wrap{
+			    width:1200px;
+			    margin:10px auto;
+			}
+			.slide {
+			    height:500px;
+			    position: relative;
+			    
+			}
+			.slide li{
+			    position: absolute;
+			    left:200px;
+			    top:0;
+			}
+			.slide li img{
+			    width:100%;
+			}
+			.arrow{
+			    opacity: 0;
+			}
+			.prev,.next{
+			    width:76px;
+			    height:112px;
+			    position: absolute;
+			    top:50%;
+			    margin-top:-56px;
+			    background: url(./images/prev.png) no-repeat;
+			    z-index: 99;
+			}
+			.next{
+			    right:0;
+			    background-image: url(./images/next.png);
+			}
+
+		</style>
+		
+	</head>
+	<body>
+		<div class="wrap" id="wrap">
+	       <div class="slide" id="slide">
+	           <ul>
+	               <li><a href="#"><img src="images/slidepic1.jpg" alt=""></a></li>
+	               <li><a href="#"><img src="images/slidepic2.jpg" alt=""></a></li>
+	               <li><a href="#"><img src="images/slidepic3.jpg" alt=""></a></li>
+	               <li><a href="#"><img src="images/slidepic4.jpg" alt=""></a></li>
+	               <li><a href="#"><img src="images/slidepic5.jpg" alt=""></a></li>
+	           </ul>
+	           <div class="" id="arrow">
+	               <a href="javascript:;" class="prev"></a>
+	               <a href="javascript:;" class="next"></a>
+	           </div>
+	       </div>
+	   </div>
+	</body>
+	<script src="../startMove.js"></script>
+	<script>
+		
+		/*分析思路:
+		 1  需要将已经定位的每一个li的位置摆放好    每一个li的lef值和top值不一样  width和height也不一样,透明度也不一样
+		    z-index z序不一样  最好把每一个li的各自的位置等详细信息 存放在一块   五个li 分别有五堆信息  用对象来存起来*/
+		
+		var arrJson = [
+        {   //  1
+            width:400,
+            top:70,
+            left:50,
+            opacity:20,
+            z:2
+        },
+        {  // 2
+            width:600,
+            top:120,
+            left:0,
+            opacity:80,
+            z:3
+        },
+        {   // 3
+            width:800,
+            top:100,
+            left:200,
+            opacity:100,
+            z:4
+        },
+        {  // 4
+            width:600,
+            top:120,
+            left:600,
+            opacity:80,
+            z:3
+        },
+        {   //5
+            width:400,
+            top:70,
+            left:750,
+            opacity:20,
+            z:2
+        }
+    ];
+    
+    
+		var timer = null;
+		 //2. 打开页面 之后 各个li里面的图片 自动诸神归位
+		 
+		 // 获取所有的li 让所有的li 都自动定位到各自的位置上去  透明度以及z序都到各自的位置上去
+		 var aLi = $("li",$("#slide"));
+		 
+		 autoPlay();
+		 
+		 var oPrev  = $("a",$("#arrow"))[0];
+		 var oNext  = $("a",$("#arrow"))[1];
+		 // 单击右侧按钮  
+		oNext.onclick = function() {
+			// 把最后的li的详细信息 放到第一li的前面
+//			把详细信息 做了一个数组中的调换调整
+			//arrJson.unshift(arrJson.pop());
+			
+			/*console.log(arrJson);
+			for(var i = 0; i < aLi.length; i++) {
+			 	startMove(aLi[i],arrJson[i],10);
+			 }*/
+			autoPlay(true);
+		}
+		 
+		 
+		 // 单击左侧按钮  
+		 oPrev.onclick = function() {
+		 	
+		 	autoPlay(false) 
+		 	
+		 }
+		 
+		 function autoPlay(onOff) {
+		 	if(onOff != undefined) {
+		 		if(onOff) {
+			 		// 往右走的
+			 		arrJson.push(arrJson.shift());
+			 	}else {
+			 		// 往左走
+			 		arrJson.unshift(arrJson.pop());
+			 	}
+		 	}
+		 	
+		 	
+		 	for(var i = 0; i < aLi.length; i++) {
+			 	startMove(aLi[i],arrJson[i],10);
+			}
+		 	
+		 }
+		 
+		 timer = setInterval(function() {
+		 	autoPlay(false); 
+		 },2000);
+		 
+		 // 当鼠标移到slide身上 清除定时器  移开slide 身上开启定时器
+		 $("#slide").onmouseover = function() {
+		 	clearInterval(timer);
+		 }
+		 $("#slide").onmouseout = function() {
+		 	timer = setInterval(function() {
+			 	autoPlay(false); 
+			 },2000);
+		 }
+	</script>
+	
+</html>

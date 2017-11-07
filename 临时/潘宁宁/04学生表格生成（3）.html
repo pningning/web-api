@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+				姓名：<input id="nameText" type="text"><br> 
+				年龄：<input id="ageText" type="text">
+				<input type="button" value="添加学生">
+				<input type="button" value="删除一行">
+			</div>
+			<table id="stuInfo" width="200" border="1">
+				<tbody>
+					<tr>
+						<td>姓名</td>
+						<td>年龄</td>
+					</tr>
+					<tr>
+						<td>江泽民</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>芙蓉</td>
+						<td>30</td>
+					</tr>
+					<tr>
+						<td>凤姐</td>
+						<td>28</td>
+					</tr>
+				</tbody>
+			</table>
+	</body>
+	<script src='myTools.js'></script>
+	<script>
+		//实现各行变色
+//		获取相关元素
+		var oStuInfo = $("#stuInfo");//获取table
+		var tBody = oStuInfo.children[0];//获取tbody
+		var aTr = tBody.children;//获取tr
+		
+//		各行变色封装函数
+		function setStyle() {
+			for(var i = 0; i < aTr.length; i++) {
+				if(i%2 == 0) {
+					aTr[i].style.backgroundColor = 'red';
+				}else {
+					aTr[i].style.backgroundColor = 'green';
+				}
+			}
+		}
+		setStyle();//调用隔行变色
+		
+//		给添加学习按钮添加单击事件
+//		获取事件相关元素  姓名，年龄，添加学生按钮
+		var nameText = $('#nameText');//姓名
+		var ageText = $('#ageText');//年龄
+		var aInt = $('input')[2];//添加学生按钮
+//		添加事件当点击按钮的时候
+		aInt.onclick = function() {//绑定事件函数
+//			获取到姓名和年龄
+			var stuName = nameText.value;//获取到姓名
+			var stuAge = ageText.value;//获取到年龄
+//			创建两个td把姓名和年龄放到里面
+			var nameTd = document.createElement('td');//放姓名
+			var ageTd = document.createElement('td');//放年龄
+			nameTd.innerHTML = stuName;//把姓名放到td里面
+			ageTd.innerHTML = stuAge;//把年龄放到td里面
+//			创建一个tr把两个td放到里面
+			var oTr = document.createElement('tr');
+			oTr.appendChild(nameTd);//把姓名td放道tr里面
+			oTr.appendChild(ageTd);//把年龄td放到tr里面
+			
+//			最后把创建的tr放到tBody的最后面
+			tBody.appendChild(oTr);
+			setStyle();//调用隔行变色
+		}
+		
+//		给删除一行 添加单击事件
+//		获取事件的相关元素
+		var removeBtn = $('input')[3];
+//		当点击按钮的时候
+		removeBtn.onclick = function() {
+//			判断这个孩子是不是tBody的最后一个孩子
+		if(first(tBody) != last(tBody)) {
+			tBody.removeChild(last(tBody));//删除tBody的做后一个孩子
+		}
+		}
+		
+		
+	</script>
+</html>

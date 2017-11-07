@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box1 {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			#box2 {
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				left: 300px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="box1走" />
+		<input type="button" value="box2走" />
+		<input type="button" value="box1停" />
+		<input type="button" value="box2停" />
+		<div id="box1"></div>
+		<div id="box2"></div>
+	</body>
+	<script src="myTools.js"></script>
+	<script type="text/javascript">
+		
+		var oBox = document.getElementById("box1");
+		var oBox2 = document.getElementById("box2");
+		var aInp = document.getElementsByTagName("input");
+		
+		
+		aInp[0].onclick = function() {
+			move(oBox,"left",7,800);
+		}
+		/*aInp[1].onclick = function() {
+			move(oBox2,"top",7,500);
+		}*/
+	
+		aInp[2].onclick = function() {
+			clearInterval(oBox.timer);
+			oBox.timer = null;
+		}
+		/*aInp[3].onclick = function() {
+			move(oBox2,"top",7,500);
+		}*/
+		
+		
+		///  "用户体验"  
+		
+		//产品端                                                                                        技术端
+	//策划+产品经理(需求文档分析)   + (ue用户交互设计师(原型图)+ui(视觉设计师))设计师 +  web前端 工程师(攻城狮) + 后端(php工程师,jsp) + 测试  + 运维 
+	
+	</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#fly {
+				width: 85px;
+				height: 81px;
+				background:url(fly.gif);
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="fly"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 需要个整个文档添加键盘按下事件  通过事件对象 获取当前按下的是哪个键 然后按下那个键就让小飞机往哪儿走
+		
+		// 分别设定四个变量 分别控制四个方向  我假设四个变量开始的时候 都为加
+		
+		/*var left = false;
+		var up = false;
+		var right = false;
+		var down = false;*/
+		var oFly = document.getElementById("fly");
+		var onOff = {
+			left : false,
+			up : false,
+			right : false,
+			down : false
+		}
+		// 我在页面上开启一个定时器  定时器里面 让飞机走起来  但是有条件 ，哪一个方向开关是真的 才让对应的那个方向走起来
+		var speed = 10;
+		setInterval(function(){
+			if(onOff.left) {
+				oFly.style.left = oFly.offsetLeft - speed + "px";
+				oFly.style.transform = "rotate(270deg)";
+			}
+			
+			if(onOff.right) {
+				oFly.style.left = oFly.offsetLeft + speed + "px";
+				oFly.style.transform = "rotate(90deg)";
+			}
+			
+			if(onOff.up) {
+				oFly.style.top = oFly.offsetTop - speed + "px";
+				oFly.style.transform = "rotate(0deg)";
+			}
+			
+			if(onOff.down) {
+				oFly.style.top = oFly.offsetTop + speed + "px";
+				oFly.style.transform = "rotate(180deg)";
+			}
+			
+			// 单独补充一下方向判断
+			if (onOff.left&&onOff.up) {
+				oFly.style.transform = "rotate(-45deg)";
+			}else if(onOff.left&&onOff.down) {
+				oFly.style.transform = "rotate(225deg)";
+			}else if(onOff.right&&onOff.up) {
+				oFly.style.transform = "rotate(45deg)";
+			}else if(onOff.right&&onOff.down) {
+				oFly.style.transform = "rotate(135deg)";
+			}
+			
+			// 限制飞机飞行范围的函数
+			limit();
+			
+			
+		},30);
+		
+		// 在文档下 添加键盘按下事件
+		document.onkeydown = function (e) {
+			e = e || event;
+			
+			if(e.keyCode == 37) {
+				onOff.left = true;
+			} else if(e.keyCode==39) {
+				onOff.right = true;
+			}
+			
+			if(e.keyCode == 38) {
+				onOff.up = true;
+			} else if(e.keyCode==40) {
+				onOff.down = true;
+			}
+		}
+		
+		document.onkeyup = function (e) {
+			e = e || event;
+			
+			switch(e.keyCode) {
+				case 37:
+				onOff.left = false;
+				break;
+				case 39:
+				onOff.right = false;
+				break;
+				case 38:
+				onOff.up = false;
+				break;
+				case 40:
+				onOff.down = false;
+				break;
+			}
+		}
+		
+		
+	function limit() {
+		if(oFly.offsetLeft<=0) {
+			oFly.style.left = 0;
+		}
+		if(oFly.offsetLeft >= pos().l- oFly.offsetWidth) {
+			oFly.style.left = pos().l- oFly.offsetWidth + "px";
+		}
+		if(oFly.offsetTop<=0) {
+			oFly.style.top = 0;
+		}
+		if(oFly.offsetTop >= pos().t - oFly.offsetHeight) {
+			oFly.style.top = pos().t - oFly.offsetHeight+ "px";	
+		}
+	}
+	
+	// 封装了一个小函数 简化了一下长单词（可视区域的宽高）
+	function pos() {
+		return {
+			l:document.documentElement.clientWidth,
+			t:document.documentElement.clientHeight
+		};
+	}
+	</script>
+</html>

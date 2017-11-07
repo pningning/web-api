@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var oBox = document.getElementById('box');
+//		console.log(oBox);
+		
+		function fn() {
+			this.style.backgroundColor = 'red';
+		}
+		function fun() {
+			this.style.border = '2px solid green';
+		}
+		
+//		oBox.addEventListener('click',fn,false);
+//		oBox.addEventListener('click',fun,false);
+//		
+//		 另一种方法
+//		ie内核的浏览器都执行.
+//		attachEvent('on'+'事件',fn);
+//      火狐谷歌不认识
+
+//		oBox.attachEvent('onclick',fn);//里面的this指向的是空，是window
+		
+//		绑定事件函数兼容性函数封装
+		function bind(obj,evType,evFn) {
+//			判断是否支持这个方法,如果支持那么按下面的方法走
+			if(obj.addEventListener) {
+				obj.addEventListener(evType,evFn,false);
+			}else if(obj.attachEvent) {
+				obj.attachEvent('on'+evType,function() {
+					evFn.call(obj);//evFn.call(改变事件函数内部this的指向，可以改为当前)
+				});
+			} else {
+				obj['on'+evType] = evFnl;
+			}
+		}
+//		bind(oBox,'click',fn);
+		
+	</script>
+</html>

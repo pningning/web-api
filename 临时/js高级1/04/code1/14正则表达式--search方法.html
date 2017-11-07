@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+	/*	search() 匹配字符串的方法
+		返回值 : 匹配到的字符的下标位置 如果没有匹配到 则返回-1
+		用法:字符串.search(正则);
+		
+		这个search方法不支持全局匹配
+		*/
+		var str = "abdCBe8f";
+		
+		console.log( str.search(/b/ig) );
+		
+		//var re = new RegExp("\\d","i");// 标准声明方式
+		
+		console.log( str.search(re) );
+	</script>
+</html>

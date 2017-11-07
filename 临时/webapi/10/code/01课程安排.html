@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*"use strict";//声明下面的代码　即将开始使用严格模式
+			
+			function fn() {
+				
+				console.log(this);
+			}
+			
+			fn();//　严格模式下　this是　undefined*/
+		</script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*一  js基础复习  以及面向对象基础
+		二 js的原型链以及继承
+		三 使用面向对象写一个案例 --贪吃蛇
+		四 函数进阶 (函数的本质  和对象的关系   闭包  递归函数)
+		五 正则表达式 (一个强大的字符串匹配工具)
+		
+		一  javascript:
+			什么是js?
+			
+			js 是一门运行在客户端(浏览器端) 以事件驱动为主的 解释型的 脚本 编程语言
+			
+			单击某一个按钮 去做一件事儿  因为某一个事情发生而产生一个结果
+			直接执行
+			定时器执行
+			
+			编译型: 
+			解释型:
+			
+			var obj = {name:"zs",age:25}
+			
+			function fn(){  函数声明
+				
+			}
+			var fn = function (){}  函数表达式
+			
+			
+			obj.name = "lisi";
+			
+			ecmascript5(es5) : 没有类的概念  用构造函数去模拟类  (类是用来创建对象)
+			
+			es5 ==> es6(有class类了)
+			
+			
+			js的命名规则和规范:
+			
+			规则:
+				1 可以由字母数字 下划线以及$符号组成  但是 不能以数字开头
+				2 严格区分大小写
+			规范:
+				1 遵循驼峰式命名法
+				2 变量命名要有意义
+			关键字: var  function  当前程序正在使用的词 你不能使用  就是关键字
+			
+			//var abc 
+			
+			保留字: class  当前程序没有在使用但是 为了可能会使用  所以被程序暂时保留下来啦   你也不能使用
+			className*/
+			
+			//  
+			
+			/*
+			 * 
+			 * 文档注释
+			 * 
+			 * 
+			 */
+			
+			/*  
+			
+			*/ 
+			
+			/*变量: 是在内存中用来存储数据的标识符
+			var a = document.getElementById("box");
+			a.onclick = function() {
+				afdfdsf
+			}
+			a.onmouseover = function() {
+				
+			}
+			a.onmouseout = function() {
+				
+			}
+			
+			数据类型:
+			 简单数据类型(值类型):
+				number 数字类型
+				string 字符串类型
+				boolean 布尔类型
+				特殊类型
+					undefined 未定义  一般是程序默认给
+					null  空对象 无  一般是人为定义的
+			复杂数据类型（引用类型）:
+			object 对象类型  (数组属于特殊对象  因为数组的键名是有规律的下标)
+			对象:它是一组无序属性的集合 也就是它由多个键值对组成  键名 是无序的   */
+			
+			/*var obj = {
+				age:25,
+				name:"zs",
+				job:"fe"  
+			}
+			var arr = ["hello","hi","靠你其哇"];
+			console.log(arr[4]);
+			console.log(obj.zz);*/
+			/*var arr = {
+				0:"hello",
+				1:"hi",
+				2:"靠你其哇"
+			}*/
+			var k=-2;
+			     //  -1 + -1 + 1  +  1  == 0 
+			alert(++k + k++ + ++k + k);  //  0 
+			
+			条件语句:
+			 1 if相关语句
+			 	if(5>3){
+			 		console.log(5);
+			 	}
+			 	
+			 	5>3 && console.log(5);
+			 	fn && fn();
+			 	(typeof fn == "function") &&fn();
+			 	
+			 	if(typeof fn == "function") {
+			 		fn();
+			 	}
+			 	
+			 	/*var abc = ev || event; || 运算一般是用来处理兼容的*/
+			 	//  单个if 可以简化  短路写法  &&
+			 	if(条件表达式){
+			 		条件成立 做的事情
+			 	}else {
+			 		不成立做的事情
+			 	}
+			 	
+			 	条件表达式? 条件成立 做的事情   :不成立做的事情
+			 	
+			 	//if else语句  可以简化成三元运算  
+			 	//多条件并列选择
+			 	if(){
+			 		
+			 	}else if() {
+			 		
+			 	}else if() {
+			 		
+			 	}
+			 	
+				if(){
+			 		
+			 	}else if() {
+			 		
+			 	}else if() {
+			 		
+			 	}else {
+			 		
+			 	}
+			 2 三元运算 
+			 3 switch 语句  
+			  switch(条件表达式) {
+			  	case 常量:
+			  	 语句1 ;
+			  	 break;
+			  	 case 常量:
+			  	 语句2 ;
+			  	 break;
+			  	 case 常量:
+			  	 语句3;
+			  	 break;
+			  	default: 默认语句 ; 
+			  	break;
+			  }
+			  
+			循环 语句
+			 while  先判断条件 后执行语句
+			 
+			 
+			 do while  不管条件成立不成立 先执行一次  后续通过判断条件来执行
+			 
+			 for
+			 
+			 对于不确定次数的循环  适合用while  
+			 对于知道循环次数 一般用for  for语法更加简便
+			 
+			 嵌套层级 不要超过三层  
+			 外层的循环次数 要小于内层循环
+			 
+			 for(5) {
+			 	
+			 	
+			 	for (1000) {
+			 		
+			 	}
+			 	
+			 }
+	</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<span>span</span>
+		<span class="aa">span</span>
+		<p class="abc aa">pppp</p>
+		<p>pppp</p>
+		<p >pppp</p>
+		<a href="javascript:;">aaaaa</a>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//1 基本选择器:
+		// ID选择器
+		 $("#box").css("background","blue"); 
+		 // 类选择器
+		 $(".aa").css("background","green");
+		 
+		 $('p').css("background","purple");
+		 
+		 //并集选择器  兄弟关系选择器
+		 $("#box,.aa,a").css("border","3px aqua solid");
+		 
+		 $("span.aa").css("background","yellow")
+	</script>
+</html>

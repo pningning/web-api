@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		var obj  = {
+			name :"zs",
+			age : 25
+		}
+		
+//		对象.属性名 = 属性值
+		console.log(obj.name);
+		
+//		对象["属性名"] = 属性值;
+		
+		console.log(obj["name"]);
+		
+		
+//		delete  关键字 可以用来删除对象的属性  不能删除变量
+		
+		delete obj.name;
+		delete obj.age;
+		
+		console.log(obj);
+		
+		
+		//var hehe = "呵呵";
+		
+		window.hehe = "呵呵";
+		
+		delete hehe;
+		
+		console.log(hehe);
+	</script>
+</html>

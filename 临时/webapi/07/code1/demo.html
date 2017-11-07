@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>欢迎来到二级页面</p>
+		<input type="button"  value="后退" />
+	</body>
+	<script type="text/javascript">
+		
+		var aInp = document.getElementsByTagName("input")[0];
+		
+		aInp.onclick = function() {
+			
+			//window.history.go(-1);// 1下一个历史记录     -1 返回前一个历史记录
+			history.back();
+		}
+		
+	</script>
+</html>

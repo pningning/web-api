@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#oUl {
+				width: 280px;
+				height: 200px;
+				border: 1px solid darkgoldenrod;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="oUl">
+			<li>你发表的留言<a href="javascript:;">删除</a></li>
+			<li>2222<a href="javascript:;">删除</a></li>
+			<li>你发表33333的留言<a href="javascript:;">删除</a></li>
+			<li>你发4444表的留言<a href="javascript:;">删除</a></li>
+			<li>555555<a href="javascript:;">删除</a></li>
+			<li>66666<a href="javascript:;">删除</a></li>
+			<li>777<a href="javascript:;">删除</a></li>
+		</ul>
+		<input type="text" id="text" />
+		<input type="button" value="单击发送" id="btn" />
+	</body>
+	<script type="text/javascript">
+		
+		// 1 获取相关元素
+		//oUl  text btn
+		var oUl = document.getElementById("oUl");
+		var oText = document.getElementById("text");
+		var oBtn = document.getElementById("btn");
+		
+		// 2 单击按钮 将文本框的内容获取到 然后将内容放入ul中
+		
+	/*	oBtn.onclick = function() {
+			
+			// 将文本框的内容获取
+			var str = oText.value;
+			
+			oUl.innerHTML += '<li>'+str+'<a href="javascript:;">删除</a></li>'; 
+			
+			oText.value = "";
+			oText.focus();
+			
+			// 不获取a了 直接给父级oUl添加单击事件
+			oUl.onclick = function(e) {
+				e = e || event;
+				console.log(e);
+				//console.log(123);
+				//事件对象里面有一个属性叫target 事件触发时的事件源
+				//标准浏览器:e.target 事件源
+				//IE支持 ： e.srcElement  事件源
+				var target = e.target || e.srcElement;
+				console.log(target);
+				// 通过判断 当前的单击的事件源头 的节点名称 是不是A 如果是a  则删除a所在的这一行
+				if(target.nodeName == "A") {
+					//
+					this.removeChild(target.parentNode);
+					
+				}
+			}
+		}*/
+		oUl.onclick = function(e) {
+				e = e || event;
+				console.log(e);
+				//console.log(123);
+				//事件对象里面有一个属性叫target 事件触发时的事件源
+				//标准浏览器:e.target 事件源
+				//IE支持 ： e.srcElement  事件源
+				var abc = e.target || e.srcElement;
+				console.log(target);
+				// 通过判断 当前的单击的事件源头 的节点名称 是不是A 如果是a  则删除a所在的这一行
+				if(abc.nodeName == "A") {
+					//让Ul移除 当前单击的事件源a的父级
+					this.removeChild(abc.parentNode);
+				}
+			}
+		
+	</script>
+</html>

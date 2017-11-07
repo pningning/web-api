@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box {
+		width: 700px;
+		height: 400px;
+		margin-top: 50px;
+		position: absolute;
+		border: 1px solid red;
+	}
+	img {
+		width: 200px;
+		position: absolute;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="嗨起来！" />
+	<input type="button" value="敲代码去！" />
+	<div id="box">
+		<img src="img/00.jpg" alt="">
+	</div>
+</body>
+	<script>
+		// 获取事件相关元素
+		var aInt = document.getElementsByTagName('input');
+		var oBox = document.getElementById('box');
+		var aImg = document.getElementsByTagName('img')[0];
+
+		// 给嗨起来添加单击事件
+		var timer = null;
+		aInt[0].onclick = function() {
+			timer = setInterval(function() {
+				aImg.style.left = Math.round(Math.random()*(oBox.offsetWidth - aImg.offsetWidth)) + 'px';
+				aImg.style.top = Math.round(Math.random()*(oBox.offsetHeight - aImg.offsetHeight)) + 'px'
+			},30);
+		}
+
+		// 给敲代码添加单击事件
+		aInt[1].onclick = function() {
+			clearInterval(timer);
+			timer = null;
+		}
+	</script>
+</html>

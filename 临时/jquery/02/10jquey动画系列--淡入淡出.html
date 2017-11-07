@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				
+				width: 200px;
+				height: 200px;
+				background: red;
+				display: none;
+			}
+		</style>
+		<script src="jq.js"></script>
+		<script type="text/javascript">
+			// fadeIn()  淡入     fadeOut() 淡出     fadeToggle() 在淡入淡出之间切换        fadeTo() 变化到指定透明度
+			// 第一个参数动画执行时间  默认400ms normal  
+			// 第二参数 回调函数 （可选）
+			$(function(){
+				
+				$("input:eq(0)").click(function(){
+					
+					$("#box").fadeIn(1000);
+					
+				})
+				$("input:eq(1)").click(function(){
+					
+					$("#box").fadeOut(1000);
+					
+				})
+				
+				$("input:eq(2)").click(function(){
+					
+					$("#box").fadeToggle(1000);
+					
+				})
+				
+				//变化到指定透明度  
+				// 第一个参数  动画执行时间  这个参数必须写
+				//第二参数  指定透明度  0.3
+				// 第三个参数  回调函数
+				$("input:eq(3)").click(function(){
+					
+					$("#box").fadeTo(1000,0.3,function(){
+						alert("当前动画已经执行完了")
+					});
+					
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="单击淡入" />
+		<input type="button" value="单击淡出" />
+		<input type="button" value="单击淡入淡出切换" />
+		<input type="button" value="单击变化到指定透明度" />
+		<div id="box"></div>
+	</body>
+</html>

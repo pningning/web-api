@@ -1,0 +1,120 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul , h2 { padding:0; margin:0; }
+li { list-style:none; }
+#list { width:240px; border:1px solid #333; margin:0 auto; }
+
+#list h2 { height:30px; line-height:30px; text-indent:20px; background:url(img/ico1.gif) no-repeat 5px center #6FF; color:#000; }
+#list .active { background:url(img/ico2.gif) no-repeat 5px center #FF9; color:#000; }
+#list ul { display:none; }
+#list ul li { line-height:24px; border-bottom:1px solid #333; text-indent:24px; }
+#list ul .hover { background:#6FF; }
+</style>
+
+</head>
+<script type="text/javascript">
+	
+	window.onload = function() {
+		
+		// 分析：  1   给所有的h2标题 添加单击事件  单击任何一个 h2标题  应该让对应的ul 显示和隐藏来回切换
+		
+		
+		// 1 获取事件相关元素
+		var oList = document.getElementById("list");
+		var aH2 = oList.getElementsByTagName("h2");
+		var aUl = oList.getElementsByTagName("ul")
+		// 2   给所有的h2标题 添加单击事件
+		
+		// 建立一个变量  用来存之前单击的对象
+		var obj = -100;
+		
+		// 设定一个开关  
+		var onOff = true;
+		
+		for(var i = 0; i < aH2.length; i++) {
+			// 给h2 添加自定义属性 将当前自己的下标存在这个属性里面
+			aH2[i].index = i;
+			aH2[i].onclick = function() {
+				
+				// 如果换了点击对象 那么里面把开关改一下 以便于它进入if
+				if(obj!=this.index) {
+					onOff = true;
+				}
+				
+				//单击任何一个 h2标题  应该让对应的ul 显示和隐藏来回切换
+				if(onOff) {
+					//加暴力清除
+					for(var i = 0; i < aUl.length; i++) {
+						aH2[i].className = "";
+						aUl[i].style.display = "none";
+					}
+					// 当展开ul以后 应该加上active类
+					this.className = "active";
+					aUl[this.index].style.display = "block";
+				}else {
+					// 当收起ul以后 应该去掉active类
+					this.className = "";
+					aUl[this.index].style.display = "none";
+				}
+				onOff = !onOff;
+				//把当前你单击的这个ｈ２的索引存起来
+				obj = this.index;
+			}
+			
+			
+			fn(aUl[i]);
+			
+		}
+		
+		
+		function fn(m){
+			var aLi = m.getElementsByTagName("li");	
+			for(var i = 0; i < aLi.length; i++) {
+				aLi[i].onmouseover = function(){
+					this.style.backgroundColor  = "aqua";
+				}
+				aLi[i].onmouseout = function(){
+					this.style.backgroundColor  = "";
+				}
+			}
+		}
+	}
+	
+</script>
+<body>
+
+<ul id="list">
+	<li>
+		<h2>我的好友</h2>
+		<ul>
+			<li>张三</li>
+			<li>张三</li>
+			<li>张三</li>
+			<li>张三</li>
+		</ul>
+	</li>
+	<li>
+		<h2>企业好友</h2>
+		<ul>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+			<li>李四</li>
+		</ul>
+	</li>
+	<li>
+		<h2>黑名单</h2>
+		<ul>
+			<li>张小三</li>
+			<li>李小四</li>
+		</ul>
+	</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../jq.js"></script>
+    <script type="text/javascript">
+    	
+    	$(function(){
+    		//单击span 关闭按钮 让bottomPart高度变成0  然后接着整体div  right值 出去 -322 同时透明度逐渐变成0
+    		$("#closeButton").click(function(){
+    			
+    		/*	$("#bottomPart").animate({height:0},800,function(){
+    				$("#box").animate({right:-322,opacity:0},1000);
+    			})*/
+    			
+    			// jquery 可以链式调用
+    			//delay(具体时间单位是毫秒) 一般加在animate动画执行之前  用来延迟一些时间  
+    			$("#bottomPart").animate({height:0},800).parent().delay(1000).animate({right:-322,opacity:0},1000)
+    		})
+    		
+    	})
+    	
+    </script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<span id="closeButton"></span>
+			<div class="hd" id="headPart">
+				<img src="images/t.jpg" alt="">
+			</div>
+			<div class="bd" id="bottomPart">
+				<img src="images/b.jpg" alt="">
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		// jQuery插件   一般有两种形式    
+		
+		/*第一种形式: 开发工具方法  给$函数直接挂载和添加方法  (静态方法) (不常用)
+		如何进行开发  $.extend() (这是jq内部给你提供的一个api接口 这个接口可以帮您实现静态工具方法的开发)进行添加即可*/
+		
+		
+		/*$("#box").css();
+		
+		$("#box").html();*/
+		// 判断数据类型 和原生js 的 typeof()
+		//$.type(); // 这是jq内部的静态工具方法
+		
+		/*var arr = [1,2,3];
+		var obj = {
+			name :"zs",
+			age : 25
+		}
+		
+		/*console.log(typeof arr);
+		console.log(typeof obj);*/
+		
+		/*console.log( $.type(arr) );
+		console.log( $.type(obj) );*/
+		
+		
+		// 我想给jq扩展一个静态工具方法  求和  方法
+		
+		$.extend({
+			sum:function(){
+				var num = 0;
+				for(var i = 0; i < arguments.length; i++) {
+					num += arguments[i];
+				}
+				return num;
+			},
+			abc:function(a,b){
+				return Math.abs(a-b);
+			}
+		})
+		
+		
+		console.log( $.sum(12,8,9) );
+		console.log( $.sum(3,5,4,15) );
+		
+		console.log("它们之间的差值"+$.abc(15,9));
+		console.log("它们之间的差值"+$.abc(3,14));
+		
+		
+	</script>
+</html>

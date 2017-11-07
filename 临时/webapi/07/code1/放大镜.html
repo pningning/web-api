@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#small {
+				width: 480px;
+				height: 288px;
+				background:url(img/small.png) no-repeat;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			#rec {
+				width: 100px;
+				height: 100px;
+				background:url(img/bj.png);
+				position: absolute;
+				display: none;
+				cursor: move;
+			}
+			#big {
+				width: 400px;
+				height: 400px;
+				background:url(img/big.jpg) no-repeat;
+				position: absolute;
+				left: 600px;
+				top: 100px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="small">
+			<div id="rec"></div>
+		</div>
+		<div id="big">
+		</div>
+	</body>
+	<script type="text/javascript">
+		function $(id) {
+			return document.getElementById(id);
+		}
+		//分析思路： 
+		/*鼠标移上事件: 鼠标移到smallDiv上面 让recdiv  和bigDiv 显示出来
+		鼠标移动事件: 在鼠标移动的时候 让小div 跟着走  同时让右边的bigDIv里面的图片跟着走
+		鼠标移出事件: 鼠标移出smallDiv  让recdiv  和bigDiv 隐藏*/
+		
+//		1 获取相关元素
+		var oSmall = $("small");
+		var oBig = $("big");
+		var oRec = $("rec");
+		
+		//　2 事件类型 给small 添加三个事件
+		oSmall.onmouseover = function() {
+			oRec.style.display = "block";
+			oBig.style.display = "block";
+		}
+		
+		oSmall.onmousemove = function(ev) {
+			ev = ev || event;
+			var x =  ev.clientX - this.offsetLeft - oRec.offsetWidth/2 ;
+			var y =  ev.clientY - this.offsetTop - oRec.offsetHeight/2 ;
+			// 让rec盒子的left值  =   鼠标x坐标  -  small盒子的左侧偏移量 -  rec盒子自身宽度的一半  + "px";
+			
+			//限制范围
+			// 三元运算
+			// 最小 位置  为0  最大位置  small盒子的宽度 减去 rec盒子的宽度  那个值 正好rec盒子的最大left值
+			x = x<0 ? 0 : x;
+			x = x>this.offsetWidth-oRec.offsetWidth ?this.offsetWidth-oRec.offsetWidth:x;
+			y = y<0?0:y;
+			y = y>this.offsetHeight-oRec.offsetHeight ?this.offsetHeight-oRec.offsetHeight:y;
+			
+			oRec.style.left = x + "px";
+			oRec.style.top = y + "px";
+			
+			// 同时让右边的bigDIv里面的图片跟着走
+			oBig.style.backgroundPosition = -4*x + "px "+ -4*y +"px";
+			
+		}
+		
+		oSmall.onmouseout = function() {
+			oRec.style.display = "none";
+			oBig.style.display = "none";
+		}
+	</script>
+</html>

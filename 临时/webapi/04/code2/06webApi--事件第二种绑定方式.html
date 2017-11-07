@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">box</div>
+	</body>
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");		
+		/*oBox.onclick = function() {
+			console.log("我在开发一个功能");	
+			console.log(this);
+		}*/
+		/*oBox["onclick"] = function() {
+			console.log("我在开发一个功能");	
+			console.log(this);
+		}*/
+		
+		// 添加事件侦听器   绑定事件的第二种方式  不会发生事件函数覆盖
+		//obj元素.addEventListener(事件类型,事件处理函数,false);// 第三个参数 是冒泡 也就是不捕获
+		// 标准浏览器下  支持这个方法obj.addEventListener(evType,evFn,false);
+		// IE6 78 不支持这个方法  
+		
+		
+		//IE内核都支持   attachEvent()
+		// obj元素.attachEvent(on+事件类型,事件处理函数)
+		// IE9以及以上浏览器 使用这种绑定方式  顺序执行
+		// Ie6 7 8 浏览器下  使用这种绑定方式  后面先于前面的函数执行  倒序执行
+		
+		
+	/*	oBox.addEventListener("click",function(){
+			console.log("这是一个效果 ");
+		},false);
+		oBox.addEventListener("click",function(){
+			console.log("这是哈哈哈哈 ");
+		},false);*/
+		
+		/*oBox.attachEvent("onclick",function(){
+			console.log("111111");
+		})
+		
+		oBox.attachEvent("onclick",function(){
+			console.log("22222");
+		})
+		*/
+		总结:两种绑定的区别:
+			1 addEventListener 事件类型不需要加on    而attachEvent需要加on
+			2 addEventListener()正序执行      attachEvent() 在标准Ie下正序执行  在Ie6 7 8倒序执行 
+			3 this指向问题: 
+				addEventListener() 函数内部的this指向没问题 指向当前对象
+				attachEvent() 它内部的this指向有问题 不是指向当前对象 指向window
+	</script>
+</html>

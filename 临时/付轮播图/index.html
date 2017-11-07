@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none;
+        }
+        #box{
+            width: 500px;
+            height: 200px;
+            position: relative;
+            /*overflow: hidden;*/
+            margin:100px auto;
+        }
+        #box ul{
+            width: 3000px;
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+
+        }
+        #box ul li{
+            float: left;
+        }
+        ol{
+            position: absolute;
+            bottom:10px;
+            right:0;
+
+        }
+        ol li{
+            width: 20px;
+            height: 20px;
+            border:1px solid #0099cc;
+            float: left;
+            text-align: center;
+            line-height: 20px;
+            margin-left:10px;
+           background: #fff;
+        }
+        ol .act{
+            background:#A90000;
+
+        }
+        #arr{
+            display: none;
+        }
+        #left,#right{
+            width: 40px;
+            height: 40px;
+            font: 30px "黑体";
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            top:50%;
+            margin-top:-20px;
+            background: #ccc;
+            opacity: 0.3;
+        }
+        #left{
+            left:0;
+        }
+        #right{
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+
+
+        </ul>
+        <ol>
+            <!--<li class="act">1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>4</li>-->
+            <!--<li>5</li>-->
+        </ol>
+        <div id="arr">
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+        </div>
+    </div>
+    <script>
+        var timer = null;
+        var box = document.getElementById("box");
+        var ul = box.children[0];
+        var ulList = ul.children;
+        var ol = box.children[1];
+        var arr = document.getElementById("arr");
+        var left = document.getElementById("left");
+        var right = document.getElementById("right");
+        var imgWidth = box.offsetWidth;
+        console.log(imgWidth);
+        //根据图片的数量创建ol里面的li
+        for(var i = 0;i<ulList.length;i++){
+            var li = document.createElement("li");
+            ol.appendChild(li);
+            li.innerHTML = i+1;
+        }
+        var olList = ol.children;
+        console.log(olList.length);
+        olList[0].className = "act";
+        //克隆第一张放到ul里面
+        var firstImg = ulList[0].cloneNode(true);
+        ul.appendChild(firstImg);
+        //鼠标经过下面的轮播点，让当前的高亮，其余的不高亮
+        for(var j = 0;j<olList.length;j++){
+            olList[j].index = j;
+            olList[j].onmouseover = function(){
+                for(var k = 0;k<olList.length;k++){
+                    olList[k].className = "";
+                }
+                this.className = "act";
+                //以上鼠标上面的图片轮播
+                //因为是向图片向左移动所以是负值
+                var target = -this.index*imgWidth;
+                animate(ul,target);
+                //要将这几个值关联
+                pic = this.index;
+                square = this.index;
+            }
+        }
+        //鼠标移上盒子左右箭头显示，清除定时器
+        //鼠标离开盒子左右箭头隐藏，开启定时器
+        box.onmouseover = function(){
+            arr.style.display = "block";
+            clearInterval(timer);
+        }
+        box.onmouseout = function(){
+            arr.style.display = "none";
+            timer = setInterval(right.onclick,1000)
+        }
+        //点击左右箭头以动画的形式将ul移动到指定位置
+        var pic = 0;//记录当前正在显示图片的索引
+        var square = 0;//记录当前按钮高亮的索引
+        //点击右侧的按钮
+        right.onclick = function(){
+            //如果是最后一张图片，当前的图片的索引值是0;
+            //让ul的位置瞬间移动到开始的位置
+            if(pic==ulList.length-1){
+                
+               ul.style.left = 0;//ul回到第一张
+               pic = 0;//当前显示图片的索引值也是0
+            }
+            pic++;
+            var target = -pic*imgWidth
+            animate(ul,target);
+            //同时下面的按钮也要跟着走
+            if(square<olList.length-1){
+                square++;
+            }else{
+                square=0;
+            }
+            for(var i = 0;i<olList.length;i++){
+                olList[i].className = "";
+            }
+            olList[square].className = "act";
+        }
+        //点击左按钮的时候ul以动画的形式将图片移动到指定的位置
+        left.onclick = function(){
+            //先判断如果当前是第一张图片,让ul瞬间移动到最后的位置
+            //同时pic也要到最后
+            if(pic==0){
+                //将ul的位置移动到最后
+                ul.style.left = -(ulList.length-1)*imgWidth+"px";
+                //同时将pic的值设置为最后
+                pic=ulList.length-1;
+            }
+            pic--;
+            var target = -pic*imgWidth;
+            animate(ul,target);
+            //同时按钮也要跟着
+            if(square>0){
+                square--
+            }else{
+                square = olList.length-1;
+            }
+            for(var i = 0;i<olList.length;i++){
+                olList[i].className = "";
+            }
+            olList[square].className = "act";
+        }
+        timer = setInterval(right.onclick,1000)
+
+
+        function animate(obj,target){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                var leader = obj.offsetLeft;
+                var step = 30;
+                step = leader<target?step:-step;
+                if(Math.abs(target-leader)>=Math.abs(step)){
+                    leader = leader+step;
+                    obj.style.left = leader+"px";
+                }else{
+                    obj.style.left = target+"px";
+                    clearInterval(obj.timer);
+                }
+
+            },15)
+        }
+    </script>
+</body>
+</html>

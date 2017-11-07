@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"  />
+		<input type="checkbox" checked="checked" />
+	</body>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		//在表单中  像 disabled   checked   selected 类似于这样的属性  
+		
+		/*var aInp = document.getElementsByTagName("input")[0];
+		aInp.disabled = true;*/
+		
+		//alert(  $("input[type=text]").attr("disabled") ); //disabled   undefined
+		
+		//alert( $("input:eq(1)").attr("checked") );
+		//alert( $("input:eq(1)").prop("checked") ); // true  false
+		  
+		  
+//		  prop()  可以设置或者获取表单属性
+
+		$("input:eq(0)").prop("disabled",true);
+		$("input:eq(1)").prop("checked",false);
+	</script>
+</html>

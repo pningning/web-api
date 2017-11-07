@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function Student(name,age) {
+			this.name = name;
+			this.age = age;
+			
+			/*this.study = function(){
+				console.log(this.name+"好好学习天天向上！");
+			}*/
+		}
+		
+		Student.prototype.study = function() {
+			console.log( this.name +"正在学习！");
+		}
+		
+		var stu1 = new Student("乔丽莎",25);
+		var stu2 = new Student("白龙龙",26);
+		
+		console.log(Student.prototype);
+		
+		console.log(stu1.__proto__);//
+		
+		console.log(stu1.__proto__ == Student.prototype); //true
+		
+		console.log( Student.prototype.constructor == Student);// true
+		
+		
+		/*stu1.study();
+		stu2.study();*/
+		console.log(stu1.hobby);
+		console.log(stu2.hobby);
+		
+		/*var arr = ["aaa","bbb","ccc"];
+		var result = arr.push("ddd");
+		console.log(arr);
+		console.log(result);*/
+		
+	</script>
+</html>
